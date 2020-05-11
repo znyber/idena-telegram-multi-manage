@@ -13,8 +13,7 @@ execute script
 ```bash
 ./install-node.sh
 ```
-insert your name to make home directory idena
-insert node key 
+insert your name to make home directory idena & insert node key 
 
 # idena auto update
 ## Install auto update idena service with systemd
