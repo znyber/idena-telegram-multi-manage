@@ -71,7 +71,7 @@ service idena-update start
 
 echo "wait.... build datadir"
 sleep 30
-echo $idenakeystore > /home/$idenahome/keystore/nodekey
+echo $idenakeystore > /home/$idenahome/datadir/keystore/nodekey
 service idena stop
 service idena start
 echo " Copy this API key to your idena client "
