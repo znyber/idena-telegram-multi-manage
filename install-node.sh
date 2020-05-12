@@ -38,12 +38,14 @@ cat <<EOF > /usr/bin/idena-update
 idenaURL=$(curl -s https://api.github.com/repos/idena-network/idena-go/releases/latest | grep linux | cut -d '-' -f 4 | head -n 1 | cut -d '"' -f 1)
 idenaTXT=$(idena -v | awk '{print $3}')
 idenaUPD=$(curl -s https://api.github.com/repos/idena-network/idena-go/releases/latest | grep linux | cut -d '"' -f 4 | head -n 2 | tail -n 1)
-if [[ \$idenaURL == \$idenaTXT ]];then
-    wget \$idenaUPD -q --show-progress -O /usr/bin/idena
+if [[ ! \$idenaURL == \$idenaTXT ]];then
+	service idena stop
+    wget $idenaUPD -q --show-progress -O /usr/bin/idena
 	chmod +x /usr/bin/idena
+	service idena start
 	exit 0
     else
-        echo -e "version available \$idenaURL no Update"
+        echo -e "version $idenaURL no Update"
         exit 1
     fi
 EOF
