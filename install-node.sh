@@ -31,46 +31,6 @@ EOF
 systemctl enable idena
 service idena start
 
-#---------------Create Auto Update APP idena Node------------#
-
-cat <<EOF > /usr/bin/idena-update
-#!/bin/bash
-idenaURL=$(curl -s https://api.github.com/repos/idena-network/idena-go/releases/latest | grep linux | cut -d '-' -f 4 | head -n 1 | cut -d '"' -f 1)
-idenaTXT=$(idena -v | awk '{print $3}')
-idenaUPD=$(curl -s https://api.github.com/repos/idena-network/idena-go/releases/latest | grep linux | cut -d '"' -f 4 | head -n 2 | tail -n 1)
-if [[ ! \$idenaURL == \$idenaTXT ]];then
-	service idena stop
-    wget $idenaUPD -q --show-progress -O /usr/bin/idena
-	chmod +x /usr/bin/idena
-	service idena start
-	exit 0
-    else
-        echo -e "version $idenaURL no Update"
-        exit 1
-    fi
-EOF
-chmod +x /usr/bin/idena-update
-
-#--------Create Auto Update Service---------------------------#
-
-cat <<EOF > /lib/systemd/system/idena-update.service
-[Unit]
-Description=idena update service
-After=network.target
-StartLimitIntervalSec=0
-
-[Service]
-Restart=always
-RestartSec=1
-User=root
-ExecStart=-/usr/bin/idena-update
-
-[Install]
-WantedBy=multi-user.target
-EOF
-systemctl enable idena-update
-service idena-update start
-
 echo "wait.... build datadir"
 sleep 30
 echo $idenakeystore > /home/$idenahome/datadir/keystore/nodekey
