@@ -1,4 +1,4 @@
-# idena-installer
+# idena-node-installer
 ## Installation
 
 download script 
@@ -15,8 +15,8 @@ execute script
 ```
 insert your name to make home directory idena & insert node key 
 
-# idena auto update
-## Install auto update idena service with systemd
+# idena auto update node
+## Install auto update idena node service with systemd
 download idena-update
 ```bash
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/idena-update -O /usr/bin/idena-update
