@@ -32,7 +32,7 @@ uptoyou
 ```
 uptoyou_bot
 ```
-![alt text](https://raw.githubusercontent.com/znyber/idena-installer/master/TGbot.png
+![alt text](https://raw.githubusercontent.com/znyber/idena-installer/master/TGbot.png)
 ```
 ```
 4- now you chat on your bot 
