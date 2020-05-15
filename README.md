@@ -92,6 +92,10 @@ Please make sure to update tests as appropriate.
 
 ### open donation 
 btc address
-``3Q2GqeYz9H9dj5iQYPpXVgUdMAyJdmYSCp``
+```
+3Q2GqeYz9H9dj5iQYPpXVgUdMAyJdmYSCp
+```
 idena address
-``0x282e229b78b16f5ca2f0651d290103a25a2d2156``
+```
+0x282e229b78b16f5ca2f0651d290103a25a2d2156
+```
