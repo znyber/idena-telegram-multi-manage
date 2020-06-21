@@ -7,9 +7,9 @@ idena_download=$(curl -s https://api.github.com/repos/idena-network/idena-go/rel
 #------------ download idena node latest version--------------#
 
 wget $idena_download -q --show-progress -O /usr/bin/idena
-
+wget https://raw.githubusercontent.com/znyber/idena-installer/master/idena-update -q --show-progress -O /usr/bin/idena-update
 chmod +x /usr/bin/idena
-
+chmod +x /usr/bin/idena-update
 #--------------- create idena service-------------------------#
 
 cat <<EOF > /lib/systemd/system/idena.service

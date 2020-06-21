@@ -8,13 +8,13 @@ if [[ ! $idenaURL == $idenaTXT ]];then
         chmod +x /usr/bin/idena
         service idena start
         wall idena update version $idenaURL
-        idenaAPT=$(curl -s https://api.github.com/repos/idena-network/idena-go/releases/latest | grep body | cut -d '"' -f 4)
-		idenaECHO=$(echo -e $idenaAPT | sed 's/\*\*/*/g;s/\#/`/g;s/)/\`)/g' && echo "[idena v$idenaURL update](https://github.com/idena-network/idena-go/releases/tag/v$idenaURL)")
-		TOKEN=1232333333:AAErBHDfQvSb7joXQljyB2xhZeB7kkkkkkk
-		CHAT_ID=123456789
-		MESSAGE=$idenaECHO
-		URL="https://api.telegram.org/bot$TOKEN/sendMessage"
-		curl -s -X POST $URL -d parse_mode='Markdown' -d chat_id=$CHAT_ID -d text="$MESSAGE"
+        #idenaAPT=$(curl -s https://api.github.com/repos/idena-network/idena-go/releases/latest | grep body | cut -d '"' -f 4)
+		#idenaECHO=$(echo -e $idenaAPT | sed 's/\*\*/*/g;s/\#/`/g;s/)/\`)/g' && echo "[idena v$idenaURL update](https://github.com/idena-network/idena-go/releases/tag/v$idenaURL)")
+		#TOKEN=1232333333:AAErBHDfQvSb7joXQljyB2xhZeB7kkkkkkk
+		#CHAT_ID=123456789
+		#MESSAGE=$idenaECHO
+		#URL="https://api.telegram.org/bot$TOKEN/sendMessage"
+		#curl -s -X POST $URL -d parse_mode='Markdown' -d chat_id=$CHAT_ID -d text="$MESSAGE"
         exit 0
     else
         echo -e "version $idenaURL no Update"
