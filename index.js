@@ -1,5 +1,5 @@
 const Telegraf = require('telegraf')
-const bot = new Telegraf('1422705649:AAFJWFkgiHRRE5K72XtV_1gU4lKHROa9nZI')
+const bot = new Telegraf('XXXXXX')
 const { exec } = require('child_process');
 const fs = require('fs');
 const readline = require('readline');
