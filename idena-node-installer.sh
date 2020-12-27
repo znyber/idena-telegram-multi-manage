@@ -43,6 +43,7 @@ service idena stop
 systemctl daemon-reload
 rm -rf /home/$idenahome/$idenanumber/datadir/idenachain.db/*
 mount --bind /home/datadir/idenachain.db /home/$idenahome/$idenanumber/datadir/idenachain.db
+
 cat <<EOF >> /etc/fstab
 /home/datadir/idenachain.db /home/$idenahome/$idenanumber/datadir/idenachain.db none bind
 EOF

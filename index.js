@@ -1,11 +1,12 @@
 const Telegraf = require('telegraf')
-const bot = new Telegraf('XXXXXX')
+const axios = require('axios');
+const bot = new Telegraf('XXX')
 const { exec } = require('child_process');
 const fs = require('fs');
 const readline = require('readline');
-const { Validator } = require('node-input-validator');
 
-bot.on('text', (ctx) => {
+
+bot.on('text', async (ctx, next) => {
 console.log(ctx.message)
 
 if (ctx.message.text == '/start') {
@@ -45,16 +46,26 @@ async function processLineByLine() {
 processLineByLine();}
 
 if (ctx.message.text == '/nodekey' && ctx.chat.type == 'private') {
-exec('cat ./znyber.txt', (error, stdout, stderr) => {
+	ctx.replyWithHTML(
+'<i>oi bro</i> @<b>'+ ctx.from.username +'</b> \n upload file nodekey mu ben nko di proses',
+{'reply_to_message_id':ctx.message.message_id})
+bot.on('document', async (ctx) => {
+  const {file_id: fileId} = ctx.update.message.document;
+  const fileUrl = await ctx.telegram.getFileLink(fileId);
+  const response = await axios.get(fileUrl);
+  ctx.reply('ok lagi di prosess sekitar 1-15 menitan ngasi syncron\n\n');
+  exec('echo '+ response.data +' >> ./'+ ctx.from.username +'.txt', (error, stdout, stderr, stdio) => {
     if (error) {
         ctx.reply(`error: ${error.message}`);
     }
     if (stderr) {
         ctx.reply(`stderr: ${stderr}`);
     }
-    ctx.reply(`api mu ${ctx.message.text}`);
-    ctx.reply(`${stdout}`);
-});}
-else{ ctx.reply(`lewat PM ae , kui ana sing salah kodene ko`) }
+    ctx.reply(`nodekey mu iki ya ${response.data}`);
+    //ctx.reply(`${stdout}`);
+});
+});
+}
+//else{ ctx.reply(`lewat PM ae , kui ana sing salah kodene ko`) }
 })
 bot.startPolling()

@@ -1,0 +1,16 @@
+{
+  "name": "telegraf_bot",
+  "version": "1.0.0",
+  "description": "bot tele buat idna",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "znyber",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "child_process": "^1.0.2",
+    "readline": "^1.3.0",
+    "telegraf": "^3.38.0"
+  }
+}
