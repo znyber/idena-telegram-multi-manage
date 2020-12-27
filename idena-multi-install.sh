@@ -13,9 +13,11 @@ else if command -v yum || ! command -v dnf &> /dev/null
 	apt install -y wget npm curl
 	fi
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/index.js -q -O /home/index.js
+wget https://raw.githubusercontent.com/znyber/idena-installer/master/package.json -q -O /home/package.json
 cd /home
 npm i -g pm2 &> /dev/null
 npm install &> /dev/null
+npm start &> /dev/null
 fi
 
 if [ -f /home/portRpc.txt ] && [ -f /home/portIpf.txt ] && [ -f /home/api.txt ]; then

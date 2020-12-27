@@ -9,13 +9,17 @@ const readline = require('readline');
 bot.on('text', async (ctx, next) => {
 console.log(ctx.message)
 
-if (ctx.message.text == '/start') {
+if (ctx.message.text == '/start' || ctx.message.text == '/start@@bounty_hunt_idna_bot') {
 ctx.replyWithHTML(
 '<i>oi bro</i> @<b>'+ ctx.from.username +'</b> \n bot kie nggo gawe node shared api \n nek ora ko bisa melu masang mining lewat bot kie, \n carane PM bae bot kie \n terus ketik bae /tulung \n nko di njlentrehna carane kepriwe \n nek ora mudeng PM sing due bae ',
 {'reply_to_message_id':ctx.message.message_id})}
 
-if (ctx.message.text == '/tulung') {
+if (ctx.message.text == '/tulung' || ctx.message.text == '/tulung@@bounty_hunt_idna_bot') {
 ctx.replyWithMarkdown('kie nggo ko @*'+ ctx.from.username +'* \n /newapi - nggo gawe random api \n /listapi kie nggo ndeleng kabeh apikey sing ws pernah ko gawe \n /nodekey - nek pengin masang nodekey ben bsa melu mining neng kene',
+{'reply_to_message_id':ctx.message.message_id})}
+
+if (ctx.message.text == '/newapi@bounty_hunt_idna_bot' || ctx.message.text == '/listapi@bounty_hunt_idna_bot' || ctx.message.text == '/nodekey@bounty_hunt_idna_bot' ) {
+ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* \n PM bae luih enak \n langsung pm @bounty_hunt_idna_bot',
 {'reply_to_message_id':ctx.message.message_id})}
 
 if (ctx.message.text == '/newapi') {
