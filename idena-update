@@ -3,19 +3,18 @@ sleep 30
 idenaURL=$(curl -s 'https://github.com/idena-network/idena-go/releases/' |grep idena-node-linux | cut -d '"' -f 2 | cut -d '-' -f 6 | head -n 1)
 idenaTXT=$(idena -v | awk '{print $3}')
 if [[ ! $idenaURL == $idenaTXT ]];then
-        service idena stop
+    service idena-* stop
+		if [ -d /home/datadir/idenachain.db ]
+		then
+		rm -rf /home/datadir/idenachain.db/*
+		else
+		echo "directory tidak ada"
+		fi
     wget https://github.com/idena-network/idena-go/releases/download/v$idenaURL/idena-node-linux-$idenaURL -q --show-progress -O /usr/bin/idena
-        chmod +x /usr/bin/idena
-        service idena start
-        wall idena update version $idenaURL
-        #idenaAPT=$(curl -s https://api.github.com/repos/idena-network/idena-go/releases/latest | grep body | cut -d '"' -f 4)
-		#idenaECHO=$(echo -e $idenaAPT | sed 's/\*\*/*/g;s/\#/`/g;s/)/\`)/g' && echo "[idena v$idenaURL update](https://github.com/idena-network/idena-go/releases/tag/v$idenaURL)")
-		#TOKEN=1232333333:AAErBHDfQvSb7joXQljyB2xhZeB7kkkkkkk
-		#CHAT_ID=123456789
-		#MESSAGE=$idenaECHO
-		#URL="https://api.telegram.org/bot$TOKEN/sendMessage"
-		#curl -s -X POST $URL -d parse_mode='Markdown' -d chat_id=$CHAT_ID -d text="$MESSAGE"
-        exit 0
+    chmod +x /usr/bin/idena
+    service idena-* start
+    wall idena update version $idenaURL
+    exit 0
     else
         echo -e "version $idenaURL no Update"
         exit 1
