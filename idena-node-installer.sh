@@ -1,5 +1,4 @@
 #!/bin/bash
-read -p "token bot tele :" token
 if [ ! -d /home/datadir ]
 then
 if command -v npm && command -v node && [ -f /home/index.js ] &> /dev/null
@@ -16,20 +15,8 @@ else if command -v yum || ! command -v dnf &> /dev/null
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/index.js -q -O /home/index.js
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/package.json -q -O /home/package.json
 cd /home && npm i -g pm2 && npm install 
-cat <<EOF > /home/ecosystem.config.js
-module.exports = {
-  apps: [
-    {
-      name: 'bot-telegram',
-      instances: 'max',
-      exec_mode: 'cluster',
-      script: './index.js',
-    },
-  ],
-};
-EOF
-sed -i '3s/.*/const bot = new Telegraf('\$token')/' /home/index.js 
-cd /home && npm start
+sed -i '3s/.*/const bot = new Telegraf('1422705649:AAFJWFkgiHRRE5K72XtV_1gU4lKHROa9nZI')/' /home/index.js 
+cd /home && pm2 start npm --name "app name" -- start
 fi
 
 if [ -f /home/portRpc.txt ] && [ -f /home/portIpf.txt ] && [ -f /home/api.txt ]; then
@@ -47,7 +34,7 @@ fi
 	wget https://raw.githubusercontent.com/znyber/idena-installer/master/idena-update -q --show-progress -O /usr/bin/idena-update
 	chmod +x /usr/bin/idena
 	chmod +x /usr/bin/idena-update
-	wget https://media.githubusercontent.com/media/znyber/idena-installer/master/idenachain.db.zip -O /home/datadir/idenachain.db.zip
+	
 	#--------------- create idena service-------------------------#
 
 touch /home/config.json
@@ -77,6 +64,7 @@ service idena start
 echo "wait.... build datadir"
 sleep 30
 service idena stop
+wget https://media.githubusercontent.com/media/znyber/idena-installer/master/idenachain.db.zip -O /home/datadir/idenachain.db.zip
 systemctl daemon-reload
 rm -rf /home/datadir/idenachain.db
 unzip /home/datadir/idenachain.db.zip -d /home/datadir/
@@ -106,7 +94,7 @@ else if command -v yum ||  command -v dnf &> /dev/null
 
 cd /home && git clone https://github.com/idena-network/idena-node-proxy.git
 cd /home/idena-node-proxy
-npm i -g pm2 &> /dev/null
+npm i -g pm2
 cat <<EOF > /home/idena-node-proxy/.env
 AVAILABLE_KEYS=["TWYQCz","qjVtfD","xDhnjN","AtjJZK","Qvzasq","sLAxpY","vAYrET","haxBAJ","DXxjwN","yGqKvw","PWXxHs","cnjsEa","JwevTh","Kyjqsk","ZGWnry","AbBZgS","bBXhLH","qNwhyF","jTANLY","RcHSwA","VNMvyT","EeMXhu","cntZwx","fCHrDq","uGVeaQ","cVMqTh","NjVBuk","gpFZkU","dKQtZT","nThUZf","sCUZLx","ebFLmg","LbcCGg","gpyVbU","cYPsTR","tQJRPB","QDpmuj","ewEnBL","VPUtWk","GMNvew","mtpwDG","xtGqXW","GfLEnR","tPhEfH","ZzEvXp","wbQVyr","MCGmRd","ELvkpb","xvbGsg","DXkvYg","TbDQxS","JCarHq","mSPEsQ","KNzxPA","Xtnwzc","jNhgaT","tWvfxw","uxSKdb","YuFAKP","eDhZzY","qmZuEG","vZnWcM","uenyRh","TkHntS","CJjxyA","CHJpqD","esMGxY","rvEeGF","gDHyqC","crUELg","jSFnaJ","dWtmUH","RrdZEP","cbCgdH","BSarDs","zkmBCh","JBwfNd","gRhLwv","tLyZeg","HnhQjG","fxmSRD","EsCLAM","ghBaXP","KMThZk","ZLWFuH","dqARNt","rRQfKA","VUpKbt","EAfdhm","xLGAmK","ymZgEk","gTEUyM","WSMErH","kwFKXQ","USWsQK","wEBYSx","FZrWBT","wbjUYV","WNzmBf","pTPJVU","hZRPDX","EVygmu","NaXjgh","zEcMBQ","qheVzQ","SZMhJL","JUyxam","jPxpGm","EVsBFh","JYvXjV","EhTpVM","ZXhebg","QFUeav","LUfryb","HXcWSE","RNKcCv","CVkbPL","fSQcrC","xdsDwQ","MfKRZT","BaEXeD","jSTYPd","wQgGtF","yDawEK","PLtvwT","bKJFSc","HnDkcy","urKvMN","WTdAzJ","SVBnEz","ngavFe","MCUbgf","EekNcX","ehsgCr","zADdtc","LZqNpu","AjedNv","MRbdTf","eHjETP","vBnYbT","TEnWDJ","XJsjUw","WkQPrp","WwEFbZ","BJmcAK","QhsKzx","XRMcGf","BAVmzF","QtmhkX","nNywLe","zDQtVN","jpZYFq","TZcRNn","ZBdxEH","QvwhpG","jUrFBY","ZMUGBy","XnDxec","NxghuZ","ScXCKn","ayMEFK","jZKwrR","ktpXdn","xUFcRL","FxAbHz","LRvdeC","XRmFaz","CEVNft","QuXBZE","WtKcsr","bmCkUf","gkaYsF","LEqfvk","umeLsb","CKTkbW","JPMaHg","LwChbX","ZXHmxW","NnetgE","zbHVLs","GAbpzJ","vVgcxk","BfvXea","XYqnHb","LnrwEt","aGwSbe","stBPpE","XDGAgM","qVSsre","jJhKZG","FWuRSG","jCuePY","MqjNHb","MnUzCJ","GUtFPn","hWrCkG","nFcAKt","EmNHua","FBPzwQ","aHQkhb"]
 IDENA_URL="http://localhost:9009"
@@ -114,7 +102,7 @@ IDENA_KEY="kenebaezxcpm"
 PORT=80
 EOF
 cd /home/idena-node-proxy && npm install
-cd /home/idena-node-proxy && npm start &> /dev/null
+cd /home/idena-node-proxy && npm start 
 fi
 echo " Copy this API key to your idena client "
 cat /home/datadir/api.key && echo ''
