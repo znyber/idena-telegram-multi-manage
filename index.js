@@ -29,9 +29,9 @@ bot.command('tulung'+ bot_name, (ctx) =>{
         console.log(ctx.from.username);
 })
 bot.command('tulung', (ctx) =>{
-                ctx.replyWithMarkdown('kie nggo ko @*'+ ctx.from.username +'* \n /newapi - nggo gawe random api \n /listapi kie nggo ndeleng kabeh apikey sing ws pernah ko gawe \n /nodekey - nek pengin masang nodekey ben bsa melu mining neng kene',
-                {'reply_to_message_id':ctx.message.message_id})
-                console.log(ctx.from.username);
+        ctx.replyWithMarkdown('kie nggo ko @*'+ ctx.from.username +'* \n /oi - start bot \n /tulung - pengganti help \n /newapi - generate api key node share \n /listapi - list api node share yang telah di buat \n /nodekey - tambah node [beta] \n /mininglist - hanya menampilkan status mining dan address \n /nodeall - list semua node \n /miningoff - mematikan mining per user \n /miningon - meng aktifkan mining per user \n /miningalloff - [dev] \n /miningallon - [dev] \n /shutdownall - mematikan semua node di server\n /startall - mengaktifkan semua node di server \n /update - update semua node di server \n /uptime - cek durasi vps \n /listic - [dev] ',
+        {'reply_to_message_id':ctx.message.message_id})
+        console.log(ctx.from.username);
 })
 //newapi command
 bot.command('newapi', (ctx) =>{
