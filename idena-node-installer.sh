@@ -15,7 +15,7 @@ else if command -v yum || ! command -v dnf &> /dev/null
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/index.js -q -O /home/index.js
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/package.json -q -O /home/package.json
 cd /home && npm i -g pm2 && npm install 
-sed -i '3s/.*/const bot = new Telegraf('1422705649:AAFJWFkgiHRRE5K72XtV_1gU4lKHROa9nZI')/' /home/index.js 
+sed -i '3s/.*/const bot = new Telegraf("1422705649:AAFJWFkgiHRRE5K72XtV_1gU4lKHROa9nZI")/' /home/index.js 
 cd /home && pm2 start npm --name "app name" -- start
 fi
 
@@ -91,7 +91,7 @@ else if command -v yum ||  command -v dnf &> /dev/null
 	apt update -y
 	apt install -y wget npm curl git
 	fi
-
+fi
 cd /home && git clone https://github.com/idena-network/idena-node-proxy.git
 cd /home/idena-node-proxy
 npm i -g pm2
@@ -103,7 +103,6 @@ PORT=80
 EOF
 cd /home/idena-node-proxy && npm install
 cd /home/idena-node-proxy && npm start 
-fi
 echo " Copy this API key to your idena client "
 cat /home/datadir/api.key && echo ''
 exit 0
