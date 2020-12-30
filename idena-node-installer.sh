@@ -1,17 +1,37 @@
 #!/bin/bash
 if [ ! -d /home/datadir ]
 then
-if command -v npm && command -v node && [ -f /home/index.js ] &> /dev/null
+if command -v git && command -v links && command -v npm && command -v node && [ -f /home/index.js ] &> /dev/null
 then
     echo "command exists."
 	exit 1
 else if command -v yum || ! command -v dnf &> /dev/null
 	then 
-		yum install -y npm wget curl unzip
+		yum install -y npm wget curl unzip links git
 	else
 	apt update -y
-	apt install -y wget npm curl unzip
+	apt install -y wget npm curl unzip links git
 	fi
+
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB" -O /home/idenachain.db.zip && rm -rf /tmp/cookies.txt
+cd /home && unzip idenachain.db.zip
+if [ ! -d /home/idenachain.db ]
+then
+cd /home && pwd && links https://drive.google.com/file/d/1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB/view?usp=sharing && unzip idenachain.db
+if [ ! -d /home/idenachain.db ]
+then
+cd /home && pwd && links https://www.mediafire.com/file/ajrxzbulicfqi3v/idenachain.db.zip/file && unzip idenachain.db
+fi
+if [ ! -d /home/idenachain.db ]
+then
+echo "idenachain.db tidak bisa di download mohon masukan secara manual"
+echo "ini link download untuk idenachain.db "
+echo "https://drive.google.com/file/d/1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB/view?usp=sharing"
+echo "https://www.mediafire.com/file/ajrxzbulicfqi3v/idenachain.db.zip/file"
+else
+exit 1
+fi
+fi
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/index.js -q -O /home/index.js
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/package.json -q -O /home/package.json
 cd /home && npm i -g pm2 && npm install 
@@ -64,10 +84,9 @@ service idena start
 echo "wait.... build datadir"
 sleep 30
 service idena stop
-wget https://media.githubusercontent.com/media/znyber/idena-installer/master/idenachain.db.zip -O /home/datadir/idenachain.db.zip
 systemctl daemon-reload
 rm -rf /home/datadir/idenachain.db
-unzip /home/datadir/idenachain.db.zip -d /home/datadir/
+rsync -avz -P /home/idenachain.db/ /home/datadir/idenachain.db/
 if command -v firewall-cmd &> /dev/null
 then
     setenforce 0
