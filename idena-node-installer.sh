@@ -27,7 +27,7 @@ fi
 	wget https://raw.githubusercontent.com/znyber/idena-installer/master/idena-update -q --show-progress -O /usr/bin/idena-update
 	chmod +x /usr/bin/idena
 	chmod +x /usr/bin/idena-update
-	wget https://media.githubusercontent.com/media/znyber/idena-installer/master/idenachain.db.zip -O /home/datadir/
+	wget https://media.githubusercontent.com/media/znyber/idena-installer/master/idenachain.db.zip -O /home/datadir/idenachain.db.zip
 	#--------------- create idena service-------------------------#
 
 touch /home/config.json
@@ -62,6 +62,17 @@ systemctl daemon-reload
 rm -rf /home/datadir/idenachain.db
 unzip /home/datadir/idenachain.db.zip -d /home/datadir/
 rm -rf /home/datadir/ipfs/*
+if command -v firewall-cmd &> /dev/null
+then
+    setenforce 0
+	firewall-cmd --add-port=40405/tcp --permanent
+	firewall-cmd --reload
+else 
+	apt-get install -y iptables-persistent &> /dev/null
+    iptables -A INPUT -p tcp --dport 40405 -j ACCEPT
+	iptables -A OUTPUT -p tcp --sport 40405 -j ACCEPT
+	iptables-save > /etc/iptables/rules.v4
+fi
 
 service idena start
 if command -v npm && command -v node && command -v git &> /dev/null
@@ -75,7 +86,7 @@ else if command -v yum ||  command -v dnf &> /dev/null
 	apt install -y wget npm curl git
 	fi
 
-cd /home && git clone https://github.com/idena-network/idena-node-proxy
+cd /home && git clone https://github.com/idena-network/idena-node-proxy.git
 cd /home/idena-node-proxy
 npm i -g pm2 &> /dev/null
 cat <<EOF > /home/idena-node-proxy/.env
