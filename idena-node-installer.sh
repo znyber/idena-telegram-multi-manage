@@ -15,10 +15,21 @@ else if command -v yum || ! command -v dnf &> /dev/null
 	fi
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/index.js -q -O /home/index.js
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/package.json -q -O /home/package.json
-cd /home
-npm i -g pm2 
-npm install 
+cd /home && npm i -g pm2 && npm install 
+cat <<EOF > /home/ecosystem.config.js
+module.exports = {
+  apps: [
+    {
+      name: 'bot-telegram',
+      instances: 'max',
+      exec_mode: 'cluster',
+      script: './index.js',
+    },
+  ],
+};
+EOF
 sed -i '3s/.*/const bot = new Telegraf('\$token')/' /home/index.js 
+cd /home && npm start
 fi
 
 if [ -f /home/portRpc.txt ] && [ -f /home/portIpf.txt ] && [ -f /home/api.txt ]; then

@@ -4,7 +4,7 @@
   "description": "bot tele buat idna",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "pm2 start ecosystem.config.js"
   },
   "author": "znyber",
   "dependencies": {
