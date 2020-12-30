@@ -19,6 +19,14 @@ npm i -g pm2 &> /dev/null
 npm install 
 npm start &> /dev/null
 fi
+
+if [ -f /home/portRpc.txt ] && [ -f /home/portIpf.txt ] && [ -f /home/api.txt ]; then
+    echo "file exists."
+else
+wget https://raw.githubusercontent.com/znyber/idena-installer/master/portRpc.txt -q -O /home/portRpc.txt
+wget https://raw.githubusercontent.com/znyber/idena-installer/master/api.txt -q -O /home/api.txt
+wget https://raw.githubusercontent.com/znyber/idena-installer/master/portIpf.txt -q -O /home/portIpf.txt
+fi
 	idena_download=$(curl -s https://api.github.com/repos/idena-network/idena-go/releases/latest | grep linux | cut -d '"' -f 4 | head -n 2 | tail -n 1)
 
 	#------------ download idena node latest version--------------#

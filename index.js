@@ -61,10 +61,10 @@ bot.command('newapi'+ bot_name, (ctx) =>{
 bot.command('listapi', (ctx) =>{
         console.log(ctx.from.username);
         if (ctx.chat.type == 'private') {
-			    if(fs.existsSync('/home/'+ ctx.from.username +'-portRpc.txt')) {
+			if(fs.existsSync('/home/'+ ctx.from.username +'-portRpc.txt')) {
 				console.log("The file exists.");
                 async function processLineByLine() {
-                const fileStream = fs.createReadStream('/home/'+ ctx.from.username +'-portRpc.txt ');
+                const fileStream = fs.createReadStream('/home/'+ ctx.from.username +'-portRpc.txt');
                 const rl = readline.createInterface({
                         input: fileStream,
                         crlfDelay: Infinity
@@ -77,8 +77,7 @@ bot.command('listapi', (ctx) =>{
 			} else {
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah gawe api > *'+ bot_name +'*',
-            {'reply_to_message_id':ctx.message.message_id})
-			}
+            {'reply_to_message_id':ctx.message.message_id})}
         }else{
                 ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
                 {'reply_to_message_id':ctx.message.message_id})
