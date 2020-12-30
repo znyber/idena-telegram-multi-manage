@@ -2,24 +2,6 @@
 idenahome="$1"
 idenakeystore="$2"
 
-if command -v npm && command -v node && [ -f /home/index.js ] &> /dev/null
-then
-    echo "command exists."
-else if command -v yum || ! command -v dnf &> /dev/null
-	then 
-		yum install -y npm wget curl 
-	else
-	apt update -y
-	apt install -y wget npm curl
-	fi
-wget https://raw.githubusercontent.com/znyber/idena-installer/master/index.js -q -O /home/index.js
-wget https://raw.githubusercontent.com/znyber/idena-installer/master/package.json -q -O /home/package.json
-cd /home
-npm i -g pm2 &> /dev/null
-npm install &> /dev/null
-npm start &> /dev/null
-fi
-
 if [ -f /home/portRpc.txt ] && [ -f /home/portIpf.txt ] && [ -f /home/api.txt ]; then
     echo "file exists."
 else
@@ -35,10 +17,14 @@ then
 	mkdir -p /home/$idenahome/$idenanumber
 	touch /home/$idenahome/$idenahome-portRpc.txt
 	sed -n "1{p;q}" /home/portRpc.txt >> /home/$idenahome/$idenahome-portRpc.txt
-	
+	sed -n "1{p;q}" /home/portRpc.txt >> /home/all-portRpcUse.txt
 	portRpc=$(tail -1 /home/$idenahome/$idenahome-portRpc.txt)
 	sed -i "1d" /home/portRpc.txt
-	
+
+cat <<EOF >> /home/user.txt
+@$idenahome
+EOF
+
 	idena_download=$(curl -s https://api.github.com/repos/idena-network/idena-go/releases/latest | grep linux | cut -d '"' -f 4 | head -n 2 | tail -n 1)
 	
 	touch /home/$idenahome/$idenahome-api.txt
@@ -59,38 +45,79 @@ then
 	chmod +x /usr/bin/idena
 	chmod +x /usr/bin/idena-update
 	#--------------- create idena service-------------------------#
-
-cat <<EOF > /lib/systemd/system/idena-$idenahome-$portRpc.service
+if [ ! -d /etc/systemd/system/idena.target.wants ] &> /dev/null
+then
+cat <<EOF > /lib/systemd/system/idena.target
 [Unit]
+Description=idena target
+Requires=multi-user.target
+After=multi-user.target
+AllowIsolate=yes
+[Install]
+WantedBy=multi-user.target
+EOF
+systemctl enable idena.target
+else
+echo" idena target sudah ada"
+fi
+cat <<EOF > /home/$idenahome/$portRpc.json
+{
+  "DataDir": "$portRpc",
+  "RPC": {
+    "HTTPHost": "localhost",
+    "HTTPPort": $portRpc
+  },
+  "IpfsConf": {
+    "IpfsPort": $portIpf
+  }
+}
+
+EOF
+if [ -f /lib/systemd/system/idena-$idenahome@.service ]; then
+    echo "file exists."
+else
+
+cat <<EOF > /lib/systemd/system/idena-$idenahome@.service
+[Unit]
+PartOf=idena.target
 Description=idena $idenahome service
 After=network.target
 StartLimitIntervalSec=0
 
 [Service]
+Type=simple
 Restart=always
 RestartSec=1
-WorkingDirectory=/home/$idenahome/$portRpc
+WorkingDirectory=/home/$idenahome
 User=root
-ExecStart=-/usr/bin/idena --profile=lowpower --rpcaddr=localhost --rpcport=$portRpc --ipfsport=$portIpf --apikey=$apikey
+ExecStart=/usr/bin/idena --config=%i.json
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=idena.target
 EOF
-systemctl enable idena-$idenahome-$portRpc
-service idena-$idenahome-$portRpc start
+
+fi
+
+if [ -f /etc/systemd/system/idena.target.wants/idena-$idenahome@$portRpc.service ]; then
+echo " data sudah ada.. hubungi pembuat. @znyber"
+exit 1
+else
+
+systemctl start idena-$idenahome@$portRpc
+systemctl enable idena-$idenahome@$portRpc
 
 echo "wait.... build datadir"
 sleep 30
-echo $idenakeystore > /home/$idenahome/$portRpc/datadir/keystore/nodekey
-echo $idenahome > /home/$idenahome/$portRpc/datadir/api.key
-service idena-$idenahome-$portRpc stop
+echo $idenakeystore > /home/$idenahome/$portRpc/keystore/nodekey
+echo $idenahome > /home/$idenahome/$portRpc/api.key
+systemctl stop idena-$idenahome@$portRpc
 systemctl daemon-reload
-rm -rf /home/$idenahome/$idenanumber/datadir/idenachain.db/*
-mount --bind /home/datadir/idenachain.db /home/$idenahome/$idenanumber/datadir/idenachain.db
+rm -rf /home/$idenahome/$idenanumber/idenachain.db/*
+mount --bind /home/datadir/idenachain.db /home/$idenahome/$idenanumber/idenachain.db
 cat <<EOF >> /etc/fstab
-/home/datadir/idenachain.db /home/$idenahome/$idenanumber/datadir/idenachain.db none bind
+/home/datadir/idenachain.db /home/$idenahome/$idenanumber/idenachain.db none bind
 EOF
-rm -rf /home/$idenahome/$idenanumber/datadir/ipfs/*
+rm -rf /home/$idenahome/$idenanumber/ipfs/*
 systemctl daemon-reload
 
 if command -v firewall-cmd &> /dev/null
@@ -105,10 +132,12 @@ else
 	iptables-save > /etc/iptables/rules.v4
 fi
 
-service idena-$idenahome-$portRpc start
-echo " Copy this API key to your idena client "
-cat /home/$idenahome/$idenanumber/datadir/api.key && echo ''
+systemctl start idena-$idenahome@$portRpc
+echo " node telah ter install , ini api untuk menyambungkan"
+cat /home/$idenahome/$idenanumber/api.key && echo ''
+echo "port" && echo $portRpc
 exit 0
+fi
 else
     echo "user node $idenahome sudah ada mohon ganti"
     echo "hubungi pembuat @znyber"

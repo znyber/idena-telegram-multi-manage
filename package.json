@@ -1,5 +1,5 @@
 {
-  "name": "telegraf_bot",
+  "name": "telegraf_bot_idna",
   "version": "1.0.0",
   "description": "bot tele buat idna",
   "main": "index.js",

@@ -1,9 +1,9 @@
 #!/bin/bash
-sleep 30
 idenaURL=$(curl -s 'https://github.com/idena-network/idena-go/releases/' |grep idena-node-linux | cut -d '"' -f 2 | cut -d '-' -f 6 | head -n 1)
 idenaTXT=$(idena -v | awk '{print $3}')
 if [[ ! $idenaURL == $idenaTXT ]];then
-    service idena-* stop
+	service idena stop
+    systemctl stop idena.target
 		if [ -d /home/datadir/idenachain.db ]
 		then
 		rm -rf /home/datadir/idenachain.db/*
@@ -12,7 +12,8 @@ if [[ ! $idenaURL == $idenaTXT ]];then
 		fi
     wget https://github.com/idena-network/idena-go/releases/download/v$idenaURL/idena-node-linux-$idenaURL -q --show-progress -O /usr/bin/idena
     chmod +x /usr/bin/idena
-    service idena-* start
+	service idena start
+    systemctl start idena.target
     wall idena update version $idenaURL
     exit 0
     else

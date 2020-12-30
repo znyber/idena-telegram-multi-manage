@@ -1,6 +1,24 @@
 #!/bin/bash
 if [ ! -d /home/datadir ]
 then
+if command -v npm && command -v node && [ -f /home/index.js ] &> /dev/null
+then
+    echo "command exists."
+	exit 1
+else if command -v yum || ! command -v dnf &> /dev/null
+	then 
+		yum install -y npm wget curl 
+	else
+	apt update -y
+	apt install -y wget npm curl
+	fi
+wget https://raw.githubusercontent.com/znyber/idena-installer/master/index.js -q -O /home/index.js
+wget https://raw.githubusercontent.com/znyber/idena-installer/master/package.json -q -O /home/package.json
+cd /home
+npm i -g pm2 &> /dev/null
+npm install 
+npm start &> /dev/null
+fi
 	idena_download=$(curl -s https://api.github.com/repos/idena-network/idena-go/releases/latest | grep linux | cut -d '"' -f 4 | head -n 2 | tail -n 1)
 
 	#------------ download idena node latest version--------------#
@@ -16,7 +34,7 @@ cat <<EOF > /home/config.json
 {"IpfsConf":{"Profile": "server" ,"FlipPinThreshold":1},"Sync": {"LoadAllFlips": true}}
 EOF
 
-cat <<EOF > /lib/systemd/system/idena-node.service
+cat <<EOF > /lib/systemd/system/idena.service
 [Unit]
 Description=idena $idenahome service
 After=network.target
@@ -32,22 +50,22 @@ ExecStart=-/usr/bin/idena --config=config.json
 [Install]
 WantedBy=multi-user.target
 EOF
-systemctl enable idena-node
-service idena-node start
+systemctl enable idena
+service idena start
 
 echo "wait.... build datadir"
 sleep 30
-echo "kenebaezxcpm" > /home/$idenahome/$idenanumber/datadir/api.key
+echo "kenebaezxcpm" > /home/datadir/api.key
 service idena stop
 systemctl daemon-reload
 rm -rf /home/datadir/idenachain.db/*
-rm -rf /home/$idenahome/$idenanumber/datadir/ipfs/*
+rm -rf /home/datadir/ipfs/*
 
-service idena-node start
+service idena start
 if command -v npm && command -v node && command -v git &> /dev/null
 then
     echo "command exists."
-else if command -v yum || ! command -v dnf &> /dev/null
+else if command -v yum ||  command -v dnf &> /dev/null
 	then 
 		yum install -y npm wget curl git
 	else
@@ -64,11 +82,13 @@ IDENA_URL="http://localhost:9009"
 IDENA_KEY="kenebaezxcpm"
 PORT=80
 EOF
-cd /home/idena-node-proxy && npm install &> /dev/null
+cd /home/idena-node-proxy && npm install
 cd /home/idena-node-proxy && npm start &> /dev/null
 fi
 echo " Copy this API key to your idena client "
-cat /home/$idenahome/$idenanumber/datadir/api.key && echo ''
+cat /home/datadir/api.key && echo ''
+exit 0
 else
     echo "datadir sudah ada , script not executed"
+	exit 1
 fi
