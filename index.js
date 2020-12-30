@@ -24,7 +24,7 @@ bot.command('oi'+ bot_name, (ctx) =>{
 })
 //help command
 bot.command('tulung'+ bot_name, (ctx) =>{
-        ctx.replyWithMarkdown('kie nggo ko @*'+ ctx.from.username +'* \n /newapi - nggo gawe random api \n /listapi kie nggo ndeleng kabeh apikey sing ws pernah ko gawe \n /nodekey - nek pengin masang nodekey ben bsa melu mining neng kene',
+        ctx.replyWithMarkdown('kie nggo ko @*'+ ctx.from.username +'* \n /oi - start bot \n /tulung - pengganti help \n /newapi - generate api key node share \n /listapi - list api node share yang telah di buat \n /nodekey - tambah node [beta] \n /mininglist - hanya menampilkan status mining dan address \n /nodeall - list semua node \n /miningoff - mematikan mining per user \n /miningon - meng aktifkan mining per user \n /miningalloff - [dev] \n /miningallon - [dev] \n /shutdownall - mematikan semua node di server\n /startall - mengaktifkan semua node di server \n /update - update semua node di server \n /uptime - cek durasi vps \n /listic - [dev] ',
         {'reply_to_message_id':ctx.message.message_id})
         console.log(ctx.from.username);
 })
@@ -504,7 +504,7 @@ bot.command('uptime'+ bot_name, (ctx) =>{
                 });
 })
 //list WhoHaveInvite
-bot.command('listIC', (ctx) =>{
+bot.command('listic', (ctx) =>{
 console.log(ctx.from.username);
         ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* butuh sajen \n under develop \n butuh kopi > *'+ bot_name +'*',
         {'reply_to_message_id':ctx.message.message_id})
@@ -530,7 +530,7 @@ console.log(ctx.from.username);
 processLineByLine();
 */
 })
-bot.command('listIC'+ bot_name, (ctx) =>{
+bot.command('listic'+ bot_name, (ctx) =>{
         console.log(ctx.from.username);
         ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* butuh sajen \n under develop \n butuh kopi > *'+ bot_name +'*',
         {'reply_to_message_id':ctx.message.message_id})
