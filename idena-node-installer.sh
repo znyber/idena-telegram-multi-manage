@@ -16,7 +16,7 @@ wget https://raw.githubusercontent.com/znyber/idena-installer/master/index.js -q
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/package.json -q -O /home/package.json
 cd /home && npm i -g pm2 && npm install 
 sed -i '3s/.*/const bot = new Telegraf("1422705649:AAFJWFkgiHRRE5K72XtV_1gU4lKHROa9nZI")/' /home/index.js 
-cd /home && pm2 start npm --name "app name" -- start
+cd /home && pm2 start npm --name "telegraf-bot" -- start
 fi
 
 if [ -f /home/portRpc.txt ] && [ -f /home/portIpf.txt ] && [ -f /home/api.txt ]; then
