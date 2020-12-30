@@ -1,4 +1,5 @@
 #!/bin/bash
+read -p "token bot tele :" token
 if [ ! -d /home/datadir ]
 then
 if command -v npm && command -v node && [ -f /home/index.js ] &> /dev/null
@@ -15,9 +16,9 @@ else if command -v yum || ! command -v dnf &> /dev/null
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/index.js -q -O /home/index.js
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/package.json -q -O /home/package.json
 cd /home
-npm i -g pm2 &> /dev/null
+npm i -g pm2 
 npm install 
-npm start &> /dev/null
+sed -i '3s/.*/const bot = new Telegraf('\$token')/' /home/index.js 
 fi
 
 if [ -f /home/portRpc.txt ] && [ -f /home/portIpf.txt ] && [ -f /home/api.txt ]; then

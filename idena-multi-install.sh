@@ -117,7 +117,7 @@ if [ -f /home/datadir/idenachain.db.zip ]
 		rm -rf /home/$idenahome/$portRpc/idenachain.db
 		unzip /home/datadir/idenachain.db.zip -d /home/$idenahome/$idenanumber/
 		else
-		echo "directory tidak ada"
+		echo "file tidak ada tidak ada"
 		fi
 
 systemctl daemon-reload
