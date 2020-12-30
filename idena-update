@@ -6,7 +6,9 @@ if [[ ! $idenaURL == $idenaTXT ]];then
     systemctl stop idena.target
 		if [ -d /home/datadir/idenachain.db ]
 		then
-		rm -rf /home/datadir/idenachain.db/*
+		wget https://media.githubusercontent.com/media/znyber/idena-installer/master/idenachain.db.zip -O /home/datadir/
+		rm -rf /home/datadir/idenachain.db
+		unzip /home/datadir/idenachain.db.zip -d /home/datadir/
 		else
 		echo "directory tidak ada"
 		fi

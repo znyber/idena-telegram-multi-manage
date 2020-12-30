@@ -7,10 +7,10 @@ then
 	exit 1
 else if command -v yum || ! command -v dnf &> /dev/null
 	then 
-		yum install -y npm wget curl 
+		yum install -y npm wget curl unzip
 	else
 	apt update -y
-	apt install -y wget npm curl
+	apt install -y wget npm curl unzip
 	fi
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/index.js -q -O /home/index.js
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/package.json -q -O /home/package.json
@@ -27,6 +27,7 @@ fi
 	wget https://raw.githubusercontent.com/znyber/idena-installer/master/idena-update -q --show-progress -O /usr/bin/idena-update
 	chmod +x /usr/bin/idena
 	chmod +x /usr/bin/idena-update
+	wget https://media.githubusercontent.com/media/znyber/idena-installer/master/idenachain.db.zip -O /home/datadir/
 	#--------------- create idena service-------------------------#
 
 touch /home/config.json
@@ -58,7 +59,8 @@ sleep 30
 echo "kenebaezxcpm" > /home/datadir/api.key
 service idena stop
 systemctl daemon-reload
-rm -rf /home/datadir/idenachain.db/*
+rm -rf /home/datadir/idenachain.db
+unzip /home/datadir/idenachain.db.zip -d /home/datadir/
 rm -rf /home/datadir/ipfs/*
 
 service idena start
