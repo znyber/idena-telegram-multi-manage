@@ -54,7 +54,7 @@ Restart=always
 RestartSec=1
 WorkingDirectory=/home/
 User=root
-ExecStart=-/usr/bin/idena --config=config.json
+ExecStart=-/usr/bin/idena --config=config.json --apikey=kenebaezxcpm
 
 [Install]
 WantedBy=multi-user.target
@@ -64,12 +64,10 @@ service idena start
 
 echo "wait.... build datadir"
 sleep 30
-echo "kenebaezxcpm" > /home/datadir/api.key
 service idena stop
 systemctl daemon-reload
 rm -rf /home/datadir/idenachain.db
 unzip /home/datadir/idenachain.db.zip -d /home/datadir/
-rm -rf /home/datadir/ipfs/*
 if command -v firewall-cmd &> /dev/null
 then
     setenforce 0

@@ -6,7 +6,7 @@ if [[ ! $idenaURL == $idenaTXT ]];then
     systemctl stop idena.target
 		if [ -d /home/datadir/idenachain.db ]
 		then
-		wget https://media.githubusercontent.com/media/znyber/idena-installer/master/idenachain.db.zip -O /home/datadir/
+		wget https://media.githubusercontent.com/media/znyber/idena-installer/master/idenachain.db.zip -O /home/datadir/idenachain.db.zip
 		rm -rf /home/datadir/idenachain.db
 		unzip /home/datadir/idenachain.db.zip -d /home/datadir/
 		else

@@ -68,6 +68,7 @@ cat <<EOF > /home/$idenahome/$portRpc.json
     "HTTPPort": $portRpc
   },
   "IpfsConf": {
+	"Profile": "server",
     "IpfsPort": $portIpf
   }
 }
@@ -90,7 +91,7 @@ Restart=always
 RestartSec=1
 WorkingDirectory=/home/$idenahome
 User=root
-ExecStart=/usr/bin/idena --config=%i.json
+ExecStart=/usr/bin/idena --config=%i.json --apikey=$idenahome
 
 [Install]
 WantedBy=idena.target
@@ -109,15 +110,16 @@ systemctl enable idena-$idenahome@$portRpc
 echo "wait.... build datadir"
 sleep 30
 echo $idenakeystore > /home/$idenahome/$portRpc/keystore/nodekey
-echo $idenahome > /home/$idenahome/$portRpc/api.key
 systemctl stop idena-$idenahome@$portRpc
 systemctl daemon-reload
-rm -rf /home/$idenahome/$idenanumber/idenachain.db/*
-mount --bind /home/datadir/idenachain.db /home/$idenahome/$idenanumber/idenachain.db
-cat <<EOF >> /etc/fstab
-/home/datadir/idenachain.db /home/$idenahome/$idenanumber/idenachain.db none bind
-EOF
-rm -rf /home/$idenahome/$idenanumber/ipfs/*
+if [ -f /home/datadir/idenachain.db.zip ]
+		then
+		rm -rf /home/$idenahome/$portRpc/idenachain.db
+		unzip /home/datadir/idenachain.db.zip -d /home/$idenahome/$idenanumber/
+		else
+		echo "directory tidak ada"
+		fi
+
 systemctl daemon-reload
 
 if command -v firewall-cmd &> /dev/null
@@ -134,7 +136,7 @@ fi
 
 systemctl start idena-$idenahome@$portRpc
 echo " node telah ter install , ini api untuk menyambungkan"
-cat /home/$idenahome/$idenanumber/api.key && echo ''
+cat /home/$idenahome/$idenanumber/api.key 
 echo "port" && echo $portRpc
 exit 0
 fi
