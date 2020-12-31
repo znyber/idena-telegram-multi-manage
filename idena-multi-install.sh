@@ -33,10 +33,15 @@ then
 	sed -n "1{p;q}" /home/portRpc.txt >> /home/all-portRpcUse.txt
 	portRpc=$(tail -1 /home/$idenahome/$idenahome-portRpc.txt)
 	sed -i "1d" /home/portRpc.txt
-
+if ! grep -Fxq $idenahome /home/user.txt
+then
 cat <<EOF >> /home/user.txt
 $idenahome
 EOF
+else
+        echo "gas"
+fi
+
 
 	touch /home/$idenahome/$idenahome-portIpf.txt
 	sed -n "1{p;q}" /home/portIpf.txt >> /home/$idenahome/$idenahome-portIpf.txt
