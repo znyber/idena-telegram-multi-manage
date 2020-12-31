@@ -11,13 +11,8 @@ wget https://raw.githubusercontent.com/znyber/idena-installer/master/portIpf.txt
 fi
 if [ ! -d /home/idenafastsync ]
 then
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1ydTWIPhXZ4fVG5uUmUYpNLNW-SbqYxJI' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1ydTWIPhXZ4fVG5uUmUYpNLNW-SbqYxJI" -O /home/idenachain.db.zip && rm -rf /tmp/cookies.txt
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1ydTWIPhXZ4fVG5uUmUYpNLNW-SbqYxJI' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1ydTWIPhXZ4fVG5uUmUYpNLNW-SbqYxJI" -O /home/fastsync.zip && rm -rf /tmp/cookies.txt
 cd /home && unzip fastsync.zip
-cd /home && pwd && links https://drive.google.com/file/d/1ydTWIPhXZ4fVG5uUmUYpNLNW-SbqYxJI/view?usp=sharing && unzip fastsync.zip
-if [ ! -d /home/idenachain.db ]
-then
-cd /home && pwd && links https://www.mediafire.com/file/ajrxzbulicfqi3v/idenachain.db.zip/file && unzip idenachain.db
-fi
 if [ ! -d /home/idenachain.db ]
 then
 echo "idenachain.db tidak bisa di download mohon masukan secara manual"
@@ -28,7 +23,7 @@ else
 exit 1
 fi
 else
-echo "folder idenachain.db ada"
+echo "folder idenafastsync ada lanjut proses"
 fi
 idenanumber=$(head -n 1 /home/portRpc.txt)
 
