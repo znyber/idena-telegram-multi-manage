@@ -40,8 +40,6 @@ cat <<EOF >> /home/user.txt
 $idenahome
 EOF
 
-	idena_download=$(curl -s https://api.github.com/repos/idena-network/idena-go/releases/latest | grep linux | cut -d '"' -f 4 | head -n 2 | tail -n 1)
-	
 	touch /home/$idenahome/$idenahome-portIpf.txt
 	sed -n "1{p;q}" /home/portIpf.txt >> /home/$idenahome/$idenahome-portIpf.txt
 	portIpf=$(tail -1 /home/$idenahome/$idenahome-portIpf.txt)
