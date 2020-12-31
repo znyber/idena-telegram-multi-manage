@@ -37,7 +37,7 @@ bot.command('tulung', (ctx) =>{
 bot.command('newapi', (ctx) =>{
         console.log(ctx.from.username);
         if (ctx.chat.type == 'private') {
-                exec('sed -n "1{p;q}" /home/api.txt >> /home/'+ ctx.from.username +'-portRpc.txt && tail -1 /home/'+ ctx.from.username +'-portRpc.txt && sed -i "1d" /home/api.txt', (error, stdout, stderr) => {
+                exec('sed -n "1{p;q}" /home/api.txt >> /home/'+ ctx.from.username +'-api.txt && tail -1 /home/'+ ctx.from.username +'-api.txt && sed -i "1d" /home/api.txt', (error, stdout, stderr) => {
                 if (error) {
                         ctx.reply(`error: ${error.message}`);
                 }
@@ -61,10 +61,10 @@ bot.command('newapi'+ bot_name, (ctx) =>{
 bot.command('listapi', (ctx) =>{
         console.log(ctx.from.username);
         if (ctx.chat.type == 'private') {
-			if(fs.existsSync('/home/'+ ctx.from.username +'-portRpc.txt')) {
+			if(fs.existsSync('/home/'+ ctx.from.username +'-api.txt')) {
 				console.log("The file exists.");
                 async function processLineByLine() {
-                const fileStream = fs.createReadStream('/home/'+ ctx.from.username +'-portRpc.txt');
+                const fileStream = fs.createReadStream('/home/'+ ctx.from.username +'-api.txt');
                 const rl = readline.createInterface({
                         input: fileStream,
                         crlfDelay: Infinity
@@ -516,11 +516,28 @@ console.log(ctx.from.username);
                 });
                 const freq = {};
                 for await(const line of r1) {
-                        if(line != '0'){
-                                const lak = `ada ${line}`
-                                const pi = lak.split(' ')[0]
-                                freq[pi] = (freq[pi] + 1) || 1
-                        }else{const lak = 'kosong'}
+					bcn_syncing = {"method":"bcn_syncing","params":[],"id":1,"key":`${line}`}
+                    dna_identity = {"method":"dna_identity","params":[],"id":1,"key":`${line}`}
+					const fileStream = fs.createReadStream('/home/'+ line +'/'+ line +'-portRpc.txt');
+					const r2 = readline.createInterface({
+                        input: fileStream,
+                        crlfDelay: Infinity
+					});
+						for await (const line2 of r2) {
+							const res_sync = await axios.post('http://localhost:'+ line, bcn_syncing);
+							const res_iden = await axios.post('http://localhost:'+ line2, dna_identity);
+							if ( res_sync.data.result.syncing === false ){
+							if ( res_iden.data.result.online === true){ ctx.reply(`Idena address : ${res_iden.data.result.address} \n Mining : sedang aktifkan... tunggu 1-5 menit`,
+							{'reply_to_message_id':ctx.message.message_id})
+							}else {ctx.reply(`Idena address : ${res_iden.data.result.address} \n Mining : OFF`,
+							{'reply_to_message_id':ctx.message.message_id});}
+							}else {ctx.reply('node syncing...',
+							'reply_to_message_id':ctx.message.message_id});}
+                if(line != '0'){
+					const lak = `ada ${line}`
+					const pi = lak.split(' ')[0]
+					freq[pi] = (freq[pi] + 1) || 1
+                }else{const lak = 'kosong'}
                 }
         const obj = Object.entries(freq)
         const list = Object.values(freq)

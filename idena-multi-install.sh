@@ -42,15 +42,10 @@ then
 	sed -i "1d" /home/portRpc.txt
 
 cat <<EOF >> /home/user.txt
-@$idenahome
+$idenahome
 EOF
 
 	idena_download=$(curl -s https://api.github.com/repos/idena-network/idena-go/releases/latest | grep linux | cut -d '"' -f 4 | head -n 2 | tail -n 1)
-	
-	touch /home/$idenahome/$idenahome-api.txt
-	sed -n "1{p;q}" /home/api.txt >> /home/$idenahome/$idenahome-api.txt 
-	apikey=$(tail -1 /home/$idenahome/$idenahome-api.txt)
-	sed -i "1d" /home/api.txt
 	
 	touch /home/$idenahome/$idenahome-portIpf.txt
 	sed -n "1{p;q}" /home/portIpf.txt >> /home/$idenahome/$idenahome-portIpf.txt
@@ -150,7 +145,7 @@ fi
 
 systemctl start idena-$idenahome@$portRpc
 echo " node telah ter install , ini api untuk menyambungkan"
-cat /home/$idenahome/$idenanumber/api.key 
+cat $idenahome
 echo "port" && echo $portRpc
 exit 0
 fi
