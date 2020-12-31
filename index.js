@@ -564,7 +564,8 @@ bot.command('speedtest'+ bot_name, (ctx) =>{
 //list WhoHaveInvite
 bot.command('listic', (ctx) =>{
 console.log(ctx.from.username);
-
+	if(fs.existsSync('/home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt')) {
+	console.log("The file exists.");
         async function processLineByLine() {
                 const fileStream = fs.createReadStream('/home/user.txt');
                 const r1 = readline.createInterface({
@@ -597,12 +598,16 @@ console.log(ctx.from.username);
 				ctx.replyWithMarkdown(`ini org => @${ctx.from.username} \n punya : *${list}* node yang bisa produksi IC \n langsung PM ae`)
         }
 		}
-processLineByLine();
-
+		processLineByLine();
+		} else {
+			console.log('The file does not exist.');
+            ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
+			{'reply_to_message_id':ctx.message.message_id})}
 })
 bot.command('listic'+ bot_name, (ctx) =>{
 console.log(ctx.from.username);
-
+	if(fs.existsSync('/home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt')) {
+	console.log("The file exists.");
         async function processLineByLine() {
                 const fileStream = fs.createReadStream('/home/user.txt');
                 const r1 = readline.createInterface({
@@ -635,7 +640,10 @@ console.log(ctx.from.username);
 				ctx.replyWithMarkdown(`ini org => @${ctx.from.username} \n punya : *${list}* node yang bisa produksi IC \n langsung PM ae`)
         }
 		}
-processLineByLine();
-
+		processLineByLine();
+		} else {
+			console.log('The file does not exist.');
+            ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
+			{'reply_to_message_id':ctx.message.message_id})}
 })
 bot.startPolling()
