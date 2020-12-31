@@ -20,5 +20,5 @@ if [[ ! $idenaURL == $idenaTXT ]];then
     exit 0
     else
         echo -e "version $idenaURL no Update"
-        exit 1
+        exit 0
     fi
