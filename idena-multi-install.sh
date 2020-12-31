@@ -11,7 +11,7 @@ wget https://raw.githubusercontent.com/znyber/idena-installer/master/portIpf.txt
 fi
 if [ ! -d /home/idenafastsync ]
 then
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1ydTWIPhXZ4fVG5uUmUYpNLNW-SbqYxJI' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1ydTWIPhXZ4fVG5uUmUYpNLNW-SbqYxJI" -O /home/fastsync.zip && rm -rf /tmp/cookies.txt
+wget --quiet --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1ydTWIPhXZ4fVG5uUmUYpNLNW-SbqYxJI' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1ydTWIPhXZ4fVG5uUmUYpNLNW-SbqYxJI" -O /home/fastsync.zip && rm -rf /tmp/cookies.txt
 cd /home && unzip -q -o fastsync.zip
 if [ ! -d /home/idenachain.db ]
 then
