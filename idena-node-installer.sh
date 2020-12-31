@@ -91,11 +91,14 @@ if command -v firewall-cmd &> /dev/null
 then
     setenforce 0
 	firewall-cmd --add-port=40405/tcp --permanent
+	firewall-cmd --add-service=http --permanent
 	firewall-cmd --reload
 else 
 	apt-get install -y iptables-persistent &> /dev/null
     iptables -A INPUT -p tcp --dport 40405 -j ACCEPT
 	iptables -A OUTPUT -p tcp --sport 40405 -j ACCEPT
+	iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+	iptables -A OUTPUT -p tcp --sport 80 -j ACCEPT
 	iptables-save > /etc/iptables/rules.v4
 fi
 
