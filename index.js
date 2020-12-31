@@ -62,6 +62,8 @@ bot.command('listapi', (ctx) =>{
         console.log(ctx.from.username);
         if (ctx.chat.type == 'private') {
 			if(fs.existsSync('/home/'+ ctx.from.username +'-api.txt')) {
+				ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah gawe api > *'+ bot_name +'*',
+				{'reply_to_message_id':ctx.message.message_id})}
 				console.log("The file exists.");
                 async function processLineByLine() {
                 const fileStream = fs.createReadStream('/home/'+ ctx.from.username +'-api.txt');
@@ -500,6 +502,56 @@ bot.command('uptime', (ctx) =>{
 bot.command('uptime'+ bot_name, (ctx) =>{
                 console.log(ctx.from.username);
                 exec('uptime', (error, stdout, stderr) => {
+                if (error) {
+                        ctx.reply(`error: ${error.message}`);
+                }
+                if (stderr) {
+                        ctx.reply(`stderr: ${stderr}`);
+                }
+                ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
+                });
+})
+//uptime detail
+bot.command('resource', (ctx) =>{
+                console.log(ctx.from.username);
+                exec('cool-uptime', (error, stdout, stderr) => {
+                if (error) {
+                        ctx.reply(`error: ${error.message}`);
+                }
+                if (stderr) {
+                        ctx.reply(`stderr: ${stderr}`);
+                }
+                ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
+                });
+})
+bot.command('resource'+ bot_name, (ctx) =>{
+                console.log(ctx.from.username);
+                exec('cool-uptime', (error, stdout, stderr) => {
+                if (error) {
+                        ctx.reply(`error: ${error.message}`);
+                }
+                if (stderr) {
+                        ctx.reply(`stderr: ${stderr}`);
+                }
+                ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
+                });
+})
+//speedtest
+bot.command('speedtest', (ctx) =>{
+                console.log(ctx.from.username);
+                exec('speedtest --progress=no', (error, stdout, stderr) => {
+                if (error) {
+                        ctx.reply(`error: ${error.message}`);
+                }
+                if (stderr) {
+                        ctx.reply(`stderr: ${stderr}`);
+                }
+                ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
+                });
+})
+bot.command('speedtest'+ bot_name, (ctx) =>{
+                console.log(ctx.from.username);
+                exec('speedtest --progress=no', (error, stdout, stderr) => {
                 if (error) {
                         ctx.reply(`error: ${error.message}`);
                 }

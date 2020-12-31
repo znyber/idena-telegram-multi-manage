@@ -8,9 +8,26 @@ then
 else if command -v yum || ! command -v dnf &> /dev/null
 	then 
 		yum install -y npm wget curl unzip links git
+cat <<EOF > /etc/yum.repos.d/bintray-ookla-rhel.repo
+#bintray--ookla-rhel - packages by  from Bintray
+[bintray--ookla-rhel]
+name=bintray--ookla-rhel
+baseurl=https://ookla.bintray.com/rhel
+gpgcheck=0
+repo_gpgcheck=0
+enabled=1
+EOF
+		yum install -y speedtest
+		speedtest
 	else
 	apt update -y
 	apt install -y wget npm curl unzip links git
+	apt-get install gnupg1 apt-transport-https dirmngr
+	export INSTALL_KEY=379CE192D401AB61 && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $INSTALL_KEY
+	echo "deb https://ookla.bintray.com/debian generic main" | sudo tee  /etc/apt/sources.list.d/speedtest.list
+	apt-get update
+	apt-get install speedtest
+	speedtest
 	fi
 
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB" -O /home/idenachain.db.zip && rm -rf /tmp/cookies.txt
