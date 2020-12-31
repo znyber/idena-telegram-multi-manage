@@ -213,7 +213,7 @@ bot.command('nodeall', (ctx) =>{
                                         if ( res_sync.data.result.syncing === false ){
                                                 if ( res_iden.data.result.online === true){ ctx.replyWithHTML(`Idena address : <a href='https://scan.idena.io/identity/${res_iden.data.result.address}'>${res_iden.data.result.address}</a> \n Status : ${res_iden.data.result.state} \n flip yang perlu dibuat : ${res_iden.data.result.requiredFlips} \n Mining : ON`,
                                                 {'reply_to_message_id':ctx.message.message_id})}
-                                                else {ctx.replyWithHTML(`Idena address : <a href='https://scan.idena.io/identity/${res_iden.data.result.address}'>${res_iden.data.result.address} \n Status : ${res_iden.data.result.state} \n flip yang perlu dibuat : ${res_iden.data.result.requiredFlips} \n Mining : OFF`,
+                                                else {ctx.replyWithHTML(`Idena address : <a href='https://scan.idena.io/identity/${res_iden.data.result.address}'>${res_iden.data.result.address}</a> \n Status : ${res_iden.data.result.state} \n flip yang perlu dibuat : ${res_iden.data.result.requiredFlips} \n Mining : OFF`,
                                                 {'reply_to_message_id':ctx.message.message_id});}
                                         }else {ctx.reply('node syncing...',
                                         {'reply_to_message_id':ctx.message.message_id});}
@@ -512,8 +512,6 @@ bot.command('uptime'+ bot_name, (ctx) =>{
 //list WhoHaveInvite
 bot.command('listic', (ctx) =>{
 console.log(ctx.from.username);
-        ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* butuh sajen \n under develop \n butuh kopi > *'+ bot_name +'*',
-        {'reply_to_message_id':ctx.message.message_id})
 
         async function processLineByLine() {
                 const fileStream = fs.createReadStream('/home/user.txt');
@@ -552,8 +550,6 @@ processLineByLine();
 })
 bot.command('listic'+ bot_name, (ctx) =>{
 console.log(ctx.from.username);
-        ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* butuh sajen \n under develop \n butuh kopi > *'+ bot_name +'*',
-        {'reply_to_message_id':ctx.message.message_id})
 
         async function processLineByLine() {
                 const fileStream = fs.createReadStream('/home/user.txt');
