@@ -327,7 +327,7 @@ bot.command('miningon', (ctx) =>{
                                         const res_onli = await axios.post('http://localhost:'+ line, dna_online);
                                         const res_iden = await axios.post('http://localhost:'+ line, dna_identity);
                                         if ( res_sync.data.result.syncing === false ){
-                                                console.log(res_offl.data)
+                                                console.log(res_onli.data)
                                                 if ( res_iden.data.result.online === true){ ctx.reply(`Idena address : ${res_iden.data.result.address} \n Mining : sedang aktifkan... tunggu 1-5 menit`,
                                                 {'reply_to_message_id':ctx.message.message_id})
                                                 }else {ctx.reply(`Idena address : ${res_iden.data.result.address} \n Mining : OFF`,
@@ -363,7 +363,7 @@ bot.command('miningon'+ bot_name, (ctx) =>{
                                         const res_onli = await axios.post('http://localhost:'+ line, dna_online);
                                         const res_iden = await axios.post('http://localhost:'+ line, dna_identity);
                                         if ( res_sync.data.result.syncing === false ){
-                                                console.log(res_offl.data)
+                                                console.log(res_onli.data)
                                                 if ( res_iden.data.result.online === true){ ctx.reply(`Idena address : ${res_iden.data.result.address} \n Mining : sedang aktifkan... tunggu 1-5 menit`,
                                                 {'reply_to_message_id':ctx.message.message_id})
                                                 }else {ctx.reply(`Idena address : ${res_iden.data.result.address} \n Mining : OFF`,

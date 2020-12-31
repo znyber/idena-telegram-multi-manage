@@ -9,11 +9,11 @@ wget https://raw.githubusercontent.com/znyber/idena-installer/master/portRpc.txt
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/api.txt -q -O /home/api.txt
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/portIpf.txt -q -O /home/portIpf.txt
 fi
-if [ ! -d /home/idenachain.db ]
+if [ ! -d /home/idenafastsync ]
 then
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB" -O /home/idenachain.db.zip && rm -rf /tmp/cookies.txt
-cd /home && unzip idenachain.db.zip
-cd /home && pwd && links https://drive.google.com/file/d/1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB/view?usp=sharing && unzip idenachain.db
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1ydTWIPhXZ4fVG5uUmUYpNLNW-SbqYxJI' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1ydTWIPhXZ4fVG5uUmUYpNLNW-SbqYxJI" -O /home/idenachain.db.zip && rm -rf /tmp/cookies.txt
+cd /home && unzip fastsync.zip
+cd /home && pwd && links https://drive.google.com/file/d/1ydTWIPhXZ4fVG5uUmUYpNLNW-SbqYxJI/view?usp=sharing && unzip fastsync.zip
 if [ ! -d /home/idenachain.db ]
 then
 cd /home && pwd && links https://www.mediafire.com/file/ajrxzbulicfqi3v/idenachain.db.zip/file && unzip idenachain.db
@@ -125,11 +125,11 @@ sleep 30
 echo $idenakeystore > /home/$idenahome/$portRpc/keystore/nodekey
 systemctl stop idena-$idenahome@$portRpc
 systemctl daemon-reload
-if [ -d /home/idenachain.db ]
+if [ -d /home/idenafastsync ]
 		then
 		rm -rf /home/$idenahome/$portRpc/idenachain.db
 		echo "import idena fast sync"
-		rsync -avz -P /home/idenachain.db/ /home/$idenahome/$idenanumber/idenachain.db/
+		rsync -avz -P /home/idenafastsync/ /home/$idenahome/$idenanumber/idenachain.db/
 		else
 		echo "file tidak ada tidak ada"
 		fi
