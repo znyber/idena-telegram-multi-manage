@@ -19,8 +19,10 @@ echo "idenachain.db tidak bisa di download mohon masukan secara manual"
 echo "ini link download untuk idenachain.db "
 echo "https://drive.google.com/file/d/1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB/view?usp=sharing"
 echo "https://www.mediafire.com/file/ajrxzbulicfqi3v/idenachain.db.zip/file"
-else
+echo "gagal installasi hubungi pembuat"
 exit 1
+else
+echo "prosess unpack idenafastsync"
 fi
 fi
 idenanumber=$(head -n 1 /home/portRpc.txt)
