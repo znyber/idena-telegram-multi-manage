@@ -62,8 +62,6 @@ bot.command('listapi', (ctx) =>{
         console.log(ctx.from.username);
         if (ctx.chat.type == 'private') {
 			if(fs.existsSync('/home/'+ ctx.from.username +'-api.txt')) {
-				ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah gawe api > *'+ bot_name +'*',
-				{'reply_to_message_id':ctx.message.message_id})}
 				console.log("The file exists.");
                 async function processLineByLine() {
                 const fileStream = fs.createReadStream('/home/'+ ctx.from.username +'-api.txt');
