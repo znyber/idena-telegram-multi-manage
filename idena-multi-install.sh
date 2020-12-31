@@ -22,8 +22,6 @@ echo "https://www.mediafire.com/file/ajrxzbulicfqi3v/idenachain.db.zip/file"
 else
 exit 1
 fi
-else
-echo "folder idenafastsync ada lanjut proses"
 fi
 idenanumber=$(head -n 1 /home/portRpc.txt)
 
@@ -58,8 +56,6 @@ AllowIsolate=yes
 WantedBy=multi-user.target
 EOF
 systemctl enable idena.target
-else
-echo" idena target sudah ada"
 fi
 cat <<EOF > /home/$idenahome/$portRpc.json
 {
@@ -117,7 +113,7 @@ if [ -d /home/idenafastsync ]
 		then
 		rm -rf /home/$idenahome/$portRpc/idenachain.db
 		echo "import idena fast sync"
-		rsync -avz -P /home/idenafastsync/ /home/$idenahome/$idenanumber/idenachain.db/
+		rsync -az /home/idenafastsync/ /home/$idenahome/$idenanumber/idenachain.db/
 		else
 		echo "file tidak ada tidak ada"
 		fi
@@ -138,7 +134,7 @@ fi
 
 systemctl start idena-$idenahome@$portRpc
 echo " node telah ter install , ini api untuk menyambungkan"
-cat $idenahome
+echo $idenahome
 echo "port" && echo $portRpc
 exit 0
 fi
