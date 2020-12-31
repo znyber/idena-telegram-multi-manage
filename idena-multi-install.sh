@@ -57,13 +57,6 @@ EOF
 	portIpf=$(tail -1 /home/$idenahome/$idenahome-portIpf.txt)
 	sed -i "1d" /home/portIpf.txt
 
-	
-	#------------ download idena node latest version--------------#
-
-	wget $idena_download -q --show-progress -O /usr/bin/idena
-	wget https://raw.githubusercontent.com/znyber/idena-installer/master/idena-update -q -O /usr/bin/idena-update
-	chmod +x /usr/bin/idena
-	chmod +x /usr/bin/idena-update
 	#--------------- create idena service-------------------------#
 if [ ! -d /etc/systemd/system/idena.target.wants ] &> /dev/null
 then
