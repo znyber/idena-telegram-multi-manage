@@ -648,11 +648,11 @@ console.log(ctx.from.username);
 bot.command('toturialweb', (ctx) =>{
 console.log(ctx.from.username);
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* \n langsung gas gan pake video ini \n https://youtu.be/sQ-xLDZc4JI',
-			{'reply_to_message_id':ctx.message.message_id})}
+			{'reply_to_message_id':ctx.message.message_id})
 })
 bot.command('toturialweb'+ bot_name, (ctx) =>{
 console.log(ctx.from.username);
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* \n langsung gas gan pake video ini \n https://youtu.be/sQ-xLDZc4JI',
-			{'reply_to_message_id':ctx.message.message_id})}
+			{'reply_to_message_id':ctx.message.message_id})
 })
 bot.startPolling()
