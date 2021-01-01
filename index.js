@@ -562,7 +562,7 @@ bot.command('speedtest'+ bot_name, (ctx) =>{
 //list WhoHaveInvite
 bot.command('listic', (ctx) =>{
 console.log(ctx.from.username);
-	if(fs.existsSync('/home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt')) {
+	if(fs.existsSync('/home/user.txt')) {
 	console.log("The file exists.");
         async function processLineByLine() {
                 const fileStream = fs.createReadStream('/home/user.txt');
@@ -604,7 +604,7 @@ console.log(ctx.from.username);
 })
 bot.command('listic'+ bot_name, (ctx) =>{
 console.log(ctx.from.username);
-	if(fs.existsSync('/home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt')) {
+	if(fs.existsSync('/home/user.txt')) {
 	console.log("The file exists.");
         async function processLineByLine() {
                 const fileStream = fs.createReadStream('/home/user.txt');
