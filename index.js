@@ -24,12 +24,12 @@ bot.command('oi'+ bot_name, (ctx) =>{
 })
 //help command
 bot.command('tulung'+ bot_name, (ctx) =>{
-        ctx.replyWithMarkdown('kie nggo ko @*'+ ctx.from.username +'* \n /oi - start bot \n /tulung - pengganti help \n /newapi - generate api key node share \n /listapi - list api node share yang telah di buat \n /nodekey - tambah node [beta] \n /mininglist - hanya menampilkan status mining dan address \n /nodeall - list semua node \n /miningoff - mematikan mining per user \n /miningon - meng aktifkan mining per user \n /miningalloff - [dev] \n /miningallon - [dev] \n /shutdownall - mematikan semua node di server\n /startall - mengaktifkan semua node di server \n /update - update semua node di server \n /uptime - cek durasi vps \n /resource - lihat resource detail server vps \n /speedtest - tes speed koneksi servser vps \n /listic - [dev] ',
+        ctx.replyWithMarkdown('kie nggo ko @*'+ ctx.from.username +'* \n /oi - start bot \n /tulung - pengganti help \n /newapi - generate api key node share \n /listapi - list api node share yang telah di buat \n /nodekey - tambah node [beta] \n /mininglist - hanya menampilkan status mining dan address \n /nodeall - list semua node \n /miningoff - mematikan mining per user \n /miningon - meng aktifkan mining per user \n /miningalloff - [dev] \n /miningallon - [dev] \n /shutdownall - mematikan semua node di server\n /startall - mengaktifkan semua node di server \n /update - update semua node di server \n /uptime - cek durasi vps \n /resource - lihat resource detail server vps \n /speedtest - tes speed koneksi servser vps \n /listic - [dev] \n /toturialweb - toturial import private key dan penggunaan api key untuk web validasi ',
         {'reply_to_message_id':ctx.message.message_id})
         console.log(ctx.from.username);
 })
 bot.command('tulung', (ctx) =>{
-        ctx.replyWithMarkdown('kie nggo ko @*'+ ctx.from.username +'* \n /oi - start bot \n /tulung - pengganti help \n /newapi - generate api key node share \n /listapi - list api node share yang telah di buat \n /nodekey - tambah node [beta] \n /mininglist - hanya menampilkan status mining dan address \n /nodeall - list semua node \n /miningoff - mematikan mining per user \n /miningon - meng aktifkan mining per user \n /miningalloff - [dev] \n /miningallon - [dev] \n /shutdownall - mematikan semua node di server\n /startall - mengaktifkan semua node di server \n /update - update semua node di server \n /uptime - cek durasi vps \n /resource - lihat resource detail server vps \n /speedtest - tes speed koneksi servser vps \n /listic - [dev] ',
+        ctx.replyWithMarkdown('kie nggo ko @*'+ ctx.from.username +'* \n /oi - start bot \n /tulung - pengganti help \n /newapi - generate api key node share \n /listapi - list api node share yang telah di buat \n /nodekey - tambah node [beta] \n /mininglist - hanya menampilkan status mining dan address \n /nodeall - list semua node \n /miningoff - mematikan mining per user \n /miningon - meng aktifkan mining per user \n /miningalloff - [dev] \n /miningallon - [dev] \n /shutdownall - mematikan semua node di server\n /startall - mengaktifkan semua node di server \n /update - update semua node di server \n /uptime - cek durasi vps \n /resource - lihat resource detail server vps \n /speedtest - tes speed koneksi servser vps \n /listic - [dev] \n /toturialweb - toturial import private key dan penggunaan api key untuk web validasi ',
         {'reply_to_message_id':ctx.message.message_id})
         console.log(ctx.from.username);
 })
@@ -593,7 +593,7 @@ console.log(ctx.from.username);
                 }
 				const obj = Object.entries(freq)
 				const list = Object.values(freq)
-				ctx.replyWithMarkdown(`ini org => @${ctx.from.username} \n punya : *${list}* node yang bisa produksi IC \n langsung PM ae`)
+				ctx.replyWithMarkdown(`ini org => @${line} \n punya : *${list}* node yang bisa produksi IC \n langsung PM ae`)
         }
 		}
 		processLineByLine();
@@ -635,7 +635,7 @@ console.log(ctx.from.username);
                 }
 				const obj = Object.entries(freq)
 				const list = Object.values(freq)
-				ctx.replyWithMarkdown(`ini org => @${ctx.from.username} \n punya : *${list}* node yang bisa produksi IC \n langsung PM ae`)
+				ctx.replyWithMarkdown(`ini org => @${line} \n punya : *${list}* node yang bisa produksi IC \n langsung PM ae`)
         }
 		}
 		processLineByLine();
@@ -644,4 +644,15 @@ console.log(ctx.from.username);
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
 			{'reply_to_message_id':ctx.message.message_id})}
 })
+//toturial web
+bot.command('toturialweb', (ctx) =>{
+console.log(ctx.from.username);
+            ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* \n langsung gas gan pake video ini \n https://youtu.be/sQ-xLDZc4JI',
+			{'reply_to_message_id':ctx.message.message_id})}
+)}
+bot.command('toturialweb'+ bot_name, (ctx) =>{
+console.log(ctx.from.username);
+            ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* \n langsung gas gan pake video ini \n https://youtu.be/sQ-xLDZc4JI',
+			{'reply_to_message_id':ctx.message.message_id})}
+)}
 bot.startPolling()
