@@ -530,7 +530,7 @@ console.log(ctx.from.username);
 					const freq = {} 
 						for await (const line2 of r2) {
 							const res_sync = await axios.post('http://localhost:'+ line2, bcn_syncing);
-							const res_onli = await axios.post('http://localhost:'+ line2, dna_offline);
+							const res_onli = await axios.post('http://localhost:'+ line2, dna_online);
 							const res_iden = await axios.post('http://localhost:'+ line2, dna_identity);
 							if ( res_sync.data.result.syncing === false ){
 							if( res_iden.data.result.online === true ){
@@ -585,7 +585,7 @@ console.log(ctx.from.username);
 					const freq = {} 
 						for await (const line2 of r2) {
 							const res_sync = await axios.post('http://localhost:'+ line2, bcn_syncing);
-							const res_onli = await axios.post('http://localhost:'+ line2, dna_offline);
+							const res_onli = await axios.post('http://localhost:'+ line2, dna_online);
 							const res_iden = await axios.post('http://localhost:'+ line2, dna_identity);
 							if ( res_sync.data.result.syncing === false ){
 							if( res_iden.data.result.online === true ){
