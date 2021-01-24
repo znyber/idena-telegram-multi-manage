@@ -211,9 +211,9 @@ bot.command('nodeall', (ctx) =>{
                                         const res_sync = await axios.post('http://localhost:'+ line, bcn_syncing);
                                         const res_iden = await axios.post('http://localhost:'+ line, dna_identity);
                                         if ( res_sync.data.result.syncing === false ){
-                                                if ( res_iden.data.result.online === true){ ctx.replyWithHTML(`Idena address : <a href='https://scan.idena.io/identity/${res_iden.data.result.address}'>${res_iden.data.result.address}</a> \n Status : ${res_iden.data.result.state} \n flip yang perlu dibuat : ${res_iden.data.result.requiredFlips} \n Mining : ON`,
+                                                if ( res_iden.data.result.online === true){ ctx.replyWithHTML(`Idena address : <a href='https://scan.idena.io/identity/${res_iden.data.result.address}'>${res_iden.data.result.address}</a> \n Status : ${res_iden.data.result.state} \n flip yang sudah dibuat : ${res_iden.data.result.madeFlips} \n Mining : ON`,
                                                 {'reply_to_message_id':ctx.message.message_id})}
-                                                else {ctx.replyWithHTML(`Idena address : <a href='https://scan.idena.io/identity/${res_iden.data.result.address}'>${res_iden.data.result.address}</a> \n Status : ${res_iden.data.result.state} \n flip yang perlu dibuat : ${res_iden.data.result.requiredFlips} \n Mining : OFF`,
+                                                else {ctx.replyWithHTML(`Idena address : <a href='https://scan.idena.io/identity/${res_iden.data.result.address}'>${res_iden.data.result.address}</a> \n Status : ${res_iden.data.result.state} \n flip yang sudah dibuat : ${res_iden.data.result.madeFlips} \n Mining : OFF`,
                                                 {'reply_to_message_id':ctx.message.message_id});}
                                         }else {ctx.reply('node syncing...',
                                         {'reply_to_message_id':ctx.message.message_id});}
@@ -390,24 +390,225 @@ bot.command('miningon'+ bot_name, (ctx) =>{
 //miningalloff
 bot.command('miningalloff', (ctx) =>{
 console.log(ctx.from.username);
-        ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* butuh sajen \n under develop \n butuh kopi > *'+ bot_name +'*',
-        {'reply_to_message_id':ctx.message.message_id})
+	if(fs.existsSync('/home/user.txt')) {
+	console.log("The file exists.");
+	fs.readFile('/home/user.txt', function (err, data) {
+		if (err) throw err;
+		if(data.includes(ctx.from.username)){
+			console.log(data)
+			ctx.replyWithMarkdown('ok @*'+ ctx.from.username +'* lagi di pateni neng bot kie > *'+ bot_name +'*',
+			{'reply_to_message_id':ctx.message.message_id})
+
+        async function processLineByLine() {
+                const fileStream = fs.createReadStream('/home/user.txt');
+                const r1 = readline.createInterface({
+                        input: fileStream,
+                        crlfDelay: Infinity
+                });
+
+                for await(const line of r1) {
+					bcn_syncing = {"method":"bcn_syncing","params":[],"id":1,"key":`${line}`}
+					dna_offline = {"method":"dna_becomeOffline","params":[{}],"id":1,"key":`${line}`}
+                    dna_identity = {"method":"dna_identity","params":[],"id":1,"key":`${line}`}
+					const fileStream = fs.createReadStream('/home/'+ line +'/'+ line +'-portRpc.txt');
+					const r2 = readline.createInterface({
+                        input: fileStream,
+                        crlfDelay: Infinity
+					});
+					const freq = {} 
+						for await (const line2 of r2) {
+							const res_sync = await axios.post('http://localhost:'+ line2, bcn_syncing);
+							const res_offl = await axios.post('http://localhost:'+ line2, dna_offline);
+							const res_iden = await axios.post('http://localhost:'+ line2, dna_identity);
+							if ( res_sync.data.result.syncing === false ){
+							if( res_iden.data.result.online === true ){
+							const lak = `${res_iden.data.result.online}`
+							const pi = lak.split(' ')[0]
+							freq[pi] = (freq[pi] + 1) || 1
+							}else{const lak = 'kosong'}
+							}
+                }
+				const obj = Object.entries(freq)
+				const list = Object.values(freq)
+				ctx.replyWithMarkdown(`ini org => @${line} \n punya : *${list}* node yang sedang di matikan \n tunggu 1-15 menit`)
+        }
+		}
+		processLineByLine();
+		} else {
+			ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko ora due akses mateni mining neng bot > *'+ bot_name +'*',
+			{'reply_to_message_id':ctx.message.message_id})}
+	})
+		} else {
+			console.log('The file does not exist.');
+            ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
+			{'reply_to_message_id':ctx.message.message_id})}
 })
+
 bot.command('miningalloff'+ bot_name, (ctx) =>{
 console.log(ctx.from.username);
-        ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* butuh sajen \n under develop \n butuh kopi > *'+ bot_name +'*',
-        {'reply_to_message_id':ctx.message.message_id})
+	if(fs.existsSync('/home/user.txt')) {
+	console.log("The file exists.");
+	fs.readFile('/home/user.txt', function (err, data) {
+		if (err) throw err;
+		if(data.includes(ctx.from.username)){
+			console.log(data)
+			ctx.replyWithMarkdown('ok @*'+ ctx.from.username +'* lagi di pateni neng bot kie > *'+ bot_name +'*',
+			{'reply_to_message_id':ctx.message.message_id})
+
+        async function processLineByLine() {
+                const fileStream = fs.createReadStream('/home/user.txt');
+                const r1 = readline.createInterface({
+                        input: fileStream,
+                        crlfDelay: Infinity
+                });
+
+                for await(const line of r1) {
+					bcn_syncing = {"method":"bcn_syncing","params":[],"id":1,"key":`${line}`}
+					dna_offline = {"method":"dna_becomeOffline","params":[{}],"id":1,"key":`${line}`}
+                    dna_identity = {"method":"dna_identity","params":[],"id":1,"key":`${line}`}
+					const fileStream = fs.createReadStream('/home/'+ line +'/'+ line +'-portRpc.txt');
+					const r2 = readline.createInterface({
+                        input: fileStream,
+                        crlfDelay: Infinity
+					});
+					const freq = {} 
+						for await (const line2 of r2) {
+							const res_sync = await axios.post('http://localhost:'+ line2, bcn_syncing);
+							const res_offl = await axios.post('http://localhost:'+ line2, dna_offline);
+							const res_iden = await axios.post('http://localhost:'+ line2, dna_identity);
+							if ( res_sync.data.result.syncing === false ){
+							if( res_iden.data.result.online === true ){
+							const lak = `${res_iden.data.result.online}`
+							const pi = lak.split(' ')[0]
+							freq[pi] = (freq[pi] + 1) || 1
+							}else{const lak = 'kosong'}
+							}
+                }
+				const obj = Object.entries(freq)
+				const list = Object.values(freq)
+				ctx.replyWithMarkdown(`ini org => @${line} \n punya : *${list}* node yang sedang di matikan \n tunggu 1-15 menit`)
+        }
+		}
+		processLineByLine();
+		} else {
+			ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko ora due akses mateni mining neng bot > *'+ bot_name +'*',
+			{'reply_to_message_id':ctx.message.message_id})}
+	})
+		} else {
+			console.log('The file does not exist.');
+            ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
+			{'reply_to_message_id':ctx.message.message_id})}
 })
 //miningallon
 bot.command('miningallon', (ctx) =>{
 console.log(ctx.from.username);
-        ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* butuh sajen \n under develop \n butuh kopi > *'+ bot_name +'*',
-        {'reply_to_message_id':ctx.message.message_id})
+	if(fs.existsSync('/home/user.txt')) {
+	console.log("The file exists.");
+	fs.readFile('/home/user.txt', function (err, data) {
+		if (err) throw err;
+		if(data.includes(ctx.from.username)){
+			console.log(data)
+			ctx.replyWithMarkdown('ok @*'+ ctx.from.username +'* lagi di pateni neng bot kie > *'+ bot_name +'*',
+			{'reply_to_message_id':ctx.message.message_id})
+
+        async function processLineByLine() {
+                const fileStream = fs.createReadStream('/home/user.txt');
+                const r1 = readline.createInterface({
+                        input: fileStream,
+                        crlfDelay: Infinity
+                });
+
+                for await(const line of r1) {
+					bcn_syncing = {"method":"bcn_syncing","params":[],"id":1,"key":`${line}`}
+					dna_online = {"method":"dna_becomeOnline","params":[{}],"id":1,"key":`${line}`}
+                    dna_identity = {"method":"dna_identity","params":[],"id":1,"key":`${line}`}
+					const fileStream = fs.createReadStream('/home/'+ line +'/'+ line +'-portRpc.txt');
+					const r2 = readline.createInterface({
+                        input: fileStream,
+                        crlfDelay: Infinity
+					});
+					const freq = {} 
+						for await (const line2 of r2) {
+							const res_sync = await axios.post('http://localhost:'+ line2, bcn_syncing);
+							const res_onli = await axios.post('http://localhost:'+ line2, dna_offline);
+							const res_iden = await axios.post('http://localhost:'+ line2, dna_identity);
+							if ( res_sync.data.result.syncing === false ){
+							if( res_iden.data.result.online === true ){
+							const lak = `${res_iden.data.result.online}`
+							const pi = lak.split(' ')[0]
+							freq[pi] = (freq[pi] + 1) || 1
+							}else{const lak = 'kosong'}
+							}
+                }
+				const obj = Object.entries(freq)
+				const list = Object.values(freq)
+				ctx.replyWithMarkdown(`ini org => @${line} \n punya : *${list}* node yang sedang di hidupkan \n tunggu 1-15 menit`)
+        }
+		}
+		processLineByLine();
+		} else {
+			ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko ora due akses mateni mining neng bot > *'+ bot_name +'*',
+			{'reply_to_message_id':ctx.message.message_id})}
+	})
+		} else {
+			console.log('The file does not exist.');
+            ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
+			{'reply_to_message_id':ctx.message.message_id})}
 })
 bot.command('miningallon'+ bot_name, (ctx) =>{
 console.log(ctx.from.username);
-        ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* butuh sajen \n under develop \n butuh kopi > *'+ bot_name +'*',
-        {'reply_to_message_id':ctx.message.message_id})
+	if(fs.existsSync('/home/user.txt')) {
+	console.log("The file exists.");
+	fs.readFile('/home/user.txt', function (err, data) {
+		if (err) throw err;
+		if(data.includes(ctx.from.username)){
+			console.log(data)
+			ctx.replyWithMarkdown('ok @*'+ ctx.from.username +'* lagi di pateni neng bot kie > *'+ bot_name +'*',
+			{'reply_to_message_id':ctx.message.message_id})
+
+        async function processLineByLine() {
+                const fileStream = fs.createReadStream('/home/user.txt');
+                const r1 = readline.createInterface({
+                        input: fileStream,
+                        crlfDelay: Infinity
+                });
+
+                for await(const line of r1) {
+					bcn_syncing = {"method":"bcn_syncing","params":[],"id":1,"key":`${line}`}
+					dna_online = {"method":"dna_becomeOnline","params":[{}],"id":1,"key":`${line}`}
+                    dna_identity = {"method":"dna_identity","params":[],"id":1,"key":`${line}`}
+					const fileStream = fs.createReadStream('/home/'+ line +'/'+ line +'-portRpc.txt');
+					const r2 = readline.createInterface({
+                        input: fileStream,
+                        crlfDelay: Infinity
+					});
+					const freq = {} 
+						for await (const line2 of r2) {
+							const res_sync = await axios.post('http://localhost:'+ line2, bcn_syncing);
+							const res_onli = await axios.post('http://localhost:'+ line2, dna_offline);
+							const res_iden = await axios.post('http://localhost:'+ line2, dna_identity);
+							if ( res_sync.data.result.syncing === false ){
+							if( res_iden.data.result.online === true ){
+							const lak = `${res_iden.data.result.online}`
+							const pi = lak.split(' ')[0]
+							freq[pi] = (freq[pi] + 1) || 1
+							}else{const lak = 'kosong'}
+							}
+                }
+				const obj = Object.entries(freq)
+				const list = Object.values(freq)
+				ctx.replyWithMarkdown(`ini org => @${line} \n punya : *${list}* node yang sedang di hidupkan \n tunggu 1-15 menit`)
+        }
+		}
+		processLineByLine();
+		} else {
+			ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko ora due akses mateni mining neng bot > *'+ bot_name +'*',
+			{'reply_to_message_id':ctx.message.message_id})}
+	})
+		} else {
+			console.log('The file does not exist.');
+            ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
+			{'reply_to_message_id':ctx.message.message_id})}
 })
 //shutdownall
 bot.command('shutdownall', (ctx) =>{
