@@ -24,13 +24,45 @@ bot.command('oi'+ bot_name, (ctx) =>{
 })
 //help command
 bot.command('tulung'+ bot_name, (ctx) =>{
-        ctx.replyWithMarkdown('kie nggo ko @*'+ ctx.from.username +'* \n /oi - start bot \n /tulung - pengganti help \n /newapi - generate api key node share \n /listapi - list api node share yang telah di buat \n /nodekey - tambah node [beta] \n /mininglist - hanya menampilkan status mining dan address \n /nodeall - list semua node \n /miningoff - mematikan mining per user \n /miningon - meng aktifkan mining per user \n /miningalloff - [dev] \n /miningallon - [dev] \n /shutdownall - mematikan semua node di server\n /startall - mengaktifkan semua node di server \n /update - update semua node di server \n /uptime - cek durasi vps \n /resource - lihat resource detail server vps \n /speedtest - tes speed koneksi servser vps \n /listic - [dev] \n /toturialweb - toturial import private key dan penggunaan api key untuk web validasi ',
-        {'reply_to_message_id':ctx.message.message_id})
+	async function processLineByLine() {
+        const fileStream = fs.createReadStream('/home/tulung.txt');
+            const r1 = readline.createInterface({
+                input: fileStream,
+                crlfDelay: Infinity
+            });
+
+        const freq = {}
+        for await(const line of r1) {
+            const lak = `/${line}\n`
+            const pi = lak.split(',')[0]
+            freq[pi] = (freq[pi])
+        }
+        const obj = Object.keys(freq)
+        ctx.reply(`,${obj}`, {'reply_to_message_id':ctx.message.message_id})
+    }
+                processLineByLine();
+        
         console.log(ctx.from.username);
 })
 bot.command('tulung', (ctx) =>{
-        ctx.replyWithMarkdown('kie nggo ko @*'+ ctx.from.username +'* \n /oi - start bot \n /tulung - pengganti help \n /newapi - generate api key node share \n /listapi - list api node share yang telah di buat \n /nodekey - tambah node [beta] \n /mininglist - hanya menampilkan status mining dan address \n /nodeall - list semua node \n /miningoff - mematikan mining per user \n /miningon - meng aktifkan mining per user \n /miningalloff - [dev] \n /miningallon - [dev] \n /shutdownall - mematikan semua node di server\n /startall - mengaktifkan semua node di server \n /update - update semua node di server \n /uptime - cek durasi vps \n /resource - lihat resource detail server vps \n /speedtest - tes speed koneksi servser vps \n /listic - [dev] \n /toturialweb - toturial import private key dan penggunaan api key untuk web validasi ',
-        {'reply_to_message_id':ctx.message.message_id})
+	async function processLineByLine() {
+        const fileStream = fs.createReadStream('/home/tulung.txt');
+            const r1 = readline.createInterface({
+                input: fileStream,
+                crlfDelay: Infinity
+            });
+
+        const freq = {}
+        for await(const line of r1) {
+            const lak = `/${line}\n`
+            const pi = lak.split(',')[0]
+            freq[pi] = (freq[pi])
+        }
+        const obj = Object.keys(freq)
+        ctx.reply(`,${obj}`, {'reply_to_message_id':ctx.message.message_id})
+    }
+                processLineByLine();
+        
         console.log(ctx.from.username);
 })
 //newapi command
@@ -208,12 +240,17 @@ bot.command('nodeall', (ctx) =>{
                                         async function makePostRequest() {
                                         bcn_syncing = {"method":"bcn_syncing","params":[],"id":1,"key":`${ctx.from.username}`}
                                         dna_identity = {"method":"dna_identity","params":[],"id":1,"key":`${ctx.from.username}`}
+										
                                         const res_sync = await axios.post('http://localhost:'+ line, bcn_syncing);
                                         const res_iden = await axios.post('http://localhost:'+ line, dna_identity);
+										
+										dna_getBalance = {"method":"dna_getBalance","params":[`${res_iden.data.result.address}`],"id":1,"key":`${ctx.from.username}`}
+										const res_getb = await axios.post('http://localhost:'+ line, dna_getBalance);
+										
                                         if ( res_sync.data.result.syncing === false ){
-                                                if ( res_iden.data.result.online === true){ ctx.replyWithHTML(`Idena address : <a href='https://scan.idena.io/identity/${res_iden.data.result.address}'>${res_iden.data.result.address}</a> \n Status : ${res_iden.data.result.state} \n flip yang sudah dibuat : ${res_iden.data.result.madeFlips} \n Mining : ON`,
+                                                if ( res_iden.data.result.online === true){ ctx.replyWithHTML(`Idena address : <a href='https://scan.idena.io/identity/${res_iden.data.result.address}'>${res_iden.data.result.address}</a> \n Age : ${res_iden.data.result.age} \n Status : ${res_iden.data.result.state} \n balance : ${res_getb.data.result.balance} \n stake : ${res_getb.data.result.stake} \n flip yang sudah dibuat : ${res_iden.data.result.madeFlips} \n Mining : ON`,
                                                 {'reply_to_message_id':ctx.message.message_id})}
-                                                else {ctx.replyWithHTML(`Idena address : <a href='https://scan.idena.io/identity/${res_iden.data.result.address}'>${res_iden.data.result.address}</a> \n Status : ${res_iden.data.result.state} \n flip yang sudah dibuat : ${res_iden.data.result.madeFlips} \n Mining : OFF`,
+                                                else {ctx.replyWithHTML(`Idena address : <a href='https://scan.idena.io/identity/${res_iden.data.result.address}'>${res_iden.data.result.address}</a> \n Age : ${res_iden.data.result.age} \n Status : ${res_iden.data.result.state} \n balance : ${res_getb.data.result.balance} \n stake : ${res_getb.data.result.stake} \n flip yang sudah dibuat : ${res_iden.data.result.madeFlips} \n Mining : OFF`,
                                                 {'reply_to_message_id':ctx.message.message_id});}
                                         }else {ctx.reply('node syncing...',
                                         {'reply_to_message_id':ctx.message.message_id});}
@@ -533,7 +570,7 @@ console.log(ctx.from.username);
 							const res_onli = await axios.post('http://localhost:'+ line2, dna_online);
 							const res_iden = await axios.post('http://localhost:'+ line2, dna_identity);
 							if ( res_sync.data.result.syncing === false ){
-							if( res_iden.data.result.online === true ){
+							if( res_iden.data.result.online === false ){
 							const lak = `${res_iden.data.result.online}`
 							const pi = lak.split(' ')[0]
 							freq[pi] = (freq[pi] + 1) || 1
@@ -588,7 +625,7 @@ console.log(ctx.from.username);
 							const res_onli = await axios.post('http://localhost:'+ line2, dna_online);
 							const res_iden = await axios.post('http://localhost:'+ line2, dna_identity);
 							if ( res_sync.data.result.syncing === false ){
-							if( res_iden.data.result.online === true ){
+							if( res_iden.data.result.online === false ){
 							const lak = `${res_iden.data.result.online}`
 							const pi = lak.split(' ')[0]
 							freq[pi] = (freq[pi] + 1) || 1
