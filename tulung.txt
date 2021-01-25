@@ -1,0 +1,19 @@
+oi - start bot
+tulung - pengganti help
+newapi - generate api key node share
+listapi - list api node share yang telah di buat
+nodekey - tambah node beta
+mininglist - hanya menampilkan status mining dan address
+nodeall - list semua node 
+miningoff - mematikan mining per user
+miningon - meng aktifkan mining per user
+miningalloff - mematikan semua mining di server dev 
+miningallon - mangaktifkan semua mining di server dev 
+shutdownall - mematikan semua node di server
+startall - mengaktifkan semua node di server
+update - update semua node di server
+uptime - cek durasi vps
+resource - lihat resource detail server vps
+speedtest - tes speed koneksi servser vps
+listic - cek node yang mempunyai ic msh dev
+toturialweb - toturial import private key dan penggunaan api key untuk web validasi
