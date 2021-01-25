@@ -4,15 +4,14 @@ idenaTXT=$(idena -v | awk '{print $3}')
 if [[ ! $idenaURL == $idenaTXT ]];then
 	service idena stop
     systemctl stop idena.target
-		if [ -d /home/datadir/idenachain.db ]
+		if [ -d /home/datadir/ipfs ]
 		then
-		wget https://raw.githubusercontent.com/znyber/idena-installer/master/idenachain.db.zip -O /home/datadir/idenachain.db.zip
-		rm -rf /home/datadir/idenachain.db
-		unzip /home/datadir/idenachain.db.zip -d /home/datadir/
+		rm -rf /home/datadir/ipfs
+		rm -rf /home/datadir/logs
 		else
 		echo "directory tidak ada"
 		fi
-    wget https://github.com/idena-network/idena-go/releases/download/v$idenaURL/idena-node-linux-$idenaURL -q --show-progress -O /usr/bin/idena
+    wget https://github.com/idena-network/idena-go/releases/download/v$idenaURL/idena-node-linux-$idenaURL -q -O /usr/bin/idena
     chmod +x /usr/bin/idena
 	service idena start
     systemctl start idena.target
