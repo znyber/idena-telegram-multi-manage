@@ -882,6 +882,59 @@ console.log(ctx.from.username);
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
 			{'reply_to_message_id':ctx.message.message_id})}
 })
+//add notif mining/node down
+bot.command('addnotif', (ctx) =>{
+console.log(ctx.from.username);
+if (ctx.chat.type == 'private') {
+                ctx.replyWithHTML(
+                        '<i>oi bro</i> @<b>'+ ctx.from.username +'</b> \n masukan address mu ben nko di proses',
+                        {'reply_to_message_id':ctx.message.message_id})
+                bot.on('text', (ctx) => {
+                        ctx.reply('ok lagi di prosess sekitar 1-15 menitan ngasi syncron\n\n');
+exec('mkdir -p /home/niteni/'+ ctx.from.username +'-dat && echo '+ ctx.from.username +' >> /home/niteni/user-notif.txt && echo '+ ctx.from.id +' > /home/niteni/'+ ctx.from.username +'-dat/chatid.txt && echo '+ ctx.message.text +' >> /home/niteni/'+ ctx.from.username +'-dat/address.txt', (error, stdout, stderr) => {
+                                        if (error) {
+                                        console.log(`error: ${error.message}`);
+                                        }
+                                        if (stderr) {
+                                        console.log(`stderr: ${stderr}`);
+                                        }
+                                        ctx.reply(`proses install...`);
+                                        console.log(`${stdout}`);
+        console.log('user '+ ctx.from.username +'chatid'+ ctx.from.id +'pesan-'+ ctx.message.text +'')
+                                });
+                });
+        }else{
+                ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
+                {'reply_to_message_id':ctx.message.message_id})
+        }
+
+})
+bot.command('addnotif'+ bot_name, (ctx) =>{
+console.log(ctx.from.username);
+if (ctx.chat.type == 'private') {
+                ctx.replyWithHTML(
+                        '<i>oi bro</i> @<b>'+ ctx.from.username +'</b> \n masukan address mu ben nko di proses',
+                        {'reply_to_message_id':ctx.message.message_id})
+                bot.on('text', (ctx) => {
+                        ctx.reply('ok lagi di prosess sekitar 1-15 menitan ngasi syncron\n\n');
+exec('mkdir -p /home/niteni/'+ ctx.from.username +'-dat && echo '+ ctx.from.username +' >> /home/niteni/user-notif.txt && echo '+ ctx.from.id +' > /home/niteni/'+ ctx.from.username +'-dat/chatid.txt && echo '+ ctx.message.text +' >> /home/niteni/'+ ctx.from.username +'-dat/address.txt', (error, stdout, stderr) => {
+                                        if (error) {
+                                        console.log(`error: ${error.message}`);
+                                        }
+                                        if (stderr) {
+                                        console.log(`stderr: ${stderr}`);
+                                        }
+                                        ctx.reply(`proses install...`);
+                                        console.log(`${stdout}`);
+        console.log('user '+ ctx.from.username +'chatid'+ ctx.from.id +'pesan-'+ ctx.message.text +'')
+                                });
+                });
+        }else{
+                ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
+                {'reply_to_message_id':ctx.message.message_id})
+        }
+
+})
 //toturial web
 bot.command('toturialweb', (ctx) =>{
 console.log(ctx.from.username);
