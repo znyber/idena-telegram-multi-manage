@@ -2,33 +2,11 @@
 idenahome="$1"
 idenakeystore="$2"
 
-if [ -f /home/portRpc.txt ] && [ -f /home/portIpf.txt ] && [ -f /home/api.txt ]; then
-    echo "file exists."
-else
-wget https://raw.githubusercontent.com/znyber/idena-installer/master/portRpc.txt -q -O /home/portRpc.txt
-wget https://raw.githubusercontent.com/znyber/idena-installer/master/api.txt -q -O /home/api.txt
-wget https://raw.githubusercontent.com/znyber/idena-installer/master/portIpf.txt -q -O /home/portIpf.txt
-fi
-if [ ! -d /home/idenafastsync ]
-then
-wget --quiet --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1ydTWIPhXZ4fVG5uUmUYpNLNW-SbqYxJI' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1ydTWIPhXZ4fVG5uUmUYpNLNW-SbqYxJI" -O /home/fastsync.zip && rm -rf /tmp/cookies.txt
-cd /home && unzip -q -o fastsync.zip
-if [ ! -d /home/idenachain.db ]
-then
-echo "idenachain.db tidak bisa di download mohon masukan secara manual"
-echo "ini link download untuk idenachain.db "
-echo "https://drive.google.com/file/d/1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB/view?usp=sharing"
-echo "https://www.mediafire.com/file/ajrxzbulicfqi3v/idenachain.db.zip/file"
-echo "gagal installasi hubungi pembuat"
-exit 1
-else
-echo "prosess unpack idenafastsync"
-fi
-fi
 idenanumber=$(head -n 1 /home/portRpc.txt)
 
 if [ ! -d /home/*/$idenanumber ] &> /dev/null
 then
+/usr/bin/wBatch $idenahome $idenanumber
 	mkdir -p /home/$idenahome/$idenanumber
 	touch /home/$idenahome/$idenahome-portRpc.txt
 	sed -n "1{p;q}" /home/portRpc.txt >> /home/$idenahome/$idenahome-portRpc.txt
@@ -40,10 +18,7 @@ then
 cat <<EOF >> /home/user.txt
 $idenahome
 EOF
-else
-        echo "gas"
 fi
-
 
 	touch /home/$idenahome/$idenahome-portIpf.txt
 	sed -n "1{p;q}" /home/portIpf.txt >> /home/$idenahome/$idenahome-portIpf.txt
@@ -79,9 +54,8 @@ cat <<EOF > /home/$idenahome/$portRpc.json
 
 EOF
 if [ -f /lib/systemd/system/idena-$idenahome@.service ]; then
-    echo "file exists."
-else
 
+else
 cat <<EOF > /lib/systemd/system/idena-$idenahome@.service
 [Unit]
 PartOf=idena.target
@@ -100,7 +74,6 @@ ExecStart=/usr/bin/idena --config=%i.json --apikey=$idenahome
 [Install]
 WantedBy=idena.target
 EOF
-
 fi
 
 if [ -f /etc/systemd/system/idena.target.wants/idena-$idenahome@$portRpc.service ]; then
@@ -111,19 +84,14 @@ else
 systemctl start idena-$idenahome@$portRpc
 systemctl enable idena-$idenahome@$portRpc
 
-echo "wait.... build datadir"
 sleep 30
 echo $idenakeystore > /home/$idenahome/$portRpc/keystore/nodekey
 systemctl stop idena-$idenahome@$portRpc
 systemctl daemon-reload
-if [ -d /home/idenafastsync ]
-		then
-		rm -rf /home/$idenahome/$portRpc/idenachain.db
-		echo "import idena fast sync"
-		rsync -az /home/idenafastsync/ /home/$idenahome/$idenanumber/idenachain.db/
-		else
-		echo "file tidak ada tidak ada"
-		fi
+
+rm -rf /home/$idenahome/$portRpc/idenachain.db/*
+
+rsync -azq /home/datadir/idenachain.db/ /home/$idenahome/$idenanumber/idenachain.db/
 
 systemctl daemon-reload
 
@@ -140,9 +108,9 @@ else
 fi
 
 systemctl start idena-$idenahome@$portRpc
-echo " node telah ter install , ini api untuk menyambungkan"
-echo $idenahome
-echo "port" && echo $portRpc
+#echo " node telah ter install , ini api untuk menyambungkan"
+#echo $idenahome && echo "port"
+echo $portRpc
 exit 0
 fi
 else

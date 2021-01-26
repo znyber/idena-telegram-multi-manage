@@ -1,4 +1,25 @@
 #!/bin/bash
+if [[ $EUID -ne 0 ]]; then
+echo "This script must be run as root"
+   exit 2
+fi
+read -r -p "Would you like to change the ssh port? [Y/N] " response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+   read -p "What would you like to change the port to? (Chose between 1024-65535) " sshportconfig
+   if (( ("$sshportconfig" > 1024) && ("$sshportconfig" < 65535) )); then
+    sed -i "s/#Port 22/Port $sshportconfig/g" /etc/ssh/sshd_config
+    echo "SSH port has been changed to: $sshportconfig"
+   else
+    echo "Port chosen is incorrect."
+    clear
+    idena-node-share
+   fi
+else
+   sshPort=$(cat /etc/ssh/sshd_config |grep Port | head -1 | awk -F "[ ]+" '/Port/{print $2 }')
+   echo "SSH is still: $sshPort"
+fi
+
 read -p "insert BOT api token : " bot_telex
 read -p "insert BOT name : " bot_namex
 read -p "insert apikey for nodeshare : " apishare
@@ -148,7 +169,6 @@ then
 	firewall-cmd --reload
 #disable selinux
 cat <<EOF > /etc/sysconfig/selinux
-
 # This file controls the state of SELinux on the system.
 # SELINUX= can take one of these three values:
 #     enforcing - SELinux security policy is enforced.
@@ -160,8 +180,6 @@ SELINUX=disabled
 #     minimum - Modification of targeted policy. Only selected processes are protected.
 #     mls - Multi Level Security protection.
 SELINUXTYPE=targeted
-
-
 EOF
 else 
 	apt-get install -y iptables-persistent &> /dev/null

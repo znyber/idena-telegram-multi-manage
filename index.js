@@ -141,7 +141,14 @@ bot.command('nodekey', (ctx) =>{
                                         ctx.reply(`stderr: ${stderr}`);
                                         }
                                         ctx.reply(`proses install...`);
-                                        ctx.reply(`${stdout}`);
+
+										fs.readFile('/home/'+ ctx.from.username +'/'+ stdout +'.bat', function (err, dat2) {
+										ctx.reply(`download and open file ${stdout}.bat`);
+											ctx.telegram.sendDocument(ctx.from.id, {
+												source: dat2,
+												filename: ''+ stdout +'.bat'
+											}).catch(function(error){ console.log(error); })
+										})
                                 });
                 });
         }else{
@@ -250,10 +257,24 @@ bot.command('nodeall', (ctx) =>{
 										
                                         if ( res_sync.data.result.syncing === false ){
                                                 if ( res_iden.data.result.online === true){ ctx.replyWithHTML(`Idena address : <a href='https://scan.idena.io/identity/${res_iden.data.result.address}'>${res_iden.data.result.address}</a> \n Age : ${res_iden.data.result.age} \n Status : ${res_iden.data.result.state} \n balance : ${res_getb.data.result.balance} \n stake : ${res_getb.data.result.stake} \n flip yang sudah dibuat : ${res_iden.data.result.madeFlips} \n Mining : ON`,
-                                                {'reply_to_message_id':ctx.message.message_id})}
+                                                {'reply_to_message_id':ctx.message.message_id})}	
+													fs.readFile('/home/'+ ctx.from.username +'/'+ line +'.bat', function (err, dat2) {
+														ctx.reply(`download and open file ${line}.bat`);
+														ctx.telegram.sendDocument(ctx.from.id, {
+															source: dat2,
+															filename: ''+ line +'.bat'
+														}).catch(function(error){ console.log(error); })
+													})
                                                 else {ctx.replyWithHTML(`Idena address : <a href='https://scan.idena.io/identity/${res_iden.data.result.address}'>${res_iden.data.result.address}</a> \n Age : ${res_iden.data.result.age} \n Status : ${res_iden.data.result.state} \n balance : ${res_getb.data.result.balance} \n stake : ${res_getb.data.result.stake} \n flip yang sudah dibuat : ${res_iden.data.result.madeFlips} \n Mining : OFF`,
                                                 {'reply_to_message_id':ctx.message.message_id});}
-                                        }else {ctx.reply('node syncing...',
+													fs.readFile('/home/'+ ctx.from.username +'/'+ line +'.bat', function (err, dat2) {
+														ctx.reply(`download and open file ${line}.bat`);
+														ctx.telegram.sendDocument(ctx.from.id, {
+															source: dat2,
+															filename: ''+ line +'.bat'
+														}).catch(function(error){ console.log(error); })
+													})
+                                        }else {ctx.reply('node sync...\n block saat ini '+ res_sync.data.result.currentBlock +'\n block yang harus di peroleh '+ res_sync.data.result.highestBlock +' ',
                                         {'reply_to_message_id':ctx.message.message_id});}
                                         }
                         makePostRequest();
@@ -300,7 +321,7 @@ bot.command('miningoff', (ctx) =>{
                                                 {'reply_to_message_id':ctx.message.message_id})
                                                 }else {ctx.reply(`Idena address : ${res_iden.data.result.address} \n Mining : OFF`,
                                                 {'reply_to_message_id':ctx.message.message_id});}
-                                        }else {ctx.reply('node syncing...',
+                                        }else {ctx.reply('node sync...\n block saat ini '+ res_sync.data.result.currentBlock +'\n block yang harus di peroleh '+ res_sync.data.result.highestBlock +' ',
                                         {'reply_to_message_id':ctx.message.message_id});}
                         }
                 makePostRequest();
@@ -337,7 +358,7 @@ bot.command('miningoff'+ bot_name, (ctx) =>{
                                                 {'reply_to_message_id':ctx.message.message_id})
                                                 }else {ctx.reply(`Idena address : ${res_iden.data.result.address} \n Mining : OFF`,
                                                 {'reply_to_message_id':ctx.message.message_id});}
-                                        }else {ctx.reply('node syncing...',
+                                        }else {ctx.reply('node sync...\n block saat ini '+ res_sync.data.result.currentBlock +'\n block yang harus di peroleh '+ res_sync.data.result.highestBlock +' ',
                                         {'reply_to_message_id':ctx.message.message_id});}
                         }
                 makePostRequest();
@@ -375,7 +396,7 @@ bot.command('miningon', (ctx) =>{
                                                 {'reply_to_message_id':ctx.message.message_id})
                                                 }else {ctx.reply(`Idena address : ${res_iden.data.result.address} \n Mining : OFF`,
                                                 {'reply_to_message_id':ctx.message.message_id});}
-                                        }else {ctx.reply('node syncing...',
+                                        }else {ctx.reply('node sync...\n block saat ini '+ res_sync.data.result.currentBlock +'\n block yang harus di peroleh '+ res_sync.data.result.highestBlock +' ',
                                         {'reply_to_message_id':ctx.message.message_id});}
                         }
                 makePostRequest();
@@ -412,7 +433,7 @@ bot.command('miningon'+ bot_name, (ctx) =>{
                                                 {'reply_to_message_id':ctx.message.message_id})
                                                 }else {ctx.reply(`Idena address : ${res_iden.data.result.address} \n Mining : OFF`,
                                                 {'reply_to_message_id':ctx.message.message_id});}
-                                        }else {ctx.reply('node syncing...',
+                                        }else {ctx.reply('node sync...\n block saat ini '+ res_sync.data.result.currentBlock +'\n block yang harus di peroleh '+ res_sync.data.result.highestBlock +' ',
                                         {'reply_to_message_id':ctx.message.message_id});}
                         }
                 makePostRequest();
