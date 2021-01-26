@@ -1,10 +1,11 @@
+require('dotenv-flow').config();
 const Telegraf = require('telegraf')
 const axios = require('axios');
-const bot = new Telegraf('xxx')
+const bot = new Telegraf(process.env.BOT_TELE)
 const { exec } = require('child_process');
 const fs = require('fs');
 const readline = require('readline');
-const bot_name = "@bounty_hunt_idna_bot"
+const bot_name = process.env.BOT_NAME
 
 //start command
 bot.start((ctx) =>{

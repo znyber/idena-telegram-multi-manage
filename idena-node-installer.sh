@@ -7,7 +7,7 @@ then
 	exit 1
 else if command -v yum || ! command -v dnf &> /dev/null
 	then 
-		yum install -y npm wget curl unzip links git
+		yum install -y npm wget curl unzip links git sshpass
 cat <<EOF > /etc/yum.repos.d/bintray-ookla-rhel.repo
 #bintray--ookla-rhel - packages by  from Bintray
 [bintray--ookla-rhel]
@@ -21,7 +21,7 @@ EOF
 		speedtest
 	else
 	apt update -y
-	apt install -y wget npm curl unzip links git
+	apt install -y wget npm curl unzip links git sshpass
 	apt-get install gnupg1 apt-transport-https dirmngr
 	export INSTALL_KEY=379CE192D401AB61 && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $INSTALL_KEY
 	echo "deb https://ookla.bintray.com/debian generic main" | sudo tee  /etc/apt/sources.list.d/speedtest.list
@@ -29,30 +29,34 @@ EOF
 	apt-get install speedtest
 	speedtest
 	fi
-
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB" -O /home/idenachain.db.zip && rm -rf /tmp/cookies.txt
+wget https://sync.idena-ar.com/idenachain.db.zip -O /home/idenachain.db.zip
+#download idenachaindb using google drive link
+## wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB" -O /home/idenachain.db.zip && rm -rf /tmp/cookies.txt
 cd /home && unzip idenachain.db.zip
-if [ ! -d /home/idenachain.db ]
-then
-cd /home && pwd && links https://drive.google.com/file/d/1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB/view?usp=sharing && unzip idenachain.db
-if [ ! -d /home/idenachain.db ]
-then
-cd /home && pwd && links https://www.mediafire.com/file/ajrxzbulicfqi3v/idenachain.db.zip/file && unzip idenachain.db
-fi
-if [ ! -d /home/idenachain.db ]
-then
-echo "idenachain.db tidak bisa di download mohon masukan secara manual"
-echo "ini link download untuk idenachain.db "
-echo "https://drive.google.com/file/d/1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB/view?usp=sharing"
-echo "https://www.mediafire.com/file/ajrxzbulicfqi3v/idenachain.db.zip/file"
-else
-exit 1
-fi
-fi
+#if [ ! -d /home/idenachain.db ]
+#then
+#cd /home && pwd && links https://drive.google.com/file/d/1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB/view?usp=sharing && unzip idenachain.db
+#if [ ! -d /home/idenachain.db ]
+#then
+#cd /home && pwd && links https://www.mediafire.com/file/ajrxzbulicfqi3v/idenachain.db.zip/file && unzip idenachain.db
+#fi
+#if [ ! -d /home/idenachain.db ]
+#then
+#echo "idenachain.db tidak bisa di download mohon masukan secara manual"
+#echo "ini link download untuk idenachain.db "
+#echo "https://drive.google.com/file/d/1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB/view?usp=sharing"
+#echo "https://www.mediafire.com/file/ajrxzbulicfqi3v/idenachain.db.zip/file"
+#else
+#exit 1
+#fi
+#fi
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/index.js -q -O /home/index.js
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/package.json -q -O /home/package.json
 cd /home && npm i -g pm2 && npm install 
-sed -i '3s/.*/const bot = new Telegraf("xxxxx")/' /home/index.js 
+cat <<EOF > /home/.env
+BOT_TELE="$BOT_TELEX"
+BOT_NAME="$BOT_NAMEX"
+EOF
 cd /home && pm2 start npm --name "telegraf-bot" -- start
 fi
 
