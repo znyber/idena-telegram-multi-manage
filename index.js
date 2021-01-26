@@ -12,16 +12,21 @@ bot.start((ctx) =>{
         ctx.replyWithHTML('<i>oi bro</i> @<b>'+ ctx.from.username +'</b> \n bot kie nggo gawe node shared api \n nek ora ko bisa melu masang mining lewat bot kie, \n carane PM bae bot kie \n terus ketik bae /tulung \n nko di njlentrehna carane kepriwe \n nek ora mudeng PM sing due bae ',
         {'reply_to_message_id':ctx.message.message_id})
         console.log(ctx.from.username);
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
 })
 bot.command('oi', (ctx) =>{
         ctx.replyWithHTML('<i>oi bro</i> @<b>'+ ctx.from.username +'</b> \n bot kie nggo gawe node shared api \n nek ora ko bisa melu masang mining lewat bot kie, \n carane PM bae bot kie \n terus ketik bae /tulung \n nko di njlentrehna carane kepriwe \n nek ora mudeng PM sing due bae ',
         {'reply_to_message_id':ctx.message.message_id})
         console.log(ctx.from.username);
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 bot.command('oi'+ bot_name, (ctx) =>{
         ctx.replyWithHTML('<i>oi bro</i> @<b>'+ ctx.from.username +'</b> \n bot kie nggo gawe node shared api \n nek ora ko bisa melu masang mining lewat bot kie, \n carane PM bae bot kie \n terus ketik bae /tulung \n nko di njlentrehna carane kepriwe \n nek ora mudeng PM sing due bae ',
         {'reply_to_message_id':ctx.message.message_id})
         console.log(ctx.from.username);
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 //help command
 bot.command('tulung'+ bot_name, (ctx) =>{
@@ -44,6 +49,8 @@ bot.command('tulung'+ bot_name, (ctx) =>{
                 processLineByLine();
         
         console.log(ctx.from.username);
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 bot.command('tulung', (ctx) =>{
 	async function processLineByLine() {
@@ -65,6 +72,8 @@ bot.command('tulung', (ctx) =>{
                 processLineByLine();
         
         console.log(ctx.from.username);
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 //newapi command
 bot.command('newapi', (ctx) =>{
@@ -84,11 +93,15 @@ bot.command('newapi', (ctx) =>{
                 ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
                 {'reply_to_message_id':ctx.message.message_id})
         }
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 bot.command('newapi'+ bot_name, (ctx) =>{
         ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
         {'reply_to_message_id':ctx.message.message_id})
         console.log(ctx.from.username);
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 //listapi command
 bot.command('listapi', (ctx) =>{
@@ -115,11 +128,15 @@ bot.command('listapi', (ctx) =>{
                 ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
                 {'reply_to_message_id':ctx.message.message_id})
         }
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 bot.command('listapi'+ bot_name, (ctx) =>{
         console.log(ctx.from.username);
         ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
         {'reply_to_message_id':ctx.message.message_id})
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 //nodekey command
 bot.command('nodekey', (ctx) =>{
@@ -155,11 +172,15 @@ bot.command('nodekey', (ctx) =>{
                 ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
                 {'reply_to_message_id':ctx.message.message_id})
         }
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 bot.command('nodekey'+ bot_name, (ctx) =>{
         console.log(ctx.from.username);
         ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
         {'reply_to_message_id':ctx.message.message_id})
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 //mininglist command
 bot.command('mininglist', (ctx) =>{
@@ -196,6 +217,8 @@ bot.command('mininglist', (ctx) =>{
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
 		{'reply_to_message_id':ctx.message.message_id})}
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 bot.command('mininglist'+ bot_name, (ctx) =>{
         console.log(ctx.from.username);
@@ -231,6 +254,8 @@ bot.command('mininglist'+ bot_name, (ctx) =>{
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
 		{'reply_to_message_id':ctx.message.message_id})}
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 //nodeall command
 bot.command('nodeall', (ctx) =>{
@@ -290,11 +315,15 @@ bot.command('nodeall', (ctx) =>{
                 ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
                 {'reply_to_message_id':ctx.message.message_id})
         }
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 bot.command('nodeall'+ bot_name, (ctx) =>{
         console.log(ctx.from.username);
         ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
         {'reply_to_message_id':ctx.message.message_id})
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 //miningoff
 bot.command('miningoff', (ctx) =>{
@@ -333,6 +362,8 @@ bot.command('miningoff', (ctx) =>{
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
 		{'reply_to_message_id':ctx.message.message_id})}
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 bot.command('miningoff'+ bot_name, (ctx) =>{
          console.log(ctx.from.username);
@@ -370,6 +401,8 @@ bot.command('miningoff'+ bot_name, (ctx) =>{
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
 		{'reply_to_message_id':ctx.message.message_id})}
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 // miningon command
 bot.command('miningon', (ctx) =>{
@@ -408,6 +441,8 @@ bot.command('miningon', (ctx) =>{
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
 		{'reply_to_message_id':ctx.message.message_id})}
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 bot.command('miningon'+ bot_name, (ctx) =>{
         console.log(ctx.from.username);
@@ -445,6 +480,8 @@ bot.command('miningon'+ bot_name, (ctx) =>{
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
 		{'reply_to_message_id':ctx.message.message_id})}
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 //miningalloff
 bot.command('miningalloff', (ctx) =>{
@@ -501,6 +538,8 @@ console.log(ctx.from.username);
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
 			{'reply_to_message_id':ctx.message.message_id})}
+			ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 
 bot.command('miningalloff'+ bot_name, (ctx) =>{
@@ -557,6 +596,8 @@ console.log(ctx.from.username);
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
 			{'reply_to_message_id':ctx.message.message_id})}
+			ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 //miningallon
 bot.command('miningallon', (ctx) =>{
@@ -613,6 +654,8 @@ console.log(ctx.from.username);
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
 			{'reply_to_message_id':ctx.message.message_id})}
+			ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 bot.command('miningallon'+ bot_name, (ctx) =>{
 console.log(ctx.from.username);
@@ -668,6 +711,8 @@ console.log(ctx.from.username);
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
 			{'reply_to_message_id':ctx.message.message_id})}
+			ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 //shutdownall
 bot.command('shutdownall', (ctx) =>{
@@ -681,6 +726,8 @@ bot.command('shutdownall', (ctx) =>{
                 }
                 ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
+				ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 bot.command('shutdownall'+ bot_name, (ctx) =>{
                 console.log(ctx.from.username);
@@ -693,6 +740,8 @@ bot.command('shutdownall'+ bot_name, (ctx) =>{
                 }
                 ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
+				ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 //startall
 bot.command('startall', (ctx) =>{
@@ -706,6 +755,8 @@ bot.command('startall', (ctx) =>{
                 }
                 ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
+				ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 bot.command('startall'+ bot_name, (ctx) =>{
                 console.log(ctx.from.username);
@@ -718,6 +769,8 @@ bot.command('startall'+ bot_name, (ctx) =>{
                 }
                 ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
+				ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 //update
 bot.command('update', (ctx) =>{
@@ -731,6 +784,8 @@ bot.command('update', (ctx) =>{
                 }
                 ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
+				ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 bot.command('update'+ bot_name, (ctx) =>{
                 console.log(ctx.from.username);
@@ -743,6 +798,8 @@ bot.command('update'+ bot_name, (ctx) =>{
                 }
                 ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
+				ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 //uptime
 bot.command('uptime', (ctx) =>{
@@ -756,6 +813,8 @@ bot.command('uptime', (ctx) =>{
                 }
                 ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
+				ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 bot.command('uptime'+ bot_name, (ctx) =>{
                 console.log(ctx.from.username);
@@ -768,6 +827,8 @@ bot.command('uptime'+ bot_name, (ctx) =>{
                 }
                 ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
+				ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 //uptime detail
 bot.command('resource', (ctx) =>{
@@ -781,6 +842,8 @@ bot.command('resource', (ctx) =>{
                 }
                 ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
+				ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 bot.command('resource'+ bot_name, (ctx) =>{
                 console.log(ctx.from.username);
@@ -793,6 +856,8 @@ bot.command('resource'+ bot_name, (ctx) =>{
                 }
                 ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
+				ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 //speedtest
 bot.command('speedtest', (ctx) =>{
@@ -806,6 +871,8 @@ bot.command('speedtest', (ctx) =>{
                 }
                 ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
+				ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 bot.command('speedtest'+ bot_name, (ctx) =>{
                 console.log(ctx.from.username);
@@ -818,6 +885,8 @@ bot.command('speedtest'+ bot_name, (ctx) =>{
                 }
                 ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
+				ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 //list WhoHaveInvite
 bot.command('listic', (ctx) =>{
@@ -861,6 +930,8 @@ console.log(ctx.from.username);
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
 			{'reply_to_message_id':ctx.message.message_id})}
+			ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 bot.command('listic'+ bot_name, (ctx) =>{
 console.log(ctx.from.username);
@@ -903,6 +974,8 @@ console.log(ctx.from.username);
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
 			{'reply_to_message_id':ctx.message.message_id})}
+			ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 //add notif mining/node down
 bot.command('addnotif', (ctx) =>{
@@ -929,6 +1002,7 @@ exec('mkdir -p /home/niteni/'+ ctx.from.username +'-dat && echo '+ ctx.from.user
                 ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
                 {'reply_to_message_id':ctx.message.message_id})
         }
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
 
 })
 bot.command('addnotif'+ bot_name, (ctx) =>{
@@ -955,6 +1029,7 @@ exec('mkdir -p /home/niteni/'+ ctx.from.username +'-dat && echo '+ ctx.from.user
                 ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
                 {'reply_to_message_id':ctx.message.message_id})
         }
+		ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
 
 })
 //toturial web
@@ -962,10 +1037,14 @@ bot.command('toturialweb', (ctx) =>{
 console.log(ctx.from.username);
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* \n langsung gas gan pake video ini \n https://youtu.be/sQ-xLDZc4JI',
 			{'reply_to_message_id':ctx.message.message_id})
+			ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 bot.command('toturialweb'+ bot_name, (ctx) =>{
 console.log(ctx.from.username);
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* \n langsung gas gan pake video ini \n https://youtu.be/sQ-xLDZc4JI',
 			{'reply_to_message_id':ctx.message.message_id})
+			ctx.replyWithHTML(`<a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=2&comment=Thank 2iDna nya gan">Donate 2 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=5&comment=Thank 5iDna nya gan">Donate 5 iDna gan</a> \n <a href="dna://send/v1?address=0x4783e0841d72a8cbf49312d98a49a93f512b6d99&amount=10&comment=Thank 10iDna nya gan">Donate 10 iDna gan</a> \n  my Address iDna : 0x4783e0841d72a8cbf49312d98a49a93f512b6d99`)
+
 })
 bot.startPolling()
