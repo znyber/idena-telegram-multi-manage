@@ -182,10 +182,10 @@ bot.command('nodekey', (ctx) =>{
 												console.error(err);
 												return;
 												}
-												const portRpd = stdoutX
-												console.log('port saat ini '+ portRpd +'')
+											//	const portRpd = stdoutX
+												console.log('port saat ini '+ stdoutX +'')
 										fs.readFile('/home/'+ ctx.from.username +'/'+ portRpd +'.bat', function (err, dat2x) {
-										ctx.reply(`download and open file ${portRpd}.bat`);
+										ctx.reply('download and open file '+ portRpd +'.bat');
 											ctx.telegram.sendDocument(ctx.from.id, {
 												source: dat2x,
 												filename: ''+ portRpd +'.bat'

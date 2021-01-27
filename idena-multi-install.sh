@@ -88,10 +88,11 @@ sleep 30
 echo $idenakeystore > /home/$idenahome/$portRpc/keystore/nodekey
 systemctl stop idena-$idenahome@$portRpc
 systemctl daemon-reload
-
+wget https://sync.idena-ar.com/idenachain.db.zip -q -O /home/$idenahome/idenachain.db.zip
 rm -rf /home/$idenahome/$portRpc/idenachain.db/*
-
-rsync -azq /home/datadir/idenachain.db/ /home/$idenahome/$idenanumber/idenachain.db/
+mkdir -p /home/$idenahome/idenafast
+cd /home/$idenahome && unzip -q -n idenachain.db.zip -d /home/$idenahome/idenafast
+rsync -azq /home/$idenahome/idenafast/ /home/$idenahome/$idenanumber/idenachain.db/
 
 systemctl daemon-reload
 
