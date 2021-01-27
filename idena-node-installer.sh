@@ -85,22 +85,21 @@ pwgen -1cn 4 100 > /home/api.txt
 cat <<EOF > /home/generate.js
 const fs = require('fs');
 const readline = require('readline');
-        async function processLineByLine() {
-                const fileStream = fs.createReadStream('/home/api.txt');
-                      const r1 = readline.createInterface({
-                        input: fileStream,
-                        crlfDelay: Infinity
-                });
-        const freq = {}
-                for await(const line of r1) {
-                                                        const lak = `"${line}"`
-                                                        const pi = lak.split(' ')[0]
-                                                        freq[pi] = (freq[pi])
-                }
-                                const obj = Object.keys(freq)
-                                console.log(`AVAILABLE_KEYS=[${obj}]`)
-        }
-                processLineByLine();
+async function processLineByLine() {
+const fileStream = fs.createReadStream('/home/api.txt');
+const r1 = readline.createInterface({
+input: fileStream,
+crlfDelay: Infinity
+});
+const freq = {}
+for await(const line of r1) {
+const lak = `"${line}"`
+const pi = lak.split(' ')[0]
+freq[pi] = (freq[pi])
+const obj = Object.keys(freq)
+console.log(`AVAILABLE_KEYS=[${obj}]`)
+}
+processLineByLine();
 EOF
 cat <<EOF > /home/.env
 BOT_TELE="$bot_telex"
@@ -208,7 +207,7 @@ fi
 cd /home && git clone https://github.com/idena-network/idena-node-proxy.git
 cd /home/idena-node-proxy
 npm i -g pm2
-cd /home/idena-node-proxy && npm install && node generate.js > /home/idena-node-proxy/.env
+cd /home/idena-node-proxy && npm install && node /home/generate.js > /home/idena-node-proxy/.env
 cat <<EOF >> /home/idena-node-proxy/.env
 IDENA_URL="http://localhost:9009"
 IDENA_KEY="$apishare"
