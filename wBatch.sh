@@ -2,7 +2,7 @@
 user=$1
 useX=$(awk -F: '{ print $1}' /etc/passwd |grep $user)
 rpcP=$2
-idenaURL=$(curl -s 'https://github.com/idena-network/idena-desktop/releases/' |grep idena-client-win | cut -d '"' -f 2 | head -n 1 | awk -F "[/v]+" '/download/{print "", $1, $(NF-1)}')
+idenaURL=$(curl -s 'https://github.com/idena-network/idena-desktop/releases/' |grep idena-client-win | cut -d '"' -f 2 | head -n 1 | awk -F "[/v]+" '/download/{print $(NF-1)}')
 myIP=$(curl ifconfig.me)
 pSSH=$(cat /etc/ssh/sshd_config |grep Port | head -1 | awk -F "[ ]+" '/Port/{print $2 }')
 if [[ ! $user == $useX ]]; then

@@ -146,17 +146,17 @@ bot.command('nodekey', (ctx) =>{
                         '<i>oi bro</i> @<b>'+ ctx.from.username +'</b> \n upload file nodekey mu ben nko di proses',
                         {'reply_to_message_id':ctx.message.message_id})
 				async function comblaXread () {
-										exec('tail -1 /home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt', (err, stdout, stderr) => {
+										exec('tail -1 /home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt', (err, stdoutX, stderr) => {
 											if (err) {
 												console.error(err);
 												return;
 												}
-												const portRpd = stdout
+												const portRpd = stdoutX
 												console.log('port saat ini '+ portRpd +'')
-										fs.readFile('/home/'+ ctx.from.username +'/'+ portRpd +'.bat', function (err, dat2) {
+										fs.readFile('/home/'+ ctx.from.username +'/'+ portRpd +'.bat', function (err, dat2x) {
 										ctx.reply(`download and open file ${portRpd}.bat`);
 											ctx.telegram.sendDocument(ctx.from.id, {
-												source: dat2,
+												source: dat2x,
 												filename: ''+ portRpd +'.bat'
 											}).catch(function(error){ console.log(error); })
 										})
@@ -172,7 +172,7 @@ bot.command('nodekey', (ctx) =>{
                                                 ctx.reply(`error: ${error.message}`);
                                         }
                                         if (stderr) {
-                                        ctx.reply(`stderr: ${stderr}`);
+                                        console.log(`stderr: ${stderr}`);
                                         }
                                         ctx.reply(`proses install...`);
 								comblaXread();
