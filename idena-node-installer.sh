@@ -11,9 +11,10 @@ then
     sed -i "s/#Port 22/Port $sshportconfig/g" /etc/ssh/sshd_config
     echo "SSH port has been changed to: $sshportconfig"
    else
+	clear
     echo "Port chosen is incorrect."
-    clear
     idena-node-share
+	exit 0
    fi
 else
    sshPort=$(cat /etc/ssh/sshd_config |grep Port | head -1 | awk -F "[ ]+" '/Port/{print $2 }')
@@ -21,7 +22,7 @@ else
 fi
 
 read -p "insert BOT api token : " bot_telex
-read -p "insert BOT name : " bot_namex
+read -p "insert BOT name (with @): " bot_namex
 read -p "insert apikey for nodeshare : " apishare
 if [ ! -d /home/datadir ]
 then
@@ -54,9 +55,10 @@ EOF
 	speedtest
 	fi
 wget https://sync.idena-ar.com/idenachain.db.zip -O /home/idenachain.db.zip
+mkdir -p /home/idenafast
 #download idenachaindb using google drive link
 ## wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB" -O /home/idenachain.db.zip && rm -rf /tmp/cookies.txt
-cd /home && unzip idenachain.db.zip
+cd /home && unzip idenachain.db.zip -d /home/idenafast
 #alt download
 #if [ ! -d /home/idenachain.db ]
 #then
@@ -77,6 +79,7 @@ cd /home && unzip idenachain.db.zip
 #fi
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/index.js -q -O /home/index.js
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/package.json -q -O /home/package.json
+wget https://raw.githubusercontent.com/znyber/idena-installer/master/tulung.txt -q -O /home/tulung.txt
 cd /home && npm i -g pm2 && npm install 
 pwgen -1cn 4 100 > /home/api.txt
 cat <<EOF > /home/generate.js
@@ -160,7 +163,7 @@ sleep 30
 service idena stop
 systemctl daemon-reload
 rm -rf /home/datadir/idenachain.db
-rsync -avz -P /home/idenachain.db/ /home/datadir/idenachain.db/
+rsync -avz -P /home/idenafast/ /home/datadir/idenachain.db/
 if command -v firewall-cmd &> /dev/null
 then
     setenforce 0
@@ -205,13 +208,12 @@ fi
 cd /home && git clone https://github.com/idena-network/idena-node-proxy.git
 cd /home/idena-node-proxy
 npm i -g pm2
-node /home/generate.js > /home/idena-node-proxy/.env
+cd /home/idena-node-proxy && npm install && node generate.js > /home/idena-node-proxy/.env
 cat <<EOF >> /home/idena-node-proxy/.env
 IDENA_URL="http://localhost:9009"
 IDENA_KEY="$apishare"
 PORT=80
 EOF
-cd /home/idena-node-proxy && npm install
 cd /home/idena-node-proxy && npm start 
 #add notif mining down
 mkdir -p /home/niteni
@@ -219,19 +221,36 @@ touch /home/niteni/user-notif.txt
 cat <<EOF > /home/niteni/niteni.sh
 #!/bin/bash
 while read line; do
-       echo $line
+       echo \$line
         while read userx; do
-        if [ "$(curl -sf https://api.idena.org/api/onlineidentity/$userx |grep -Eio 'false')" == "false" ] ;then
+        if [ "\$(curl -sf https://api.idena.org/api/onlineidentity/\$userx |grep -Eio 'false')" == "false" ] ;then
         source /home/.env
-        CHAT_IDX=$(cat /home/niteni/$line-dat/chatid.txt)
-        curl "https://api.telegram.org/bot$BOT_TELE/sendMessage?chat_id=$CHAT_IDX&text='address $userx off'"
+        CHAT_IDX=\$(cat /home/niteni/\$line-dat/chatid.txt)
+        curl "https://api.telegram.org/bot\$BOT_TELE/sendMessage?chat_id=\$CHAT_IDX&text='address \$userx off'"
         else
             echo "They don't match"
         fi
-        done < /home/niteni/$line-dat/address.txt
+        done < /home/niteni/\$line-dat/address.txt
 done < /home/niteni/user-notif.txt
 EOF
-
+cat <<EOF > /usr/bin/addnotX
+#!/bin/bash
+useZ=\$1
+iduse=\$2
+msuse=\$3
+useY=\$(cat /home/niteni/user-notif.txt |grep \$useZ)
+if [[ ! \$useZ == \$useY ]]; then
+mkdir -p /home/niteni/\$useZ-dat
+echo \$useZ >> /home/niteni/user-notif.txt
+echo \$iduse > /home/niteni/\$useZ-dat/chatid.txt
+echo \$msuse >> /home/niteni/\$useZ-dat/address.txt
+else
+echo \$iduse > /home/niteni/\$useZ-dat/chatid.txt
+echo \$msuse >> /home/niteni/\$useZ-dat/address.txt
+fi
+EOF
+chmod a+x /usr/bin/addnotX
+chmod +x /home/niteni/niteni.sh
 cat <<EOF > /usr/lib/systemd/system/notifx.service
 [Unit]
 Description=execute service!
@@ -244,12 +263,14 @@ cat <<EOF > /usr/lib/systemd/system/notifx.timer
 Description=notif node off
 [Timer]
 OnCalendar=*:0/10
-Unit=notif-node.service
+Unit=notifx.service
 [Install]
 WantedBy=multi-user.target
 EOF
 systemctl enable notifx.timer
 systemctl start notifx.timer
+pm2 startup
+pm2 save
 exit 0
 else
     echo "datadir sudah ada , script not executed"

@@ -54,7 +54,7 @@ cat <<EOF > /home/$idenahome/$portRpc.json
 
 EOF
 if [ -f /lib/systemd/system/idena-$idenahome@.service ]; then
-
+sleep 1
 else
 cat <<EOF > /lib/systemd/system/idena-$idenahome@.service
 [Unit]

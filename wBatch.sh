@@ -16,20 +16,21 @@ title run node remote
 IF NOT EXIST %userprofile%\AppData\Local\Programs\idena-desktop\Idena.exe (
 curl -L "https://github.com/idena-network/idena-desktop/releases/download/v$idenaURL/idena-client-win-$idenaURL.exe" --output idena.exe
 START /WAIT idena.exe
-echo '{ "url": "http://localhost:$rpcP", "internalPort": 9119, "tcpPort": 50505, "ipfsPort": 50506, "uiVersion": "$idenaURL", "useExternalNode": true, "runInternalNode": false, "internalApiKey": "xtwwi6o73pdfmq71pe5stgm7recbahr9", "externalApiKey": "$user", "lng": "en", "initialized": true, "zoomLevel": -2 }' > %appdata%\Idena\settings.json
+echo { "url": "http://localhost:$rpcP", "internalPort": 9119, "tcpPort": 50505, "ipfsPort": 50506, "uiVersion": "$idenaURL", "useExternalNode": true, "runInternalNode": false, "internalApiKey": "xtwwi6o73pdfmq71pe5stgm7recbahr9", "externalApiKey": "$user", "lng": "en", "initialized": true, "zoomLevel": -2 } > %appdata%\Idena\settings.json
 IF NOT EXIST %appdata%\Idena\plink.exe (
 curl -L "https://the.earth.li/~sgtatham/putty/latest/w64/plink.exe" --output %appdata%\Idena\plink.exe
-%appdata\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N -batch
+echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N
 ) ELSE (
-%appdata\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N -batch
+echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N
 )
 ) ELSE (
+echo { "url": "http://localhost:$rpcP", "internalPort": 9119, "tcpPort": 50505, "ipfsPort": 50506, "uiVersion": "$idenaURL", "useExternalNode": true, "runInternalNode": false, "internalApiKey": "xtwwi6o73pdfmq71pe5stgm7recbahr9", "externalApiKey": "$user", "lng": "en", "initialized": true, "zoomLevel": -2 } > %appdata%\Idena\settings.json
 Echo. | start %userprofile%\AppData\Local\Programs\idena-desktop\Idena.exe
 IF NOT EXIST %appdata%\Idena\plink.exe (
 curl -L "https://the.earth.li/~sgtatham/putty/latest/w64/plink.exe" --output %appdata%\Idena\plink.exe
-%appdata\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N -batch
+echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N
 ) ELSE (
-%appdata\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N -batch
+echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N
 )
 )
 echo Done.
@@ -43,21 +44,21 @@ title run node remote
 IF NOT EXIST %userprofile%\AppData\Local\Programs\idena-desktop\Idena.exe (
 curl -L "https://github.com/idena-network/idena-desktop/releases/download/v$idenaURL/idena-client-win-$idenaURL.exe" --output idena.exe
 START /WAIT idena.exe
-echo '{ "url": "http://localhost:$rpcP", "internalPort": 9119, "tcpPort": 50505, "ipfsPort": 50506, "uiVersion": "$idenaURL", "useExternalNode": true, "runInternalNode": false, "internalApiKey": "xtwwi6o73pdfmq71pe5stgm7recbahr9", "externalApiKey": "$user", "lng": "en", "initialized": true, "zoomLevel": -2 }' > %appdata%\Idena\settings.json
+echo { "url": "http://localhost:$rpcP", "internalPort": 9119, "tcpPort": 50505, "ipfsPort": 50506, "uiVersion": "$idenaURL", "useExternalNode": true, "runInternalNode": false, "internalApiKey": "xtwwi6o73pdfmq71pe5stgm7recbahr9", "externalApiKey": "$user", "lng": "en", "initialized": true, "zoomLevel": -2 } > %appdata%\Idena\settings.json
 IF NOT EXIST %appdata%\Idena\plink.exe (
 curl -L "https://the.earth.li/~sgtatham/putty/latest/w64/plink.exe" --output %appdata%\Idena\plink.exe
-%appdata\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N -batch
+echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N
 ) ELSE (
-%appdata\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N -batch
+echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N
 )
 ) ELSE (
-echo '{ "url": "http://localhost:$rpcP", "internalPort": 9119, "tcpPort": 50505, "ipfsPort": 50506, "uiVersion": "$idenaURL", "useExternalNode": true, "runInternalNode": false, "internalApiKey": "xtwwi6o73pdfmq71pe5stgm7recbahr9", "externalApiKey": "$user", "lng": "en", "initialized": true, "zoomLevel": -2 }' > %appdata%\Idena\settings.json
+echo { "url": "http://localhost:$rpcP", "internalPort": 9119, "tcpPort": 50505, "ipfsPort": 50506, "uiVersion": "$idenaURL", "useExternalNode": true, "runInternalNode": false, "internalApiKey": "xtwwi6o73pdfmq71pe5stgm7recbahr9", "externalApiKey": "$user", "lng": "en", "initialized": true, "zoomLevel": -2 } > %appdata%\Idena\settings.json
 Echo. | start %userprofile%\AppData\Local\Programs\idena-desktop\Idena.exe
 IF NOT EXIST %appdata%\Idena\plink.exe (
 curl -L "https://the.earth.li/~sgtatham/putty/latest/w64/plink.exe" --output %appdata%\Idena\plink.exe
-%appdata\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N -batch
+echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N
 ) ELSE (
-%appdata\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N -batch
+echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N
 )
 )
 echo Done.
