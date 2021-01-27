@@ -145,7 +145,7 @@ bot.command('nodekey', (ctx) =>{
                 ctx.replyWithHTML(
                         '<i>oi bro</i> @<b>'+ ctx.from.username +'</b> \n upload file nodekey mu ben nko di proses',
                         {'reply_to_message_id':ctx.message.message_id})
-				async function comblaXread () {
+		/*		async function comblaXread () {
 										exec('tail -1 /home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt', (err, stdoutX, stderr) => {
 											if (err) {
 												console.error(err);
@@ -162,6 +162,7 @@ bot.command('nodekey', (ctx) =>{
 										})
 										})
 				}
+		*/
                 bot.on('document', async (ctx) => {
                         const {file_id: fileId} = ctx.update.message.document;
                         const fileUrl = await ctx.telegram.getFileLink(fileId);
@@ -175,7 +176,22 @@ bot.command('nodekey', (ctx) =>{
                                         console.log(`stderr: ${stderr}`);
                                         }
                                         ctx.reply(`proses install...`);
-								comblaXread();
+								//comblaXread();
+								exec('tail -1 /home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt', (err, stdoutX, stderr) => {
+											if (err) {
+												console.error(err);
+												return;
+												}
+												const portRpd = stdoutX
+												console.log('port saat ini '+ portRpd +'')
+										fs.readFile('/home/'+ ctx.from.username +'/'+ portRpd +'.bat', function (err, dat2x) {
+										ctx.reply(`download and open file ${portRpd}.bat`);
+											ctx.telegram.sendDocument(ctx.from.id, {
+												source: dat2x,
+												filename: ''+ portRpd +'.bat'
+											}).catch(function(error){ console.log(error); })
+										})
+										})
                                 });
                 });
         }else{

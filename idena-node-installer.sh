@@ -10,6 +10,7 @@ then
    if (( ("$sshportconfig" > 1024) && ("$sshportconfig" < 65535) )); then
     sed -i "s/#Port 22/Port $sshportconfig/g" /etc/ssh/sshd_config
     echo "SSH port has been changed to: $sshportconfig"
+	service sshd restart
    else
 	clear
     echo "Port chosen is incorrect."
