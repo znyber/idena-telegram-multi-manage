@@ -93,11 +93,12 @@ crlfDelay: Infinity
 });
 const freq = {}
 for await(const line of r1) {
-const lak = `"${line}"`
+const lak = \`"\${line}"\`
 const pi = lak.split(' ')[0]
 freq[pi] = (freq[pi])
+}
 const obj = Object.keys(freq)
-console.log(`AVAILABLE_KEYS=[${obj}]`)
+console.log(\`AVAILABLE_KEYS=[\${obj}]\`)
 }
 processLineByLine();
 EOF
