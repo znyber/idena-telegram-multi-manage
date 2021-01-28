@@ -12,6 +12,10 @@ then
 	setenforce 0
     echo "SSH port has been changed to: $sshportconfig"
 	service sshd restart
+	firewall-cmd --add-port=$sshportconfig/tcp --permanent
+	firewall-cmd --reload
+	iptables -A INPUT -p tcp --dport $sshportconfig -j ACCEPT
+	iptables -A OUTPUT -p tcp --sport $sshportconfig -j ACCEPT
    else
 	clear
     echo "Port chosen is incorrect."
