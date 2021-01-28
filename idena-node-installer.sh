@@ -9,6 +9,7 @@ then
    read -p "What would you like to change the port to? (Chose between 1024-65535) " sshportconfig
    if (( ("$sshportconfig" > 1024) && ("$sshportconfig" < 65535) )); then
     sed -i "s/#Port 22/Port $sshportconfig/g" /etc/ssh/sshd_config
+	setenforce 0
     echo "SSH port has been changed to: $sshportconfig"
 	service sshd restart
    else
