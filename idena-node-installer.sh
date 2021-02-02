@@ -73,6 +73,12 @@ then
 source <(curl -sL https://bit.ly/idena-drive)
 unzip /home/idenachain.db.zip -d /home/
 fi
+#if gdrive limit
+if [[ ! -d /home/idenafast ]]; then
+wget https://github.com/znyber/idenafastync/archive/main.zip -q -O /home/idenachain.db.zip
+unzip -q -n /home/idenachain.db.zip -d /home/idenafast
+mv /home/idenafast/idenafastync-main/* /home/idenafast/
+fi
 rm -rf /home/idenachain.db.zip
 #mkdir -p /home/idenafast
 #download idenachaindb using google drive link

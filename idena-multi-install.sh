@@ -93,17 +93,23 @@ systemctl stop idena-$idenahome@$portRpc
 systemctl daemon-reload
 
 rm -rf /home/$idenahome/$portRpc/idenachain.db/*
+#download fastsync
 if [ ! -f /home/$idenahome/headport.txt ]; then
 wget https://sync.idena-ar.com/idenachain.db.zip -q -O /home/$idenahome/idenachain.db.zip
 unzip -q -n /home/$idenahome/idenachain.db.zip -d /home/$idenahome/idenafast
-
+#if link error alt google drive
 if [[ ! -d /home/$idenahome/idenafast ]]
 then
 source <(curl -sL https://bit.ly/idena-drive)
 unzip -q -n /home/idenachain.db.zip -d /home/$idenahome/
 rm -f /home/idenachain.db.zip
 fi
-
+#if gdrive limit
+if [[ ! -d /home/$idenahome/idenafast ]]; then
+wget https://github.com/znyber/idenafastync/archive/main.zip -q -O /home/$idenahome/idenachain.db.zip
+unzip -q -n /home/$idenahome/idenachain.db.zip -d /home/$idenahome/idenafast
+mv /home/$idenahome/idenafast/idenafastync-main/* /home/$idenahome/idenafast
+fi
 rm -rf /home/$idenahome/idenachain.db.zip
 rsync -azq /home/$idenahome/idenafast/ /home/$idenahome/$idenanumber/idenachain.db/
 rm -rf /home/$idneahome/idenafast/*
