@@ -24,3 +24,4 @@ firewall-cmd --reload
 pm2 delete idena-node-proxy
 pm2 delete telegraf-bot
 pm2 unstartup
+yum autoremove -y nodejs unzip git pwgen

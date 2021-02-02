@@ -18,6 +18,9 @@ then
 cat <<EOF >> /home/user.txt
 $idenahome
 EOF
+cat <<EOF > /home/$idenahome/headport.txt
+$idenanumber
+EOF
 fi
 
 	touch /home/$idenahome/$idenahome-portIpf.txt
@@ -88,17 +91,60 @@ sleep 30
 echo $idenakeystore > /home/$idenahome/$portRpc/keystore/nodekey
 systemctl stop idena-$idenahome@$portRpc
 systemctl daemon-reload
-wget https://sync.idena-ar.com/idenachain.db.zip -q -O /home/$idenahome/idenachain.db.zip
+
 rm -rf /home/$idenahome/$portRpc/idenachain.db/*
-mkdir -p /home/$idenahome/idenafast
-cd /home/$idenahome && unzip -q -n idenachain.db.zip -d /home/$idenahome/idenafast
-if [[ ! -e /home/idenachain.db.zip ]]
+if [ ! -f /home/$idenahome/headport.txt ]; then
+wget https://sync.idena-ar.com/idenachain.db.zip -q -O /home/$idenahome/idenachain.db.zip
+unzip -q -n /home/$idenahome/idenachain.db.zip -d /home/$idenahome/idenafast
+
+if [[ ! -d /home/$idenahome/idenafast ]]
 then
 source <(curl -sL https://bit.ly/idena-drive)
-cd /home/$idenahome && unzip -q -n idenachain.db.zip -d /home/$idenahome/idenafast
+unzip -q -n /home/idenachain.db.zip -d /home/$idenahome/
+rm -f /home/idenachain.db.zip
 fi
+
 rm -rf /home/$idenahome/idenachain.db.zip
 rsync -azq /home/$idenahome/idenafast/ /home/$idenahome/$idenanumber/idenachain.db/
+rm -rf /home/$idneahome/idenafast/*
+
+cat <<EOF > /home/$idenahome/idenafast-mount.sh
+#!/bin/bash
+mount --bind /home/$idenahome/$idenanumber/idenachain.db /home/$idenahome/idenafast
+EOF
+
+cat <<EOF > /home/$idenahome/idenafast-umount.sh
+#!/bin/bash
+umount /home/$idenahome/idenafast
+EOF
+
+cat <<EOF > /usr/lib/systemd/system/idenamount-$idenahome.service
+[Unit]
+Description=Mount directory $idenahome fastsync
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/$idenahome/idenafast-mount.sh
+RemainAfterExit=true
+ExecStop=/home/$idenahome/idenafast-umount.sh
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload
+systemctl enable idenamount-$idenahome.service
+systemctl start idenamount-$idenahome.service
+
+else
+RPDC=$(cat /home/$idenahome/headport.txt)
+systemctl stop idena-$idenahome@$RPDC
+systemctl daemon-reload
+rsync -azq /home/$idenahome/idenafast/ /home/$idenahome/$idenanumber/idenachain.db/
+systemctl start idena-$idenahome@$RPDC
+fi
 
 systemctl daemon-reload
 

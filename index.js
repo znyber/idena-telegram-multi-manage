@@ -159,6 +159,7 @@ bot.command('nodekey', (ctx) =>{
                                         console.log(`stderr: ${stderr}`);
                                         }
                                         ctx.reply(`proses install...`);
+										console.log(`stdout: ${stdout}`);
 										async function comblaXread () {
 										exec('RPAD=$(tail -1 /home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt) && echo -n $RPAD', (err, stdout, stderr) => {
 											if (err) {

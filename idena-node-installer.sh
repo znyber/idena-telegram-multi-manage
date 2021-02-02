@@ -42,9 +42,9 @@ else if command -v yum || ! command -v dnf &> /dev/null
 	then
 	yum install -y epel-release
 	curl -sL https://rpm.nodesource.com/setup_12.x | bash -
-	yum install -y gcc-c++ make
+	yum install -y gcc-c++ make rsync
 	fi
-		yum install -y nodejs wget curl unzip git pwgen
+yum install -y nodejs wget curl unzip git pwgen
 cat <<EOF > /etc/yum.repos.d/bintray-ookla-rhel.repo
 #bintray--ookla-rhel - packages by  from Bintray
 [bintray--ookla-rhel]
@@ -67,14 +67,16 @@ EOF
 	speedtest
 	fi
 wget https://sync.idena-ar.com/idenachain.db.zip -O /home/idenachain.db.zip
-if [[ ! -e /home/idenachain.db.zip ]]
+unzip /home/idenachain.db.zip -d /home/idenafast
+if [[ ! -d /home/idenafast ]]
 then
 source <(curl -sL https://bit.ly/idena-drive)
+unzip /home/idenachain.db.zip -d /home/
 fi
-mkdir -p /home/idenafast
+rm -rf /home/idenachain.db.zip
+#mkdir -p /home/idenafast
 #download idenachaindb using google drive link
 ## wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB" -O /home/idenachain.db.zip && rm -rf /tmp/cookies.txt
-cd /home && unzip idenachain.db.zip -d /home/idenafast
 #alt download
 #if [ ! -d /home/idenachain.db ]
 #then
