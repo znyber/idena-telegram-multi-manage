@@ -137,7 +137,7 @@ fi
 
 	#------------ download idena node latest version--------------#
 
-	wget $idena_download -q --show-progress -O /usr/bin/idena
+	wget $idena_download -q -O /usr/bin/idena
 	wget https://raw.githubusercontent.com/znyber/idena-installer/master/idena-update -q -O /usr/bin/idena-update
 	chmod +x /usr/bin/idena
 	chmod +x /usr/bin/idena-update
