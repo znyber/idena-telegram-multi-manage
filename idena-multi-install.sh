@@ -18,9 +18,6 @@ then
 cat <<EOF >> /home/user.txt
 $idenahome
 EOF
-cat <<EOF > /home/$idenahome/headport.txt
-$idenanumber
-EOF
 fi
 
 	touch /home/$idenahome/$idenahome-portIpf.txt
@@ -95,6 +92,9 @@ systemctl daemon-reload
 rm -rf /home/$idenahome/$portRpc/idenachain.db/*
 #download fastsync
 if [ ! -f /home/$idenahome/headport.txt ]; then
+cat <<EOF > /home/$idenahome/headport.txt
+$idenanumber
+EOF
 wget https://sync.idena-ar.com/idenachain.db.zip -q -O /home/$idenahome/idenachain.db.zip
 unzip -q -n /home/$idenahome/idenachain.db.zip -d /home/$idenahome/idenafast
 #if link error alt google drive
