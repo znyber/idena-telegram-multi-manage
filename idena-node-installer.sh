@@ -38,6 +38,10 @@ then
 	exit 1
 else if command -v yum || ! command -v dnf &> /dev/null
 	then 
+	if [[ -e /etc/centos-release ]]
+	then
+	yum install -y epel-release
+	fi
 		yum install -y npm wget curl unzip links git sshpass pwgen
 cat <<EOF > /etc/yum.repos.d/bintray-ookla-rhel.repo
 #bintray--ookla-rhel - packages by  from Bintray
@@ -134,7 +138,7 @@ fi
 	#------------ download idena node latest version--------------#
 
 	wget $idena_download -q --show-progress -O /usr/bin/idena
-	wget https://raw.githubusercontent.com/znyber/idena-installer/master/idena-update -q --show-progress -O /usr/bin/idena-update
+	wget https://raw.githubusercontent.com/znyber/idena-installer/master/idena-update -q -O /usr/bin/idena-update
 	chmod +x /usr/bin/idena
 	chmod +x /usr/bin/idena-update
 	
