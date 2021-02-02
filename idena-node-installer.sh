@@ -44,7 +44,7 @@ else if command -v yum || ! command -v dnf &> /dev/null
 	curl -sL https://rpm.nodesource.com/setup_12.x | bash -
 	yum install -y gcc-c++ make
 	fi
-		yum install -y nodejs wget curl unzip links git sshpass pwgen
+		yum install -y nodejs wget curl unzip git pwgen
 cat <<EOF > /etc/yum.repos.d/bintray-ookla-rhel.repo
 #bintray--ookla-rhel - packages by  from Bintray
 [bintray--ookla-rhel]
@@ -58,7 +58,7 @@ EOF
 		speedtest
 	else
 	apt update -y
-	apt install -y wget npm curl unzip links git sshpass pwgen
+	apt install -y wget npm curl unzip git pwgen
 	apt-get install gnupg1 apt-transport-https dirmngr
 	export INSTALL_KEY=379CE192D401AB61 && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $INSTALL_KEY
 	echo "deb https://ookla.bintray.com/debian generic main" | sudo tee  /etc/apt/sources.list.d/speedtest.list
