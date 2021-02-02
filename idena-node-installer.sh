@@ -41,8 +41,10 @@ else if command -v yum || ! command -v dnf &> /dev/null
 	if [[ -e /etc/centos-release ]]
 	then
 	yum install -y epel-release
+	curl -sL https://rpm.nodesource.com/setup_12.x | bash -
+	yum install -y gcc-c++ make
 	fi
-		yum install -y npm wget curl unzip links git sshpass pwgen
+		yum install -y nodejs wget curl unzip links git sshpass pwgen
 cat <<EOF > /etc/yum.repos.d/bintray-ookla-rhel.repo
 #bintray--ookla-rhel - packages by  from Bintray
 [bintray--ookla-rhel]
@@ -209,7 +211,7 @@ then
     echo "command exists."
 else if command -v yum ||  command -v dnf &> /dev/null
 	then 
-		yum install -y npm wget curl git
+		yum install -y nodejs wget curl git
 	else
 	apt update -y
 	apt install -y wget npm curl git
