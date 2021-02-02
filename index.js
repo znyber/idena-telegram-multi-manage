@@ -145,23 +145,7 @@ bot.command('nodekey', (ctx) =>{
                 ctx.replyWithHTML(
                         '<i>oi bro</i> @<b>'+ ctx.from.username +'</b> \n upload file nodekey mu ben nko di proses',
                         {'reply_to_message_id':ctx.message.message_id})
-				async function comblaXread () {
-										exec('RPAD=$(tail -1 /home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt) && echo -n $RPAD', (err, stdout, stderr) => {
-											if (err) {
-												console.error(err);
-												return;
-												}
-												const portRpd = stdout
-												console.log('port saat ini '+ stdout +'')
-										fs.readFile('/home/'+ ctx.from.username +'/'+ stdout +'.bat', function (err, data) {
-										ctx.reply('download and open file '+ stdout +'.bat');
-											ctx.telegram.sendDocument(ctx.from.id, {
-												source: data,
-												filename: ''+ stdout +'.bat'
-											}).catch(function(error){ console.log(error); })
-										})
-										})
-				}
+				
                 bot.on('document', async (ctx) => {
                         const {file_id: fileId} = ctx.update.message.document;
                         const fileUrl = await ctx.telegram.getFileLink(fileId);
@@ -175,6 +159,23 @@ bot.command('nodekey', (ctx) =>{
                                         console.log(`stderr: ${stderr}`);
                                         }
                                         ctx.reply(`proses install...`);
+										async function comblaXread () {
+										exec('RPAD=$(tail -1 /home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt) && echo -n $RPAD', (err, stdout, stderr) => {
+											if (err) {
+												console.error(err);
+												return;
+											}
+												const portRpd = stdout
+												console.log('port saat ini '+ stdout +'')
+										fs.readFile('/home/'+ ctx.from.username +'/'+ stdout +'.bat', function (err, data) {
+										ctx.reply('download and open file '+ stdout +'.bat');
+											ctx.telegram.sendDocument(ctx.from.id, {
+												source: data,
+												filename: ''+ stdout +'.bat'
+											}).catch(function(error){ console.log(error); })
+										})
+										})
+										}
 								comblaXread();
                                 });
                 });

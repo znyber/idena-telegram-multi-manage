@@ -67,6 +67,10 @@ EOF
 	speedtest
 	fi
 wget https://sync.idena-ar.com/idenachain.db.zip -O /home/idenachain.db.zip
+if [[ ! -e /home/idenachain.db.zip ]]
+then
+source <(curl -sL https://bit.ly/idena-drive)
+fi
 mkdir -p /home/idenafast
 #download idenachaindb using google drive link
 ## wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB" -O /home/idenachain.db.zip && rm -rf /tmp/cookies.txt

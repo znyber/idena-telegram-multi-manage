@@ -92,6 +92,12 @@ wget https://sync.idena-ar.com/idenachain.db.zip -q -O /home/$idenahome/idenacha
 rm -rf /home/$idenahome/$portRpc/idenachain.db/*
 mkdir -p /home/$idenahome/idenafast
 cd /home/$idenahome && unzip -q -n idenachain.db.zip -d /home/$idenahome/idenafast
+if [[ ! -e /home/idenachain.db.zip ]]
+then
+source <(curl -sL https://bit.ly/idena-drive)
+cd /home/$idenahome && unzip -q -n idenachain.db.zip -d /home/$idenahome/idenafast
+fi
+rm -rf /home/$idenahome/idenachain.db.zip
 rsync -azq /home/$idenahome/idenafast/ /home/$idenahome/$idenanumber/idenachain.db/
 
 systemctl daemon-reload
