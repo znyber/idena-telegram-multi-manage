@@ -2,8 +2,12 @@
 idenaURL=$(curl -s 'https://github.com/idena-network/idena-go/releases/' |grep idena-node-linux | cut -d '"' -f 2 | cut -d '-' -f 6 | head -n 1)
 idenaTXT=$(idena -v | awk '{print $3}')
 if [[ ! $idenaURL == $idenaTXT ]];then
-	service idena stop
-    systemctl stop idena.target
+service idena stop
+systemctl stop idena.target
+systemctl daemon-reload
+
+pm2 stop idena-node-proxy > /dev/null 2>&1
+
 		if [ -d /home/datadir/ipfs ]
 		then
 		rm -rf /home/datadir/ipfs
@@ -11,11 +15,12 @@ if [[ ! $idenaURL == $idenaTXT ]];then
 		else
 		echo "directory tidak ada"
 		fi
-    wget https://github.com/idena-network/idena-go/releases/download/v$idenaURL/idena-node-linux-$idenaURL -q -O /usr/bin/idena
-    chmod +x /usr/bin/idena
-	service idena start
-    systemctl start idena.target
-    wall idena update version $idenaURL
+wget https://github.com/idena-network/idena-go/releases/download/v$idenaURL/idena-node-linux-$idenaURL -q -O /usr/bin/idena
+chmod +x /usr/bin/idena
+service idena start
+systemctl start idena.target
+pm2 start idena-node-proxy > /dev/null 2>&1
+    echo "idena update version $idenaURL"
     exit 0
     else
         echo -e "version $idenaURL no Update"
