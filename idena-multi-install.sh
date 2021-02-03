@@ -118,11 +118,13 @@ cat <<EOF > /home/$idenahome/idenafast-mount.sh
 #!/bin/bash
 mount --bind /home/$idenahome/$idenanumber/idenachain.db /home/$idenahome/idenafast
 EOF
+chmod a+x /home/$idenahome/idenafast-mount.sh
 
 cat <<EOF > /home/$idenahome/idenafast-umount.sh
 #!/bin/bash
 umount /home/$idenahome/idenafast
 EOF
+chmod a+x /home/$idenahome/idenafast-umount.sh
 
 cat <<EOF > /usr/lib/systemd/system/idenamount-$idenahome.service
 [Unit]
