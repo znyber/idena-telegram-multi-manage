@@ -6,7 +6,9 @@ chmod +x /usr/bin/cool-uptime
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/idena-node-installer.sh -q -O /usr/bin/idena-node-share
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/idena-uninstall.sh -q -O /usr/bin/idena-uninstall
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/wBatch.sh -q -O /usr/bin/wBatch
+wget https://raw.githubusercontent.com/znyber/idena-installer/master/ceklek-htm.sh -q -O /usr/bin/ceklek-htm
 chmod +x /usr/bin/wBatch
+chmod +x /usr/bin/ceklek-htm
 chmod +x /usr/bin/idena-uninstall
 chmod +x /usr/bin/idena-node-share
 idena-node-share

@@ -1038,4 +1038,49 @@ console.log(ctx.from.username);
 			ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 
 })
+bot.command('listallnode', (ctx) =>{
+        console.log(ctx.from.username);
+        if (ctx.chat.type == 'private') {
+			if(fs.existsSync('/home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt')) {
+                        ctx.reply('ok lagi di prosess sekitar 1-15 menitan ngasi syncron\n\n');
+						exec('ceklek-htm', (error, stdout, stderr) => {
+                            if (error) {
+                                console.log(`error: ${error.message}`);
+                            }
+                            if (stderr) {
+                                console.log(`stderr: ${stderr}`);
+                            }
+                            ctx.reply(`generate report...`);
+                            console.log(`${stdout}`);
+				console.log('user '+ ctx.from.username +'chatid'+ ctx.from.id +'pesan-'+ ctx.message.text +'')
+                        });
+			console.log("The file exists.");
+				if(fs.existsSync('/home/all.html')) {
+					fs.readFile('/home/all.html', function (err, data) {
+						ctx.reply(`download and open file all.html`);
+						ctx.telegram.sendDocument(ctx.from.id, {
+							source: data,
+							filename: 'all.html'
+						}).catch(function(error){ console.log(error); })
+					})
+					ctx.reply('download dan buka all.html')
+				}else{
+					ctx.reply('file tidak ada')
+				}
+			}else{
+			console.log('The file does not exist.');
+            ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
+			{'reply_to_message_id':ctx.message.message_id})}
+        }else{
+                ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
+                {'reply_to_message_id':ctx.message.message_id})}
+		ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
+})
+bot.command('listallnode'+ bot_name, (ctx) =>{
+        console.log(ctx.from.username);
+        ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
+        {'reply_to_message_id':ctx.message.message_id})
+		ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
+
+})
 bot.startPolling()
