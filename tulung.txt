@@ -18,3 +18,4 @@ speedtest - tes speed koneksi servser vps
 listic - cek node yang mempunyai ic msh dev
 addnotif - add notif node down msh beta
 toturialweb - toturial import private key dan penggunaan api key untuk web validasi
+listallnode - list semua node yang di pasang di server
