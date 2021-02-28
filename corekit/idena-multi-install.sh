@@ -55,6 +55,9 @@ cat <<EOF > /home/$idenahome/$portRpc.json
     "IpfsPort": $portIpf,
 	"BlockPinThreshold": 1,
     "FlipPinThreshold": 1
+  },
+  "Sync": {
+    "FastSync": true
   }
 }
 
