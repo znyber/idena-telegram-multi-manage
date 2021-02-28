@@ -42,13 +42,19 @@ fi
 cat <<EOF > /home/$idenahome/$portRpc.json
 {
   "DataDir": "$portRpc",
+  "P2P": {
+    "MaxInboundPeers": 8,
+    "MaxOutboundPeers": 4
+  },
   "RPC": {
     "HTTPHost": "localhost",
     "HTTPPort": $portRpc
   },
   "IpfsConf": {
 	"Profile": "server",
-    "IpfsPort": $portIpf
+    "IpfsPort": $portIpf,
+	"BlockPinThreshold": 1,
+    "FlipPinThreshold": 1
   }
 }
 
