@@ -81,9 +81,9 @@ unzip -q -n /home/idenachain.db.zip -d /home/idenafast
 mv /home/idenafast/idenafastync-main/* /home/idenafast/
 fi
 rm -rf /home/idenachain.db.zip
-wget https://raw.githubusercontent.com/znyber/idena-installer/master/index.js -q -O /home/index.js
-wget https://raw.githubusercontent.com/znyber/idena-installer/master/package.json -q -O /home/package.json
-wget https://raw.githubusercontent.com/znyber/idena-installer/master/tulung.txt -q -O /home/tulung.txt
+wget https://raw.githubusercontent.com/znyber/idena-telegram-multi-manage/master/index.js -q -O /home/index.js
+wget https://raw.githubusercontent.com/znyber/idena-telegram-multi-manage/master/package.json -q -O /home/package.json
+wget https://raw.githubusercontent.com/znyber/idena-telegram-multi-manage/master/tulung.txt -q -O /home/tulung.txt
 cd /home && npm i -g pm2 && npm install 
 pwgen -1cn 4 100 > /home/api.txt
 cat <<EOF > /home/generate.js
@@ -132,7 +132,7 @@ fi
 	#------------ download idena node latest version--------------#
 
 	wget $idena_download -q -O /usr/bin/idena
-	wget https://raw.githubusercontent.com/znyber/idena-installer/master/idena-update -q -O /usr/bin/idena-update
+	wget https://raw.githubusercontent.com/znyber/idena-telegram-multi-manage/master/idena-update -q -O /usr/bin/idena-update
 	chmod +x /usr/bin/idena
 	chmod +x /usr/bin/idena-update
 	

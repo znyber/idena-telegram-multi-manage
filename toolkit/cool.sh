@@ -1,5 +1,6 @@
 #!/bin/sh
 echo ">>>>>Resource<<<<<<"
+cat /proc/cpuinfo |grep "model name\|cpu MHz" |head -2 && hostnamectl |grep "Operating System\| Kernel"
 free -m | awk 'NR==2{printf "Memory Usage: %s/%sMB (%.2f%%)\n", $3,$2,$3*100/$2 }'
 df -h | awk '$NF=="/"{printf "Disk Usage: %d/%dGB (%s)\n", $3,$2,$5}'
 top -bn1 | grep load | awk '{printf "CPU Load Average: %.2f\n", $(NF-2)}'
