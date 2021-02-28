@@ -30,6 +30,7 @@ fi
 read -p "insert BOT api token : " bot_telex
 read -p "insert BOT name (with @): " bot_namex
 read -p "insert apikey for nodeshare : " apishare
+echo "DefaultLimitNOFILE=65535" >> /etc/systemd/system.conf
 if [ ! -d /home/datadir ]
 then
 if command -v git && command -v links && command -v npm && command -v node && [ -f /home/index.js ] &> /dev/null
@@ -54,9 +55,9 @@ gpgcheck=0
 repo_gpgcheck=0
 enabled=1
 EOF
-		yum install -y speedtest
-		speedtest
-	else
+yum install -y speedtest
+speedtest
+else
 	apt update -y
 	apt install -y wget npm curl unzip git pwgen
 	apt-get install gnupg1 apt-transport-https dirmngr
@@ -65,7 +66,7 @@ EOF
 	apt-get update
 	apt-get install speedtest
 	speedtest
-	fi
+fi
 wget https://sync.idena-ar.com/idenachain.db.zip -O /home/idenachain.db.zip
 unzip /home/idenachain.db.zip -d /home/idenafast
 if [[ ! -d /home/idenafast ]]
