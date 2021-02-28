@@ -80,27 +80,6 @@ unzip -q -n /home/idenachain.db.zip -d /home/idenafast
 mv /home/idenafast/idenafastync-main/* /home/idenafast/
 fi
 rm -rf /home/idenachain.db.zip
-#mkdir -p /home/idenafast
-#download idenachaindb using google drive link
-## wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB" -O /home/idenachain.db.zip && rm -rf /tmp/cookies.txt
-#alt download
-#if [ ! -d /home/idenachain.db ]
-#then
-#cd /home && pwd && links https://drive.google.com/file/d/1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB/view?usp=sharing && unzip idenachain.db
-#if [ ! -d /home/idenachain.db ]
-#then
-#cd /home && pwd && links https://www.mediafire.com/file/ajrxzbulicfqi3v/idenachain.db.zip/file && unzip idenachain.db
-#fi
-#if [ ! -d /home/idenachain.db ]
-#then
-#echo "idenachain.db tidak bisa di download mohon masukan secara manual"
-#echo "ini link download untuk idenachain.db "
-#echo "https://drive.google.com/file/d/1PBHh2B0ZHabqqamXcKXpzmSg7k_t-5hB/view?usp=sharing"
-#echo "https://www.mediafire.com/file/ajrxzbulicfqi3v/idenachain.db.zip/file"
-#else
-#exit 1
-#fi
-#fi
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/index.js -q -O /home/index.js
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/package.json -q -O /home/package.json
 wget https://raw.githubusercontent.com/znyber/idena-installer/master/tulung.txt -q -O /home/tulung.txt

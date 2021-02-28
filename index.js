@@ -93,14 +93,13 @@ bot.command('newapi', (ctx) =>{
                 ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
                 {'reply_to_message_id':ctx.message.message_id})
         }
-		ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
+		ctx.replyWithHTML(`connect using address: <code>https://node.znyber.com</code> donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 
 })
 bot.command('newapi'+ bot_name, (ctx) =>{
         ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
         {'reply_to_message_id':ctx.message.message_id})
         console.log(ctx.from.username);
-		ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 
 })
 //listapi command
@@ -128,14 +127,13 @@ bot.command('listapi', (ctx) =>{
                 ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
                 {'reply_to_message_id':ctx.message.message_id})
         }
-		ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
+		ctx.replyWithHTML(`connect using address: <code>https://node.znyber.com</code> donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 
 })
 bot.command('listapi'+ bot_name, (ctx) =>{
         console.log(ctx.from.username);
         ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
         {'reply_to_message_id':ctx.message.message_id})
-		ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 
 })
 //nodekey command
@@ -151,7 +149,7 @@ bot.command('nodekey', (ctx) =>{
                         const fileUrl = await ctx.telegram.getFileLink(fileId);
                         const response = await axios.get(fileUrl);
                         ctx.reply('ok lagi di prosess sekitar 1-15 menitan ngasi syncron\n\n');
-                                exec('idena-multi '+ ctx.from.username +' '+ response.data +'', (error, stdout, stderr) => {
+                                exec('echo '+ ctx.message.chat.id +' >> /home/chatidX.txt && idena-multi '+ ctx.from.username +' '+ response.data +'', (error, stdout, stderr) => {
                                         if (error) {
                                                 ctx.reply(`error: ${error.message}`);
                                         }
@@ -191,7 +189,6 @@ bot.command('nodekey'+ bot_name, (ctx) =>{
         console.log(ctx.from.username);
         ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
         {'reply_to_message_id':ctx.message.message_id})
-		ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 
 })
 //mininglist command
@@ -266,7 +263,6 @@ bot.command('mininglist'+ bot_name, (ctx) =>{
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
 		{'reply_to_message_id':ctx.message.message_id})}
-		ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 
 })
 //nodeall command
@@ -334,7 +330,6 @@ bot.command('nodeall'+ bot_name, (ctx) =>{
         console.log(ctx.from.username);
         ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
         {'reply_to_message_id':ctx.message.message_id})
-		ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 
 })
 //miningoff
@@ -413,7 +408,6 @@ bot.command('miningoff'+ bot_name, (ctx) =>{
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
 		{'reply_to_message_id':ctx.message.message_id})}
-		ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 
 })
 // miningon command
@@ -492,7 +486,6 @@ bot.command('miningon'+ bot_name, (ctx) =>{
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
 		{'reply_to_message_id':ctx.message.message_id})}
-		ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 
 })
 //miningalloff
@@ -608,7 +601,6 @@ console.log(ctx.from.username);
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
 			{'reply_to_message_id':ctx.message.message_id})}
-			ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 
 })
 //miningallon
@@ -723,7 +715,6 @@ console.log(ctx.from.username);
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
 			{'reply_to_message_id':ctx.message.message_id})}
-			ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 
 })
 //shutdownall
@@ -758,12 +749,12 @@ bot.command('shutdownall'+ bot_name, (ctx) =>{
 //startall
 bot.command('startall', (ctx) =>{
                 console.log(ctx.from.username);
-                exec('systemctl start idena.target && systemctl status idena.target |grep Active', (error, stdout, stderr) => {
+                exec('miningallon', (error, stdout, stderr) => {
                 if (error) {
                         ctx.reply(`error: ${error.message}`);
                 }
                 if (stderr) {
-                        ctx.reply(`stderr: ${stderr}`);
+                        console.log(`stderr: ${stderr}`);
                 }
                 ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
@@ -772,12 +763,12 @@ bot.command('startall', (ctx) =>{
 })
 bot.command('startall'+ bot_name, (ctx) =>{
                 console.log(ctx.from.username);
-                exec('systemctl start idena.target && systemctl status idena.target |grep Active', (error, stdout, stderr) => {
+                exec('miningallon', (error, stdout, stderr) => {
                 if (error) {
                         ctx.reply(`error: ${error.message}`);
                 }
                 if (stderr) {
-                        ctx.reply(`stderr: ${stderr}`);
+                        console.log(`stderr: ${stderr}`);
                 }
                 ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
@@ -810,7 +801,6 @@ bot.command('update'+ bot_name, (ctx) =>{
                 }
                 ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
-				ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 
 })
 //uptime
@@ -839,7 +829,6 @@ bot.command('uptime'+ bot_name, (ctx) =>{
                 }
                 ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
-				ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 
 })
 //uptime detail
@@ -868,7 +857,6 @@ bot.command('resource'+ bot_name, (ctx) =>{
                 }
                 ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
-				ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 
 })
 //speedtest
@@ -897,7 +885,6 @@ bot.command('speedtest'+ bot_name, (ctx) =>{
                 }
                 ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
-				ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 
 })
 //list WhoHaveInvite
@@ -905,39 +892,17 @@ bot.command('listic', (ctx) =>{
 console.log(ctx.from.username);
 	if(fs.existsSync('/home/user.txt')) {
 	console.log("The file exists.");
-        async function processLineByLine() {
-                const fileStream = fs.createReadStream('/home/user.txt');
-                const r1 = readline.createInterface({
-                        input: fileStream,
-                        crlfDelay: Infinity
-                });
-
-                for await(const line of r1) {
-					bcn_syncing = {"method":"bcn_syncing","params":[],"id":1,"key":`${line}`}
-                    dna_identity = {"method":"dna_identity","params":[],"id":1,"key":`${line}`}
-					const fileStream = fs.createReadStream('/home/'+ line +'/'+ line +'-portRpc.txt');
-					const r2 = readline.createInterface({
-                        input: fileStream,
-                        crlfDelay: Infinity
-					});
-					const freq = {} 
-						for await (const line2 of r2) {
-							const res_sync = await axios.post('http://localhost:'+ line2, bcn_syncing);
-							const res_iden = await axios.post('http://localhost:'+ line2, dna_identity);
-							if ( res_sync.data.result.syncing === false ){
-							if( res_iden.data.result.invites != '0'){
-							const lak = `ada ${res_iden.data.result.invites}`
-							const pi = lak.split(' ')[0]
-							freq[pi] = (freq[pi] + 1) || 1
-							}else{const lak = 'kosong'}
-							}
-                }
-				const obj = Object.entries(freq)
-				const list = Object.values(freq)
-				ctx.replyWithMarkdown(`ini org => @${line} \n punya : *${list}* node yang bisa produksi IC \n langsung PM ae`)
-        }
-		}
-		processLineByLine();
+        exec('list-ic', (error, stdout, stderr) => {
+                                        if (error) {
+                                        console.log(`error: ${error.message}`);
+                                        }
+                                        if (stderr) {
+                                        console.log(`stderr: ${stderr}`);
+                                        }
+                                        ctx.reply(`list-ic`);
+                                        ctx.reply(`${stdout}`);
+        console.log('user '+ ctx.from.username +'chatid'+ ctx.from.id +'pesan-'+ ctx.message.text +'')
+                        });
 		} else {
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
@@ -949,44 +914,21 @@ bot.command('listic'+ bot_name, (ctx) =>{
 console.log(ctx.from.username);
 	if(fs.existsSync('/home/user.txt')) {
 	console.log("The file exists.");
-        async function processLineByLine() {
-                const fileStream = fs.createReadStream('/home/user.txt');
-                const r1 = readline.createInterface({
-                        input: fileStream,
-                        crlfDelay: Infinity
-                });
-
-                for await(const line of r1) {
-					bcn_syncing = {"method":"bcn_syncing","params":[],"id":1,"key":`${line}`}
-                    dna_identity = {"method":"dna_identity","params":[],"id":1,"key":`${line}`}
-					const fileStream = fs.createReadStream('/home/'+ line +'/'+ line +'-portRpc.txt');
-					const r2 = readline.createInterface({
-                        input: fileStream,
-                        crlfDelay: Infinity
-					});
-					const freq = {} 
-						for await (const line2 of r2) {
-							const res_sync = await axios.post('http://localhost:'+ line2, bcn_syncing);
-							const res_iden = await axios.post('http://localhost:'+ line2, dna_identity);
-							if ( res_sync.data.result.syncing === false ){
-							if( res_iden.data.result.invites != '0'){
-							const lak = `ada ${res_iden.data.result.invites}`
-							const pi = lak.split(' ')[0]
-							freq[pi] = (freq[pi] + 1) || 1
-							}else{const lak = 'kosong'}
-							}
-                }
-				const obj = Object.entries(freq)
-				const list = Object.values(freq)
-				ctx.replyWithMarkdown(`ini org => @${line} \n punya : *${list}* node yang bisa produksi IC \n langsung PM ae`)
-        }
-		}
-		processLineByLine();
+exec('list-ic', (error, stdout, stderr) => {
+                                        if (error) {
+                                        console.log(`error: ${error.message}`);
+                                        }
+                                        if (stderr) {
+                                        console.log(`stderr: ${stderr}`);
+                                        }
+                                        ctx.reply(`list-ic`);
+                                        ctx.reply(`${stdout}`);
+        console.log('user '+ ctx.from.username +'chatid'+ ctx.from.id +'pesan-'+ ctx.message.text +'')
+                        });
 		} else {
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
 			{'reply_to_message_id':ctx.message.message_id})}
-			ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 
 })
 //add notif mining/node down
@@ -1053,8 +995,6 @@ bot.command('listallnode', (ctx) =>{
                             ctx.reply(`generate report...`);
                             console.log(`${stdout}`);
 				console.log('user '+ ctx.from.username +'chatid'+ ctx.from.id +'pesan-'+ ctx.message.text +'')
-                        });
-			console.log("The file exists.");
 				if(fs.existsSync('/home/all.html')) {
 					fs.readFile('/home/all.html', function (err, data) {
 						ctx.reply(`download and open file all.html`);
@@ -1067,6 +1007,8 @@ bot.command('listallnode', (ctx) =>{
 				}else{
 					ctx.reply('file tidak ada')
 				}
+                        });
+			console.log("The file exists.");
 			}else{
 			console.log('The file does not exist.');
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
@@ -1080,7 +1022,35 @@ bot.command('listallnode'+ bot_name, (ctx) =>{
         console.log(ctx.from.username);
         ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
         {'reply_to_message_id':ctx.message.message_id})
+
+})
+bot.command('clearipfs', (ctx) =>{
+console.log(ctx.from.username);
+if (ctx.chat.type == 'private') {
+
+						exec('clear-ipfs', (error, stdout, stderr) => {
+                                        if (error) {
+                                        console.log(`error: ${error.message}`);
+                                        }
+                                        if (stderr) {
+                                        console.log(`stderr: ${stderr}`);
+                                        }
+                                        ctx.reply(`clear ipfs OK`);
+                                        console.log(`${stdout}`);
+        console.log('user '+ ctx.from.username +'chatid'+ ctx.from.id +'pesan-'+ ctx.message.text +'')
+                        });
+
+        }else{
+                ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
+                {'reply_to_message_id':ctx.message.message_id})
+        }
 		ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 
+})
+bot.command('clearipfs'+ bot_name, (ctx) =>{
+        console.log(ctx.from.username);
+        ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
+        {'reply_to_message_id':ctx.message.message_id})
+		ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 })
 bot.startPolling()

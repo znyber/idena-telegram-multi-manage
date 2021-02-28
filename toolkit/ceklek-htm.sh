@@ -74,7 +74,7 @@ cat <<EOF >> /home/all.html
                                 <td><a href="https://scan.idena.io/identity/$addrss" target="_blank">$add1...$add2</a></td>
                 <td>$states</td>
                 <td class="ijo"><h5>$line2</h5></td>
-                <td>ON</td>
+                <td>$online</td>
                 <td><button onclick="showHideRow('hidden_row$line2');">show more</button></td>
                                 </tr>
                                 <tr id="table_detail" >
