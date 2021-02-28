@@ -19,6 +19,10 @@ rm -rf /etc/systemd/system/
 rm -rf /etc/systemd/system/idena.target*
 rm -rf /usr/bin/idena*
 rm -rf /usr/bin/wBatch
+rm -rf /usr/bin/clear-ipfs
+rm -rf /usr/bin/ceklek-htm
+rm -rf /usr/bin/list-ic
+rm -rf /usr/bin/miningallon
 firewall-cmd --remove-port=40405/tcp --permanent
 firewall-cmd --reload
 pm2 delete idena-node-proxy
