@@ -900,7 +900,7 @@ console.log(ctx.from.username);
                                         console.log(`stderr: ${stderr}`);
                                         }
                                         ctx.reply(`list-ic`);
-                                        ctx.reply(`${stdout}`);
+                                        ctx.replyWithHTML(`${stdout}`);
         console.log('user '+ ctx.from.username +'chatid'+ ctx.from.id +'pesan-'+ ctx.message.text +'')
                         });
 		} else {
@@ -922,7 +922,7 @@ exec('list-ic', (error, stdout, stderr) => {
                                         console.log(`stderr: ${stderr}`);
                                         }
                                         ctx.reply(`list-ic`);
-                                        ctx.reply(`${stdout}`);
+                                        ctx.replyWithHTML(`${stdout}`);
         console.log('user '+ ctx.from.username +'chatid'+ ctx.from.id +'pesan-'+ ctx.message.text +'')
                         });
 		} else {
