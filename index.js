@@ -6,6 +6,7 @@ const { exec } = require('child_process');
 const fs = require('fs');
 const readline = require('readline');
 const bot_name = process.env.BOT_NAME
+const node_domain = process.env.NODE_NAME
 
 //start command
 bot.start((ctx) =>{
@@ -88,12 +89,13 @@ bot.command('newapi', (ctx) =>{
                 }
                 ctx.reply(`api mu`,{'reply_to_message_id':ctx.message.message_id});
                 ctx.reply(`${stdout}`);
+				ctx.replyWithHTML(`connect using address: <code>https://${node_domain}</code> donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
                 });
         }else{
                 ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
                 {'reply_to_message_id':ctx.message.message_id})
         }
-		ctx.replyWithHTML(`connect using address: <code>https://node.znyber.com</code> donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
+		
 
 })
 bot.command('newapi'+ bot_name, (ctx) =>{
@@ -117,6 +119,7 @@ bot.command('listapi', (ctx) =>{
                 for await (const line of rl) {
                         console.log(ctx.reply(`${line}`));
                 }
+				ctx.replyWithHTML(`connect using address: <code>https://${node_domain}</code> donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
                 }
                 processLineByLine();
 			} else {
@@ -127,7 +130,7 @@ bot.command('listapi', (ctx) =>{
                 ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
                 {'reply_to_message_id':ctx.message.message_id})
         }
-		ctx.replyWithHTML(`connect using address: <code>https://node.znyber.com</code> donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
+		
 
 })
 bot.command('listapi'+ bot_name, (ctx) =>{
@@ -841,7 +844,7 @@ bot.command('resource', (ctx) =>{
                 if (stderr) {
                         ctx.reply(`stderr: ${stderr}`);
                 }
-                ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
+                ctx.replyWithHTML(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
 				ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 
@@ -855,7 +858,7 @@ bot.command('resource'+ bot_name, (ctx) =>{
                 if (stderr) {
                         ctx.reply(`stderr: ${stderr}`);
                 }
-                ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
+                ctx.replyWithHTML(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
 
 })

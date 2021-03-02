@@ -30,6 +30,7 @@ fi
 read -p "insert BOT api token : " bot_telex
 read -p "insert BOT name (with @): " bot_namex
 read -p "insert apikey for nodeshare : " apishare
+read -p "insert address for nodeshare : https://" nodeshare
 echo "DefaultLimitNOFILE=65535" >> /etc/systemd/system.conf
 if [ ! -d /home/datadir ]
 then
@@ -107,6 +108,7 @@ console.log(\`AVAILABLE_KEYS=[\${obj}]\`)
 processLineByLine();
 EOF
 cat <<EOF > /home/.env
+NODE_NAME="$nodeshare"
 BOT_TELE="$bot_telex"
 BOT_NAME="$bot_namex"
 EOF
