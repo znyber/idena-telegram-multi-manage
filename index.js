@@ -844,7 +844,7 @@ bot.command('resource', (ctx) =>{
                 if (stderr) {
                         ctx.reply(`stderr: ${stderr}`);
                 }
-                ctx.replyWithHTML(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
+                ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
 				ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 
@@ -858,7 +858,7 @@ bot.command('resource'+ bot_name, (ctx) =>{
                 if (stderr) {
                         ctx.reply(`stderr: ${stderr}`);
                 }
-                ctx.replyWithHTML(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
+                ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
 
 })
