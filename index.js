@@ -10,12 +10,15 @@ const node_domain = process.env.NODE_NAME
 
 //start command
 bot.start((ctx) =>{
+	console.log(ctx.message.text);
+	console.log(ctx.from.username);
         ctx.replyWithHTML('<i>oi bro</i> @<b>'+ ctx.from.username +'</b> \n bot kie nggo gawe node shared api \n nek ora ko bisa melu masang mining lewat bot kie, \n carane PM bae bot kie \n terus ketik bae /tulung \n nko di njlentrehna carane kepriwe \n nek ora mudeng PM sing due bae ',
         {'reply_to_message_id':ctx.message.message_id})
         console.log(ctx.from.username);
 		ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
 })
 bot.command('oi', (ctx) =>{
+	console.log(ctx.message.text);
         ctx.replyWithHTML('<i>oi bro</i> @<b>'+ ctx.from.username +'</b> \n bot kie nggo gawe node shared api \n nek ora ko bisa melu masang mining lewat bot kie, \n carane PM bae bot kie \n terus ketik bae /tulung \n nko di njlentrehna carane kepriwe \n nek ora mudeng PM sing due bae ',
         {'reply_to_message_id':ctx.message.message_id})
         console.log(ctx.from.username);
@@ -23,6 +26,7 @@ bot.command('oi', (ctx) =>{
 
 })
 bot.command('oi'+ bot_name, (ctx) =>{
+	console.log(ctx.message.text);
         ctx.replyWithHTML('<i>oi bro</i> @<b>'+ ctx.from.username +'</b> \n bot kie nggo gawe node shared api \n nek ora ko bisa melu masang mining lewat bot kie, \n carane PM bae bot kie \n terus ketik bae /tulung \n nko di njlentrehna carane kepriwe \n nek ora mudeng PM sing due bae ',
         {'reply_to_message_id':ctx.message.message_id})
         console.log(ctx.from.username);
@@ -31,6 +35,7 @@ bot.command('oi'+ bot_name, (ctx) =>{
 })
 //help command
 bot.command('tulung'+ bot_name, (ctx) =>{
+	console.log(ctx.message.text);
 	async function processLineByLine() {
         const fileStream = fs.createReadStream('/home/tulung.txt');
             const r1 = readline.createInterface({
@@ -54,6 +59,7 @@ bot.command('tulung'+ bot_name, (ctx) =>{
 
 })
 bot.command('tulung', (ctx) =>{
+	console.log(ctx.message.text);
 	async function processLineByLine() {
         const fileStream = fs.createReadStream('/home/tulung.txt');
             const r1 = readline.createInterface({
@@ -79,6 +85,7 @@ bot.command('tulung', (ctx) =>{
 //newapi command
 bot.command('newapi', (ctx) =>{
         console.log(ctx.from.username);
+		console.log(ctx.message.text);
         if (ctx.chat.type == 'private') {
                 exec('sed -n "1{p;q}" /home/api.txt >> /home/'+ ctx.from.username +'-api.txt && tail -1 /home/'+ ctx.from.username +'-api.txt && sed -i "1d" /home/api.txt', (error, stdout, stderr) => {
                 if (error) {
@@ -99,6 +106,7 @@ bot.command('newapi', (ctx) =>{
 
 })
 bot.command('newapi'+ bot_name, (ctx) =>{
+	console.log(ctx.message.text);
         ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
         {'reply_to_message_id':ctx.message.message_id})
         console.log(ctx.from.username);
@@ -107,6 +115,7 @@ bot.command('newapi'+ bot_name, (ctx) =>{
 //listapi command
 bot.command('listapi', (ctx) =>{
         console.log(ctx.from.username);
+		console.log(ctx.message.text);
         if (ctx.chat.type == 'private') {
 			if(fs.existsSync('/home/'+ ctx.from.username +'-api.txt')) {
 				console.log("The file exists.");
@@ -135,6 +144,7 @@ bot.command('listapi', (ctx) =>{
 })
 bot.command('listapi'+ bot_name, (ctx) =>{
         console.log(ctx.from.username);
+		console.log(ctx.message.text);
         ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
         {'reply_to_message_id':ctx.message.message_id})
 
@@ -142,6 +152,7 @@ bot.command('listapi'+ bot_name, (ctx) =>{
 //nodekey command
 bot.command('nodekey', (ctx) =>{
         console.log(ctx.from.username);
+		console.log(ctx.message.text);
         if (ctx.chat.type == 'private') {
                 ctx.replyWithHTML(
                         '<i>oi bro</i> @<b>'+ ctx.from.username +'</b> \n upload file nodekey mu ben nko di proses',
@@ -190,6 +201,7 @@ bot.command('nodekey', (ctx) =>{
 })
 bot.command('nodekey'+ bot_name, (ctx) =>{
         console.log(ctx.from.username);
+		console.log(ctx.message.text);
         ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
         {'reply_to_message_id':ctx.message.message_id})
 
@@ -197,6 +209,7 @@ bot.command('nodekey'+ bot_name, (ctx) =>{
 //mininglist command
 bot.command('mininglist', (ctx) =>{
         console.log(ctx.from.username);
+		console.log(ctx.message.text);
 		if(fs.existsSync('/home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt')) {
 		console.log("The file exists.");
         async function processLineByLine() {
@@ -234,6 +247,7 @@ bot.command('mininglist', (ctx) =>{
 })
 bot.command('mininglist'+ bot_name, (ctx) =>{
         console.log(ctx.from.username);
+		console.log(ctx.message.text);
 		if(fs.existsSync('/home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt')) {
 		console.log("The file exists.");
         async function processLineByLine() {
@@ -271,6 +285,7 @@ bot.command('mininglist'+ bot_name, (ctx) =>{
 //nodeall command
 bot.command('nodeall', (ctx) =>{
         console.log(ctx.from.username);
+		console.log(ctx.message.text);
         if (ctx.chat.type == 'private') {
 			if(fs.existsSync('/home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt')) {
 			console.log("The file exists.");
@@ -331,6 +346,7 @@ bot.command('nodeall', (ctx) =>{
 })
 bot.command('nodeall'+ bot_name, (ctx) =>{
         console.log(ctx.from.username);
+		console.log(ctx.message.text);
         ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
         {'reply_to_message_id':ctx.message.message_id})
 
@@ -338,6 +354,7 @@ bot.command('nodeall'+ bot_name, (ctx) =>{
 //miningoff
 bot.command('miningoff', (ctx) =>{
         console.log(ctx.from.username);
+		console.log(ctx.message.text);
 	if(fs.existsSync('/home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt')) {
 	console.log("The file exists.");
         async function processLineByLine() {
@@ -377,6 +394,7 @@ bot.command('miningoff', (ctx) =>{
 })
 bot.command('miningoff'+ bot_name, (ctx) =>{
          console.log(ctx.from.username);
+		 console.log(ctx.message.text);
 	if(fs.existsSync('/home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt')) {
 	console.log("The file exists.");
         async function processLineByLine() {
@@ -416,6 +434,7 @@ bot.command('miningoff'+ bot_name, (ctx) =>{
 // miningon command
 bot.command('miningon', (ctx) =>{
         console.log(ctx.from.username);
+		console.log(ctx.message.text);
 	if(fs.existsSync('/home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt')) {
 	console.log("The file exists.");
         async function processLineByLine() {
@@ -455,6 +474,7 @@ bot.command('miningon', (ctx) =>{
 })
 bot.command('miningon'+ bot_name, (ctx) =>{
         console.log(ctx.from.username);
+		console.log(ctx.message.text);
 	if(fs.existsSync('/home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt')) {
 	console.log("The file exists.");
         async function processLineByLine() {
@@ -494,6 +514,7 @@ bot.command('miningon'+ bot_name, (ctx) =>{
 //miningalloff
 bot.command('miningalloff', (ctx) =>{
 console.log(ctx.from.username);
+console.log(ctx.message.text);
 	if(fs.existsSync('/home/user.txt')) {
 	console.log("The file exists.");
 	fs.readFile('/home/user.txt', function (err, data) {
@@ -552,6 +573,7 @@ console.log(ctx.from.username);
 
 bot.command('miningalloff'+ bot_name, (ctx) =>{
 console.log(ctx.from.username);
+console.log(ctx.message.text);
 	if(fs.existsSync('/home/user.txt')) {
 	console.log("The file exists.");
 	fs.readFile('/home/user.txt', function (err, data) {
@@ -609,6 +631,7 @@ console.log(ctx.from.username);
 //miningallon
 bot.command('miningallon', (ctx) =>{
 console.log(ctx.from.username);
+console.log(ctx.message.text);
 	if(fs.existsSync('/home/user.txt')) {
 	console.log("The file exists.");
 	fs.readFile('/home/user.txt', function (err, data) {
@@ -666,6 +689,7 @@ console.log(ctx.from.username);
 })
 bot.command('miningallon'+ bot_name, (ctx) =>{
 console.log(ctx.from.username);
+console.log(ctx.message.text);
 	if(fs.existsSync('/home/user.txt')) {
 	console.log("The file exists.");
 	fs.readFile('/home/user.txt', function (err, data) {
@@ -723,6 +747,7 @@ console.log(ctx.from.username);
 //shutdownall
 bot.command('shutdownall', (ctx) =>{
                 console.log(ctx.from.username);
+				console.log(ctx.message.text);
                 exec('systemctl stop idena.target && systemctl status idena.target |grep Active', (error, stdout, stderr) => {
                 if (error) {
                         ctx.reply(`error: ${error.message}`);
@@ -737,6 +762,7 @@ bot.command('shutdownall', (ctx) =>{
 })
 bot.command('shutdownall'+ bot_name, (ctx) =>{
                 console.log(ctx.from.username);
+				console.log(ctx.message.text);
                 exec('systemctl stop idena.target && systemctl status idena.target |grep Active', (error, stdout, stderr) => {
                 if (error) {
                         ctx.reply(`error: ${error.message}`);
@@ -752,6 +778,7 @@ bot.command('shutdownall'+ bot_name, (ctx) =>{
 //startall
 bot.command('startall', (ctx) =>{
                 console.log(ctx.from.username);
+				console.log(ctx.message.text);
                 exec('miningallon', (error, stdout, stderr) => {
                 if (error) {
                         ctx.reply(`error: ${error.message}`);
@@ -766,6 +793,7 @@ bot.command('startall', (ctx) =>{
 })
 bot.command('startall'+ bot_name, (ctx) =>{
                 console.log(ctx.from.username);
+				console.log(ctx.message.text);
                 exec('miningallon', (error, stdout, stderr) => {
                 if (error) {
                         ctx.reply(`error: ${error.message}`);
@@ -781,6 +809,7 @@ bot.command('startall'+ bot_name, (ctx) =>{
 //update
 bot.command('update', (ctx) =>{
                 console.log(ctx.from.username);
+				console.log(ctx.message.text);
                 exec('idena-update', (error, stdout, stderr) => {
                 if (error) {
                         ctx.reply(`error: ${error.message}`);
@@ -795,6 +824,7 @@ bot.command('update', (ctx) =>{
 })
 bot.command('update'+ bot_name, (ctx) =>{
                 console.log(ctx.from.username);
+				console.log(ctx.message.text);
                 exec('idena-update', (error, stdout, stderr) => {
                 if (error) {
                         ctx.reply(`error: ${error.message}`);
@@ -809,6 +839,7 @@ bot.command('update'+ bot_name, (ctx) =>{
 //uptime
 bot.command('uptime', (ctx) =>{
                 console.log(ctx.from.username);
+				console.log(ctx.message.text);
                 exec('uptime', (error, stdout, stderr) => {
                 if (error) {
                         ctx.reply(`error: ${error.message}`);
@@ -823,6 +854,7 @@ bot.command('uptime', (ctx) =>{
 })
 bot.command('uptime'+ bot_name, (ctx) =>{
                 console.log(ctx.from.username);
+				console.log(ctx.message.text);
                 exec('uptime', (error, stdout, stderr) => {
                 if (error) {
                         ctx.reply(`error: ${error.message}`);
@@ -837,6 +869,7 @@ bot.command('uptime'+ bot_name, (ctx) =>{
 //uptime detail
 bot.command('resource', (ctx) =>{
                 console.log(ctx.from.username);
+				console.log(ctx.message.text);
                 exec('cool-uptime', (error, stdout, stderr) => {
                 if (error) {
                         ctx.reply(`error: ${error.message}`);
@@ -851,6 +884,7 @@ bot.command('resource', (ctx) =>{
 })
 bot.command('resource'+ bot_name, (ctx) =>{
                 console.log(ctx.from.username);
+				console.log(ctx.message.text);
                 exec('cool-uptime', (error, stdout, stderr) => {
                 if (error) {
                         ctx.reply(`error: ${error.message}`);
@@ -865,6 +899,7 @@ bot.command('resource'+ bot_name, (ctx) =>{
 //speedtest
 bot.command('speedtest', (ctx) =>{
                 console.log(ctx.from.username);
+				console.log(ctx.message.text);
                 exec('speedtest --progress=no', (error, stdout, stderr) => {
                 if (error) {
                         ctx.reply(`error: ${error.message}`);
@@ -879,6 +914,7 @@ bot.command('speedtest', (ctx) =>{
 })
 bot.command('speedtest'+ bot_name, (ctx) =>{
                 console.log(ctx.from.username);
+				console.log(ctx.message.text);
                 exec('speedtest --progress=no', (error, stdout, stderr) => {
                 if (error) {
                         ctx.reply(`error: ${error.message}`);
@@ -893,6 +929,7 @@ bot.command('speedtest'+ bot_name, (ctx) =>{
 //list WhoHaveInvite
 bot.command('listic', (ctx) =>{
 console.log(ctx.from.username);
+console.log(ctx.message.text);
 	if(fs.existsSync('/home/user.txt')) {
 	console.log("The file exists.");
         exec('list-ic', (error, stdout, stderr) => {
@@ -915,6 +952,7 @@ console.log(ctx.from.username);
 })
 bot.command('listic'+ bot_name, (ctx) =>{
 console.log(ctx.from.username);
+console.log(ctx.message.text);
 	if(fs.existsSync('/home/user.txt')) {
 	console.log("The file exists.");
 exec('list-ic', (error, stdout, stderr) => {
@@ -937,6 +975,7 @@ exec('list-ic', (error, stdout, stderr) => {
 //add notif mining/node down
 bot.command('addnotif', (ctx) =>{
 console.log(ctx.from.username);
+console.log(ctx.message.text);
 if (ctx.chat.type == 'private') {
                 ctx.replyWithHTML(
                         '<i>oi bro</i> @<b>'+ ctx.from.username +'</b> \n masukan address mu ben nko di proses',
@@ -964,6 +1003,7 @@ if (ctx.chat.type == 'private') {
 })
 bot.command('addnotif'+ bot_name, (ctx) =>{
         console.log(ctx.from.username);
+		console.log(ctx.message.text);
         ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
         {'reply_to_message_id':ctx.message.message_id})
 		ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
@@ -971,6 +1011,7 @@ bot.command('addnotif'+ bot_name, (ctx) =>{
 //toturial web
 bot.command('toturialweb', (ctx) =>{
 console.log(ctx.from.username);
+console.log(ctx.message.text);
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* \n langsung gas gan pake video ini \n https://youtu.be/sQ-xLDZc4JI',
 			{'reply_to_message_id':ctx.message.message_id})
 			ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
@@ -978,6 +1019,7 @@ console.log(ctx.from.username);
 })
 bot.command('toturialweb'+ bot_name, (ctx) =>{
 console.log(ctx.from.username);
+console.log(ctx.message.text);
             ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* \n langsung gas gan pake video ini \n https://youtu.be/sQ-xLDZc4JI',
 			{'reply_to_message_id':ctx.message.message_id})
 			ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
@@ -985,6 +1027,7 @@ console.log(ctx.from.username);
 })
 bot.command('listallnode', (ctx) =>{
         console.log(ctx.from.username);
+		console.log(ctx.message.text);
         if (ctx.chat.type == 'private') {
 			if(fs.existsSync('/home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt')) {
                         ctx.reply('ok lagi di prosess sekitar 1-15 menitan ngasi syncron\n\n');
@@ -1023,12 +1066,14 @@ bot.command('listallnode', (ctx) =>{
 })
 bot.command('listallnode'+ bot_name, (ctx) =>{
         console.log(ctx.from.username);
+		console.log(ctx.message.text);
         ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
         {'reply_to_message_id':ctx.message.message_id})
 
 })
 bot.command('clearipfs', (ctx) =>{
 console.log(ctx.from.username);
+console.log(ctx.message.text);
 if (ctx.chat.type == 'private') {
 
 						exec('clear-ipfs', (error, stdout, stderr) => {
@@ -1052,8 +1097,74 @@ if (ctx.chat.type == 'private') {
 })
 bot.command('clearipfs'+ bot_name, (ctx) =>{
         console.log(ctx.from.username);
+		console.log(ctx.message.text);
         ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
         {'reply_to_message_id':ctx.message.message_id})
 		ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
+})
+bot.command('delnode', (ctx, ceok) =>{
+        console.log(ctx.from.username);
+		console.log(ctx.message.text);
+	if (ctx.chat.type == 'private') {
+		if(fs.existsSync('/home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt')) {
+		console.log("The file exists.");
+        async function processLineByLine() {
+                const fileStream = fs.createReadStream('/home/'+ ctx.from.username +'/'+ ctx.from.username +'-portRpc.txt');
+                const rl = readline.createInterface({
+                        input: fileStream,
+                        crlfDelay: Infinity
+                });
+				const freq = {}
+                for await (const line of rl) {
+                        async function makePostRequest() {
+                                bcn_syncing = {"method":"bcn_syncing","params":[],"id":1,"key":`${ctx.from.username}`}
+                                dna_identity = {"method":"dna_identity","params":[],"id":1,"key":`${ctx.from.username}`}
+                                const res_sync = await axios.post('http://localhost:'+ line, bcn_syncing);
+                                const res_iden = await axios.post('http://localhost:'+ line, dna_identity);
+                                if ( res_sync.data.result.syncing === false ){
+                                        if ( res_iden.data.result.online === true){ ctx.reply(`Idena address : ${res_iden.data.result.address} \n Port : ${line}`,
+                                        {'reply_to_message_id':ctx.message.message_id})}
+                                        else {ctx.reply(`Idena address : ${res_iden.data.result.address} \n Port : ${line}`,
+                                        {'reply_to_message_id':ctx.message.message_id});}
+                                }else {ctx.reply('node syncing...Port :'+ line +'',
+                                {'reply_to_message_id':ctx.message.message_id});}
+								bot.command(''+ line +'', (ctx) =>{
+									exec('delnode '+ ctx.from.username +' '+ line +'', (error, stdout, stderr) => {
+                                        if (error) {
+                                        console.log(`error: ${error.message}`);
+                                        }
+                                        if (stderr) {
+                                        console.log(`stderr: ${stderr}`);
+                                        }
+                                        ctx.reply(`${stdout}`);
+                                        console.log(`${stdout}`);
+										console.log('user '+ ctx.from.username +'chatid'+ ctx.from.id +' pesan-'+ ctx.message.text +'')
+										return ceok()
+									});
+								
+								})
+                        }
+                        makePostRequest();
+						const lak = `delete port : /${line}\n`
+						const pi = lak.split(',')[0]
+						freq[pi] = (freq[pi])
+                }
+				const obj = Object.keys(freq)
+				ctx.reply(`,${obj} \n pilih node yang akan di hapus \n dengan memilih port tersebut \n atau pilih /cancel untuk batal`, {'reply_to_message_id':ctx.message.message_id})
+				bot.command('cancel', (ctx) =>{
+					return ceok()
+				})
+        }
+        processLineByLine();
+		} else {
+			console.log('The file does not exist.');
+            ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* ko urung pernah pasang node neng kene > *'+ bot_name +'*',
+		{'reply_to_message_id':ctx.message.message_id})}
+	}else{
+                ctx.replyWithMarkdown('oi @*'+ ctx.from.username +'* nek neng grup ra bisa \n langsung PM bot kie ae > *'+ bot_name +'*',
+                {'reply_to_message_id':ctx.message.message_id})
+    }
+		ctx.replyWithHTML(`donate iDna : <code> 0x4783e0841d72a8cbf49312d98a49a93f512b6d99 </code>`)
+
 })
 bot.startPolling()
