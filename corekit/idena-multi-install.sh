@@ -125,7 +125,8 @@ rm -rf /home/$idneahome/idenafast/*
 
 cat <<EOF > /home/$idenahome/idenafast-mount.sh
 #!/bin/bash
-mount --bind /home/$idenahome/$idenanumber/idenachain.db /home/$idenahome/idenafast
+HEAD=\$(cat /home/$idenahome/headport.txt)
+mount --bind /home/$idenahome/\$HEAD/idenachain.db /home/$idenahome/idenafast
 EOF
 chmod a+x /home/$idenahome/idenafast-mount.sh
 
