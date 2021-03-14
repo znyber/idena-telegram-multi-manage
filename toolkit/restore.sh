@@ -2,6 +2,7 @@
 if [ -f /root/restore.txt ] && [ -f /root/chatidX.txt ]; then
 echo "file OK gass"
 else
+echo "file not found"
 exit 0
 fi
 while read line; do

@@ -1129,6 +1129,7 @@ bot.command('delnode', (ctx, ceok) =>{
                                 }else {ctx.reply('node syncing...Port :'+ line +'',
                                 {'reply_to_message_id':ctx.message.message_id});}
 								bot.command(''+ line +'', (ctx) =>{
+									console.log('/'+ line +'')
 									exec('delnode '+ ctx.from.username +' '+ line +'', (error, stdout, stderr) => {
                                         if (error) {
                                         console.log(`error: ${error.message}`);
@@ -1139,7 +1140,7 @@ bot.command('delnode', (ctx, ceok) =>{
                                         ctx.reply(`${stdout}`);
                                         console.log(`${stdout}`);
 										console.log('user '+ ctx.from.username +'chatid'+ ctx.from.id +' pesan-'+ ctx.message.text +'')
-										return ceok()
+										return ceok
 									});
 								
 								})
@@ -1152,7 +1153,8 @@ bot.command('delnode', (ctx, ceok) =>{
 				const obj = Object.keys(freq)
 				ctx.reply(`,${obj} \n pilih node yang akan di hapus \n dengan memilih port tersebut \n atau pilih /cancel untuk batal`, {'reply_to_message_id':ctx.message.message_id})
 				bot.command('cancel', (ctx) =>{
-					return ceok()
+					console.log('/cancel')
+					return ceok
 				})
         }
         processLineByLine();
