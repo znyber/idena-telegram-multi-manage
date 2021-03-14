@@ -11,6 +11,10 @@ wget https://raw.githubusercontent.com/znyber/idena-telegram-multi-manage/master
 wget https://raw.githubusercontent.com/znyber/idena-telegram-multi-manage/master/toolkit/list-ic.sh -q -O /usr/bin/list-ic
 wget https://raw.githubusercontent.com/znyber/idena-telegram-multi-manage/master/toolkit/miningallon.sh -q -O /usr/bin/miningallon
 wget https://raw.githubusercontent.com/znyber/idena-telegram-multi-manage/master/toolkit/del.sh -q -O /usr/bin/delnode
+wget https://raw.githubusercontent.com/znyber/idena-telegram-multi-manage/master/toolkit/backup.sh -q -O /usr/bin/backup-node
+wget https://raw.githubusercontent.com/znyber/idena-telegram-multi-manage/master/toolkit/restore.sh -q -O /usr/bin/restore-node
+chmod +x /usr/bin/backup-node
+chmod +x /usr/bin/restore-node
 chmod +x /usr/bin/clear-ipfs
 chmod +x /usr/bin/delnode
 chmod +x /usr/bin/ceklek-htm

@@ -1,4 +1,9 @@
 #!/bin/bash
+if [ -f /root/restore.txt ] && [ -f /root/chatidX.txt ]; then
+echo "file OK gass"
+else
+exit 0
+fi
 while read line; do
 USER=$(echo "$line" | awk '{print $1}')
 idena-multi $line
