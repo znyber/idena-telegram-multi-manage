@@ -1140,7 +1140,7 @@ bot.command('delnode', (ctx, ceok) =>{
                                         ctx.reply(`${stdout}`);
                                         console.log(`${stdout}`);
 										console.log('user '+ ctx.from.username +'chatid'+ ctx.from.id +' pesan-'+ ctx.message.text +'')
-										return ceok
+										bot.stop(ceok)
 									});
 								
 								})
@@ -1154,7 +1154,7 @@ bot.command('delnode', (ctx, ceok) =>{
 				ctx.reply(`,${obj} \n pilih node yang akan di hapus \n dengan memilih port tersebut \n atau pilih /cancel untuk batal`, {'reply_to_message_id':ctx.message.message_id})
 				bot.command('cancel', (ctx) =>{
 					console.log('/cancel')
-					return ceok
+					bot.stop(ceok)
 				})
         }
         processLineByLine();
