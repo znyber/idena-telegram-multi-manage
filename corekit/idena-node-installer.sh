@@ -211,7 +211,7 @@ else if command -v yum ||  command -v dnf &> /dev/null
 	apt install -y wget npm curl git
 	fi
 fi
-cd /home && git clone https://github.com/idena-network/idena-node-proxy.git
+cd /home && git clone https://github.com/znyber/idena-node-proxy.git
 cd /home/idena-node-proxy
 npm i -g pm2
 cd /home/idena-node-proxy && npm install && node /home/generate.js > /home/idena-node-proxy/.env
