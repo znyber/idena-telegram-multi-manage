@@ -23,6 +23,7 @@ cat <<EOF >> /etc/ssh/sshd_config
 Match User $idenahome
 Include /etc/ssh/sshd_config.d/$idenahome.conf
 EOF
+service sshd restart
 cat <<EOF >> /home/user.txt
 $idenahome
 EOF
@@ -73,6 +74,7 @@ EOF
 if [ -f /lib/systemd/system/idena-$idenahome@.service ]; then
 sleep 1
 echo "$(cat /etc/ssh/sshd_config.d/$idenahome.conf) localhost:$portRpc" > /etc/ssh/sshd_config.d/$idenahome.conf
+service sshd restart
 else
 cat <<EOF > /lib/systemd/system/idena-$idenahome@.service
 [Unit]
