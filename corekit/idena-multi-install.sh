@@ -15,7 +15,7 @@ then
 	sed -i "1d" /home/portRpc.txt
 if ! grep -Fxq $idenahome /home/user.txt
 then
-cat <<EOF > /etc/sshd_config.d/$idenahome.conf
+cat <<EOF > /etc/ssh/sshd_config.d/$idenahome.conf
 AllowAgentForwarding no
 PremitOpen localhost:$portRpc
 EOF
