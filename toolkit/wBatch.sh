@@ -19,18 +19,18 @@ START /WAIT idena.exe
 echo { "url": "http://localhost:$rpcP", "internalPort": 9119, "tcpPort": 50505, "ipfsPort": 50506, "uiVersion": "$idenaURL", "useExternalNode": true, "runInternalNode": false, "internalApiKey": "xtwwi6o73pdfmq71pe5stgm7recbahr9", "externalApiKey": "$user", "lng": "en", "initialized": true, "zoomLevel": -2 } > %appdata%\Idena\settings.json
 IF NOT EXIST %appdata%\Idena\plink.exe (
 bitsadmin /transfer NODE /download /priority normal https://the.earth.li/~sgtatham/putty/latest/w64/plink.exe %appdata%\Idena\plink.exe
-echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N
+echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -v -N
 ) ELSE (
-echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N
+echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -v -N
 )
 ) ELSE (
 echo { "url": "http://localhost:$rpcP", "internalPort": 9119, "tcpPort": 50505, "ipfsPort": 50506, "uiVersion": "$idenaURL", "useExternalNode": true, "runInternalNode": false, "internalApiKey": "xtwwi6o73pdfmq71pe5stgm7recbahr9", "externalApiKey": "$user", "lng": "en", "initialized": true, "zoomLevel": -2 } > %appdata%\Idena\settings.json
 Echo. | start %userprofile%\AppData\Local\Programs\idena-desktop\Idena.exe
 IF NOT EXIST %appdata%\Idena\plink.exe (
 bitsadmin /transfer NODE /download /priority normal https://the.earth.li/~sgtatham/putty/latest/w64/plink.exe %appdata%\Idena\plink.exe
-echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N
+echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -v -N
 ) ELSE (
-echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N
+echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -v -N
 )
 )
 echo Done.
@@ -46,18 +46,18 @@ START /WAIT %temp%\idena.exe
 echo { "url": "http://localhost:$rpcP", "internalPort": 9119, "tcpPort": 50505, "ipfsPort": 50506, "uiVersion": "$idenaURL", "useExternalNode": true, "runInternalNode": false, "internalApiKey": "xtwwi6o73pdfmq71pe5stgm7recbahr9", "externalApiKey": "$user", "lng": "en", "initialized": true, "zoomLevel": -2 } > %appdata%\Idena\settings.json
 IF NOT EXIST %appdata%\Idena\plink.exe (
 bitsadmin /transfer NODE /download /priority normal https://the.earth.li/~sgtatham/putty/latest/w64/plink.exe %appdata%\Idena\plink.exe
-echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N
+echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -v -N
 ) ELSE (
-echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N
+echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -v -N
 )
 ) ELSE (
 echo { "url": "http://localhost:$rpcP", "internalPort": 9119, "tcpPort": 50505, "ipfsPort": 50506, "uiVersion": "$idenaURL", "useExternalNode": true, "runInternalNode": false, "internalApiKey": "xtwwi6o73pdfmq71pe5stgm7recbahr9", "externalApiKey": "$user", "lng": "en", "initialized": true, "zoomLevel": -2 } > %appdata%\Idena\settings.json
 Echo. | start %userprofile%\AppData\Local\Programs\idena-desktop\Idena.exe
 IF NOT EXIST %appdata%\Idena\plink.exe (
 bitsadmin /transfer NODE /download /priority normal https://the.earth.li/~sgtatham/putty/latest/w64/plink.exe %appdata%\Idena\plink.exe
-echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N
+echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -v -N
 ) ELSE (
-echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -N
+echo n | %appdata%\Idena\plink.exe -ssh $user@$myIP -P $pSSH -pw "$ZXCPWD" -L $rpcP:localhost:$rpcP -v -N
 )
 )
 echo Done.

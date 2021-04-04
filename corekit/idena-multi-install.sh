@@ -15,6 +15,14 @@ then
 	sed -i "1d" /home/portRpc.txt
 if ! grep -Fxq $idenahome /home/user.txt
 then
+cat <<EOF > /etc/sshd_config.d/$idenahome.conf
+AllowAgentForwarding no
+PremitOpen localhost:$portRpc
+EOF
+cat <<EOF >> /etc/ssh/sshd_config
+Match User $idenahome
+Include /etc/ssh/sshd_config.d/$idenahome.conf
+EOF
 cat <<EOF >> /home/user.txt
 $idenahome
 EOF
@@ -64,6 +72,7 @@ cat <<EOF > /home/$idenahome/$portRpc.json
 EOF
 if [ -f /lib/systemd/system/idena-$idenahome@.service ]; then
 sleep 1
+echo "$(cat /etc/ssh/sshd_config.d/$idenahome.conf) localhost:$portRpc" > /etc/ssh/sshd_config.d/$idenahome.conf
 else
 cat <<EOF > /lib/systemd/system/idena-$idenahome@.service
 [Unit]
