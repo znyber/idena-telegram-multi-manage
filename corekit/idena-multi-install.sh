@@ -17,7 +17,7 @@ if ! grep -Fxq $idenahome /home/user.txt
 then
 cat <<EOF > /etc/ssh/sshd_config.d/$idenahome.conf
 AllowAgentForwarding no
-PremitOpen localhost:$portRpc
+PermitOpen localhost:$portRpc
 EOF
 cat <<EOF >> /etc/ssh/sshd_config
 Match User $idenahome
