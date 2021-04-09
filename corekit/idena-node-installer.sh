@@ -40,8 +40,7 @@ then
 	exit 1
 else if command -v yum || ! command -v dnf &> /dev/null
 	then 
-	if [[ -e /etc/centos-release ]]
-	then
+	if [[ -e /etc/centos-release ]]; then
 	yum install -y epel-release
 	curl -sL https://rpm.nodesource.com/setup_12.x | bash -
 	yum install -y gcc-c++ make rsync
@@ -58,7 +57,8 @@ enabled=1
 EOF
 yum install -y speedtest
 speedtest
-else
+else if command -v apt 
+	then
 	apt update -y
 	apt install -y wget npm curl unzip git pwgen
 	apt-get install gnupg1 apt-transport-https dirmngr
@@ -67,6 +67,7 @@ else
 	apt-get update
 	apt-get install speedtest
 	speedtest
+	fi
 fi
 wget https://sync.idena-ar.com/idenachain.db.zip -O /home/idenachain.db.zip
 unzip /home/idenachain.db.zip -d /home/idenafast
