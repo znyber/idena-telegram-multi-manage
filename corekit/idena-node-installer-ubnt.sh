@@ -45,21 +45,16 @@ read -p "insert address for nodeshare : https://" nodeshare
 echo "DefaultLimitNOFILE=65535" >> /etc/systemd/system.conf
 if [ ! -d /home/datadir ]
 then
-if command -v git && command -v links && command -v npm && command -v node && [ -f /home/index.js ] &> /dev/null
-then
-    echo "command exists."
-	exit 1
-else
-	apt update -y
-	curl -sL https://deb.nodesource.com/setup_12.x -o - | bash - && sudo apt install -y nodejs && nodejs -v
-	apt install -y wget curl unzip git pwgen rsync
-	apt-get install gnupg1 apt-transport-https dirmngr
-	export INSTALL_KEY=379CE192D401AB61 && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $INSTALL_KEY
-	echo "deb https://ookla.bintray.com/debian generic main" | sudo tee  /etc/apt/sources.list.d/speedtest.list
-	apt-get update -y
-	apt-get install speedtest -y
-	speedtest
-fi
+apt update -y
+curl -sL https://deb.nodesource.com/setup_12.x -o - | bash - && sudo apt install -y nodejs && nodejs -v
+apt install -y wget curl unzip git pwgen rsync
+apt install -y unzip
+apt-get install gnupg1 apt-transport-https dirmngr
+export INSTALL_KEY=379CE192D401AB61 && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $INSTALL_KEY
+echo "deb https://ookla.bintray.com/debian generic main" | sudo tee  /etc/apt/sources.list.d/speedtest.list
+apt-get update -y
+apt-get install speedtest -y
+speedtest
 wget https://sync.idena-ar.com/idenachain.db.zip -O /home/idenachain.db.zip
 unzip /home/idenachain.db.zip -d /home/idenafast
 if [[ ! -d /home/idenafast ]]
