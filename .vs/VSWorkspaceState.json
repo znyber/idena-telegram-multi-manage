@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\corekit",
-    "\\toolkit"
+    "\\telgram-bot-generate-api",
+    "\\vultr-multi-compute",
+    "\\vultr-multi-compute\\corekit"
   ],
-  "SelectedNode": "\\corekit\\idena-node-installer.sh",
+  "SelectedNode": "\\telgram-bot-generate-api\\index.js",
   "PreviewInSolutionExplorer": false
 }
