@@ -32,9 +32,7 @@ mkswap /swapfile
 swapon /swapfile
 swapon -s
 echo "/swapfile none            swap    sw              0 0" >> /etc/fstab
-sysctl vm.swappiness=VALUE
 sysctl vm.swappiness=10
-echo VALUE > /proc/sys/vm/swappiness
 echo 10 > /proc/sys/vm/swappiness
 echo 'vm.swappiness=10' >> /etc/sysctl.conf
 
