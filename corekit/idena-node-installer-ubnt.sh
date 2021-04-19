@@ -187,17 +187,8 @@ else
 fi
 
 service idena start
-if command -v npm && command -v node && command -v git &> /dev/null
-then
-    echo "command exists."
-else if command -v yum ||  command -v dnf &> /dev/null
-	then 
-		yum install -y nodejs wget curl git
-	else
-	apt update -y
-	apt install -y wget npm curl git
-	fi
-fi
+apt update -y
+apt install -y wget npm curl git
 cd /home && git clone https://github.com/znyber/idena-node-proxy.git
 cd /home/idena-node-proxy
 npm i -g pm2
