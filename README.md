@@ -24,7 +24,7 @@ centos 8.2 kernel 4.18
 ``
 <br />
 ``
-Ubuntu 18.04.5 kernel 5.4
+Ubuntu 18.04 kernel 5.4
 ``
 <br />
 update to kernel 5.4 for ubuntu 18 
@@ -32,6 +32,10 @@ update to kernel 5.4 for ubuntu 18
 apt update
 apt-get install --install-recommends linux-generic-hwe-18.04
 ```
+<br />
+``
+Ubuntu 20.04 kernel 5.4
+``
 <br />
 link youtube toturial <br />
 
