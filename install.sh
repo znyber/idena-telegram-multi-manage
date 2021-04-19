@@ -1,5 +1,5 @@
 #!/bin/bash
-if command -v yum || ! command -v dnf &> /dev/null
+if command -v yum || command -v dnf &> /dev/null
 then
 wget https://raw.githubusercontent.com/znyber/idena-telegram-multi-manage/master/corekit/idena-node-installer.sh -q -O /usr/bin/idena-node-share
 wget https://raw.githubusercontent.com/znyber/idena-telegram-multi-manage/master/corekit/idena-uninstall.sh -q -O /usr/bin/idena-uninstall
