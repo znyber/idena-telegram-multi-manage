@@ -9,7 +9,6 @@ then
    read -p "What would you like to change the port to? (Chose between 1024-65535) " sshportconfig
    if (( ("$sshportconfig" > 1024) && ("$sshportconfig" < 65535) )); then
     sed -i "s/#Port 22/Port $sshportconfig/g" /etc/ssh/sshd_config
-	setenforce 0
     echo "SSH port has been changed to: $sshportconfig"
 	service sshd restart
 	iptables -A INPUT -p tcp --dport $sshportconfig -j ACCEPT
@@ -47,7 +46,7 @@ apt update -y
 curl -sL https://deb.nodesource.com/setup_12.x -o - | bash - && sudo apt install -y nodejs && nodejs -v
 apt install -y wget curl unzip git pwgen rsync
 apt install -y unzip
-apt-get install gnupg1 apt-transport-https dirmngr
+apt-get install -y gnupg1 apt-transport-https dirmngr
 export INSTALL_KEY=379CE192D401AB61 && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $INSTALL_KEY
 echo "deb https://ookla.bintray.com/debian generic main" | sudo tee  /etc/apt/sources.list.d/speedtest.list
 apt-get update -y

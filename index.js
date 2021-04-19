@@ -872,10 +872,10 @@ bot.command('resource', (ctx) =>{
 				console.log(ctx.message.text);
                 exec('cool-uptime', (error, stdout, stderr) => {
                 if (error) {
-                        ctx.reply(`error: ${error.message}`);
+                        console.log(`error: ${error.message}`);
                 }
                 if (stderr) {
-                        ctx.reply(`stderr: ${stderr}`);
+                        console.log(`stderr: ${stderr}`);
                 }
                 ctx.reply(`idena status : ${stdout}`,{'reply_to_message_id':ctx.message.message_id});
                 });
