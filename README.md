@@ -34,4 +34,5 @@ apt-get install --install-recommends linux-generic-hwe-18.04
 ```
 <br />
 link youtube toturial <br />
-[![img yt](http://img.youtube.com/vi/1R3vlSebuvw/0.jpg)](http://www.youtube.com/watch?v=1R3vlSebuvw "youtube link")
+
+[![img yt](http://img.youtube.com/vi/1R3vlSebuvw/0.jpg)](http://www.youtube.com/watch?v=1R3vlSebuvw)
