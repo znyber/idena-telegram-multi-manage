@@ -1,4 +1,5 @@
 #!/bin/sh
+touch /home/all.html
 cat <<EOF > /home/all.html
 <!DOCTYPE html>
 <html>

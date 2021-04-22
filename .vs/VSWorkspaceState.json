@@ -1,10 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\telgram-bot-generate-api",
-    "\\vultr-multi-compute",
-    "\\vultr-multi-compute\\corekit"
+    "\\corekit",
+    "\\toolkit"
   ],
-  "SelectedNode": "\\telgram-bot-generate-api\\index.js",
+  "SelectedNode": "\\index.js",
   "PreviewInSolutionExplorer": false
 }

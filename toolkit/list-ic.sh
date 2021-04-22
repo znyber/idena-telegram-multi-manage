@@ -1,4 +1,6 @@
 #!/bin/bash
+touch /tmp/temp.txt
+touch /tmp/icdump.txt
 echo "" > /tmp/temp.txt
 while read line; do
 echo "0" > /tmp/icdump.txt

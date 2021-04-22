@@ -9,7 +9,9 @@ if [[ ! $user == $useX ]]; then
 ZXCPWD=$(openssl rand -base64 8)
 useradd $user
 echo -e "$ZXCPWD\n$ZXCPWD\n" | passwd $user
+touch /home/$user/pswd.txt
 echo $ZXCPWD > /home/$user/pswd.txt
+touch /home/$user/$rpcP.bat
 cat <<EOF > /home/$user/$rpcP.bat
 @echo off
 title run node remote
@@ -37,6 +39,7 @@ echo Done.
 EOF
 else
 ZXCPWD=$(cat /home/$user/pswd.txt)
+touch /home/$user/$rpcP.bat
 cat <<EOF > /home/$user/$rpcP.bat
 @echo off
 title run node remote

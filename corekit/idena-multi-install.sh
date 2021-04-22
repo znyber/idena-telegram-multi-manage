@@ -10,20 +10,24 @@ then
 	mkdir -p /home/$idenahome/$idenanumber
 	touch /home/$idenahome/$idenahome-portRpc.txt
 	sed -n "1{p;q}" /home/portRpc.txt >> /home/$idenahome/$idenahome-portRpc.txt
+	touch /home/all-portRpcUse.txt
 	sed -n "1{p;q}" /home/portRpc.txt >> /home/all-portRpcUse.txt
 	portRpc=$(tail -1 /home/$idenahome/$idenahome-portRpc.txt)
 	sed -i "1d" /home/portRpc.txt
 if ! grep -Fxq $idenahome /home/user.txt
 then
+touch /etc/ssh/sshd_config.d/$idenahome.conf
 cat <<EOF > /etc/ssh/sshd_config.d/$idenahome.conf
 AllowAgentForwarding no
 PermitOpen localhost:$portRpc
 EOF
+touch /etc/ssh/sshd_config
 cat <<EOF >> /etc/ssh/sshd_config
 Match User $idenahome
 Include /etc/ssh/sshd_config.d/$idenahome.conf
 EOF
 service sshd restart
+touch /home/user.txt
 cat <<EOF >> /home/user.txt
 $idenahome
 EOF
@@ -37,6 +41,7 @@ fi
 	#--------------- create idena service-------------------------#
 if [ ! -d /etc/systemd/system/idena.target.wants ] &> /dev/null
 then
+touch /lib/systemd/system/idena.target
 cat <<EOF > /lib/systemd/system/idena.target
 [Unit]
 Description=idena target
@@ -48,6 +53,7 @@ WantedBy=multi-user.target
 EOF
 systemctl enable idena.target
 fi
+touch /home/$idenahome/$portRpc.json
 cat <<EOF > /home/$idenahome/$portRpc.json
 {
   "DataDir": "$portRpc",
@@ -73,9 +79,11 @@ cat <<EOF > /home/$idenahome/$portRpc.json
 EOF
 if [ -f /lib/systemd/system/idena-$idenahome@.service ]; then
 sleep 1
+touch /etc/ssh/sshd_config.d/$idenahome.conf
 echo "$(cat /etc/ssh/sshd_config.d/$idenahome.conf) localhost:$portRpc" > /etc/ssh/sshd_config.d/$idenahome.conf
 service sshd restart
 else
+touch /lib/systemd/system/idena-$idenahome@.service
 cat <<EOF > /lib/systemd/system/idena-$idenahome@.service
 [Unit]
 PartOf=idena.target
@@ -105,6 +113,7 @@ systemctl start idena-$idenahome@$portRpc
 systemctl enable idena-$idenahome@$portRpc
 
 sleep 30
+touch /home/$idenahome/$portRpc/keystore/nodekey
 echo $idenakeystore > /home/$idenahome/$portRpc/keystore/nodekey
 systemctl stop idena-$idenahome@$portRpc
 systemctl daemon-reload
@@ -112,6 +121,7 @@ systemctl daemon-reload
 rm -rf /home/$idenahome/$portRpc/idenachain.db/*
 #download fastsync
 if [ ! -f /home/$idenahome/headport.txt ]; then
+touch /home/$idenahome/headport.txt
 cat <<EOF > /home/$idenahome/headport.txt
 $idenanumber
 EOF
@@ -134,6 +144,7 @@ rm -rf /home/$idenahome/idenachain.db.zip
 rsync -azq /home/$idenahome/idenafast/ /home/$idenahome/$idenanumber/idenachain.db/
 rm -rf /home/$idneahome/idenafast/*
 
+touch /home/$idenahome/idenafast-mount.sh
 cat <<EOF > /home/$idenahome/idenafast-mount.sh
 #!/bin/bash
 HEAD=\$(cat /home/$idenahome/headport.txt)
@@ -141,12 +152,14 @@ mount --bind /home/$idenahome/\$HEAD/idenachain.db /home/$idenahome/idenafast
 EOF
 chmod a+x /home/$idenahome/idenafast-mount.sh
 
+touch /home/$idenahome/idenafast-umount.sh
 cat <<EOF > /home/$idenahome/idenafast-umount.sh
 #!/bin/bash
 umount /home/$idenahome/idenafast
 EOF
 chmod a+x /home/$idenahome/idenafast-umount.sh
 
+touch /usr/lib/systemd/system/idenamount-$idenahome.service
 cat <<EOF > /usr/lib/systemd/system/idenamount-$idenahome.service
 [Unit]
 Description=Mount directory $idenahome fastsync
