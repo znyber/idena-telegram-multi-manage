@@ -16,19 +16,19 @@ fedora 32 kernel 5.7 & 5.8 & 5.10
 ``
 <br />
 ``
-centos 7.9 kernel 3.8 
+centos 7.9 kernel 3.8 -Alpha test
 ``
 <br />
 ``
-centos 8.2 kernel 4.18 
+centos 8.2 kernel 4.18 -Alpha test
 ``
 <br />
 ``
-Ubuntu 20.04 kernel 5.4
+Ubuntu 20.04 kernel 5.4 -Alpha test
 ``
 <br />
 ``
-Ubuntu 18.04 kernel 5.4
+Ubuntu 18.04 kernel 5.4 -Alpha test
 ``
 <br />
 update to kernel 5.4 for ubuntu 18 
