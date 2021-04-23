@@ -26,6 +26,21 @@ fi
 if [ ! -d /etc/ssh/sshd_config.d ]
 then
 mkdir -p /etc/ssh/sshd_config.d
+apt update
+apt install build-essential zlib1g-dev libssl-dev -y
+mkdir /var/lib/sshd
+chmod -R 700 /var/lib/sshd/
+chown -R root:sys /var/lib/sshd/
+userdel sshd
+useradd -r -U -d /var/lib/sshd/ -c "sshd privsep" -s /bin/false sshd
+wget -c https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.2p1.tar.gz
+tar -xzf openssh-8.2p1.tar.gz
+apt install libpam0g-dev libselinux1-dev -y
+cd openssh-8.2p1
+./configure --with-md5-passwords --with-pam --with-selinux --with-privsep-path=/var/lib/sshd/ --sysconfdir=/etc/ssh 
+make
+make install
+service sshd restart
 else
 echo "data sshd config skip"
 fi
@@ -181,7 +196,7 @@ SELINUX=disabled
 SELINUXTYPE=targeted
 EOF
 else 
-	apt-get install -y iptables-persistent &> /dev/null
+	apt-get install -y iptables-persistent 
     iptables -A INPUT -p tcp --dport 40405 -j ACCEPT
 	iptables -A OUTPUT -p tcp --sport 40405 -j ACCEPT
 	iptables -A INPUT -p tcp --dport 80 -j ACCEPT
@@ -191,7 +206,7 @@ fi
 
 service idena start
 apt update -y
-apt install -y wget npm curl git
+apt install -y wget curl git
 cd /home && git clone https://github.com/znyber/idena-node-proxy.git
 cd /home/idena-node-proxy
 npm i -g pm2
@@ -238,14 +253,14 @@ fi
 EOF
 chmod a+x /usr/bin/addnotX
 chmod +x /home/niteni/niteni.sh
-cat <<EOF > /usr/lib/systemd/system/notifx.service
+cat <<EOF > /lib/systemd/system/notifx.service
 [Unit]
 Description=execute service!
 [Service]
 Type=oneshot
 ExecStart=/home/niteni/niteni.sh
 EOF
-cat <<EOF > /usr/lib/systemd/system/notifx.timer
+cat <<EOF > /lib/systemd/system/notifx.timer
 [Unit]
 Description=notif node off
 [Timer]
@@ -258,7 +273,14 @@ systemctl enable notifx.timer
 systemctl start notifx.timer
 pm2 startup
 pm2 save
-exit 0
+while true; do
+    read -p "Do you want reboot ? [Yy]/[Nn] : " yn
+    case $yn in
+        [Yy]* ) reboot; exit;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer [Yy]-yes or [Nn]-no.";;
+    esac
+done
 else
     echo "datadir sudah ada , script not executed"
 	exit 1

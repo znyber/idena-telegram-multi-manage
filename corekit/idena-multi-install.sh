@@ -159,8 +159,8 @@ umount /home/$idenahome/idenafast
 EOF
 chmod a+x /home/$idenahome/idenafast-umount.sh
 
-touch /usr/lib/systemd/system/idenamount-$idenahome.service
-cat <<EOF > /usr/lib/systemd/system/idenamount-$idenahome.service
+touch /lib/systemd/system/idenamount-$idenahome.service
+cat <<EOF > /lib/systemd/system/idenamount-$idenahome.service
 [Unit]
 Description=Mount directory $idenahome fastsync
 After=network.target
