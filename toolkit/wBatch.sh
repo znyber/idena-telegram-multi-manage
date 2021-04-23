@@ -7,7 +7,7 @@ myIP=$(curl ifconfig.me)
 pSSH=$(cat /etc/ssh/sshd_config |grep Port | head -1 | awk -F "[ ]+" '/Port/{print $2 }')
 if [[ ! $user == $useX ]]; then
 ZXCPWD=$(openssl rand -base64 8)
-useradd $user
+useradd $user -m
 echo -e "$ZXCPWD\n$ZXCPWD\n" | passwd $user
 touch /home/$user/pswd.txt
 echo $ZXCPWD > /home/$user/pswd.txt

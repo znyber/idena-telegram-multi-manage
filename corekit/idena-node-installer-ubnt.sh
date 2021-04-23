@@ -23,14 +23,20 @@ else
    sshPort=$(cat /etc/ssh/sshd_config |grep Port | head -1 | awk -F "[ ]+" '/Port/{print $2 }')
    echo "SSH is still: $sshPort"
 fi
+if [ ! -d /etc/ssh/sshd_config.d ]
+then
+mkdir -p /etc/ssh/sshd_config.d
+else
+echo "data sshd config skip"
+fi
 #create swapfile
-fallocate -l 1G /swapfile
-chown root:root /swapfile
-chmod 0600 /swapfile
-mkswap /swapfile
-swapon /swapfile
+fallocate -l 1G /swapfilezxc
+chown root:root /swapfilezxc
+chmod 0600 /swapfilezxc
+mkswap /swapfilezxc
+swapon /swapfilezxc
 swapon -s
-echo "/swapfile none            swap    sw              0 0" >> /etc/fstab
+echo "/swapfilezxc none            swap    sw              0 0" >> /etc/fstab
 sysctl vm.swappiness=10
 echo 10 > /proc/sys/vm/swappiness
 echo 'vm.swappiness=10' >> /etc/sysctl.conf
@@ -117,7 +123,7 @@ fi
 
 	#------------ download idena node latest version--------------#
 
-	wget $idena_download -q -O /usr/bin/idena
+	wget $idena_download -O /usr/bin/idena
 	wget https://raw.githubusercontent.com/znyber/idena-telegram-multi-manage/master/idena-update -q -O /usr/bin/idena-update
 	chmod +x /usr/bin/idena
 	chmod +x /usr/bin/idena-update
