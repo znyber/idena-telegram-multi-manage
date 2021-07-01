@@ -17,7 +17,7 @@ HIGBLOCK=$(echo $DATC | sed -n 's|.*"highestBlock":\([^"]*\),.*|\1|p')
 SECONDS=0
 while [ "$SYNCA" != false ]
 do
-KOVET=$(netstat -netulp |grep $line2 | awk -F "[ :]+" '/:/{print $5}')
+KOVET=$(netstat -netulp |grep 127.0.0.1:$line2 | awk -F "[ :]+" '/:/{print $5}')
 if [[ $KOVET == $line2 ]]
 then
 echo "node $line2 sync $SYNCA , block curent $CURBLOCK to block high $HIGBLOCK" >&2
@@ -31,7 +31,7 @@ else
 sleep 10
 fi
 done
-KOVET=$(netstat -netulp |grep $line2 | awk -F "[ :]+" '/:/{print $5}')
+KOVET=$(netstat -netulp |grep 127.0.0.1:$line2 | awk -F "[ :]+" '/:/{print $5}')
 if [[ $KOVET == $line2 ]]
 then
 echo "node $line2 sync $SYNCA , time to full sync $SECONDS" >&2

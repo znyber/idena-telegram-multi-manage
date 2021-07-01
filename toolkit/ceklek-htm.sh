@@ -48,7 +48,7 @@ cat <<EOF >> /home/all.html
                         </tr>
 EOF
 while read line2; do
-KOVET=$(netstat -netulp |grep $line2 | awk -F "[ :]+" '/:/{print $5}')
+KOVET=$(netstat -netulp |grep 127.0.0.1:$line2 | awk -F "[ :]+" '/:/{print $5}')
 if [[ $KOVET == $line2 ]]
 then
 DATC=$(curl -s "http://127.0.0.1:$line2/" -H 'Content-Type: application/json' --data "{\"method\":\"dna_identity\",\"params\":[],\"id\":1,\"key\":\"$line\"}")

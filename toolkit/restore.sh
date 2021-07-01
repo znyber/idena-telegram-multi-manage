@@ -32,7 +32,7 @@ else
 sleep 10
 fi
 done
-KOVET=$(netstat -netulp |grep $RPCD | awk -F "[ :]+" '/:/{print $5}')
+KOVET=$(netstat -netulp |grep 127.0.0.1:$RPCD | awk -F "[ :]+" '/:/{print $5}')
 if [[ $KOVET == $RPCD ]]
 then
 echo "node $RPCD sync $SYNCA , time to full sync $SECONDS" >&2

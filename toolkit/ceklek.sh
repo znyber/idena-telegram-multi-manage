@@ -2,7 +2,7 @@
 while read line; do
 echo $line
 while read line2; do
-KOVET=$(netstat -netulp |grep $line2 | awk -F "[ :]+" '/:/{print $5}')
+KOVET=$(netstat -netulp |grep 127.0.0.1:$line2 | awk -F "[ :]+" '/:/{print $5}')
 if [[ $KOVET == $line2 ]]
 then
 echo "node $line2 ON"
