@@ -1,8 +1,37 @@
 #!/bin/bash
-service idena stop
 systemctl stop idena.target
 while read line; do
 echo $line
+DATCX=$(curl -s "http://127.0.0.1:9009/" -H 'Content-Type: application/json' --data "{\"method\":\"bcn_syncing\",\"params\":[],\"id\":1,\"key\":\"kenebaezxcpm\"}")
+SYNCAX=$(echo $DATCX | sed -n 's|.*"syncing":\([^"]*\),.*|\1|p')
+CURBLOCKX=$(echo $DATCX | sed -n 's|.*"currentBlock":\([^"]*\),.*|\1|p')
+HIGBLOCKX=$(echo $DATCX | sed -n 's|.*"highestBlock":\([^"]*\),.*|\1|p')
+#BLOCKTIMX=$(($HIGBLOCKX-$CURBLOCX))
+#sleep $(($BLOCKTIMX+10))
+while [ "$SYNCAX" != false ]
+do
+KOVETX=$(netstat -netulp |grep 127.0.0.1:9009 | awk -F "[ :]+" '/:/{print $5}')
+if [[ $KOVETX == "9009" ]]
+then
+echo "node share sync $SYNCAX , block curent $CURBLOCKX to block high $HIGBLOCKX" >&2
+DATCX=$(curl -s "http://127.0.0.1:9009/" -H 'Content-Type: application/json' --data "{\"method\":\"bcn_syncing\",\"params\":[],\"id\":1,\"key\":\"kenebaezxcpm\"}")
+SYNCAX=$(echo $DATCX | sed -n 's|.*"syncing":\([^"]*\),.*|\1|p')
+CURBLOCKX=$(echo $DATCX | sed -n 's|.*"currentBlock":\([^"]*\),.*|\1|p')
+HIGBLOCKX=$(echo $DATCX | sed -n 's|.*"highestBlock":\([^"]*\),.*|\1|p')
+BLOCKTIMX=$(($HIGBLOCKX-$CURBLOCKX))
+sleep $(($BLOCKTIMX+10))
+else
+sleep 10
+fi
+done
+KOVETX=$(netstat -netulp |grep 127.0.0.1:9009 | awk -F "[ :]+" '/:/{print $5}')
+if [[ $KOVETX == "9009" ]]
+then
+echo "node share sync $SYNCAX , time to full sync $SECONDS" >&2
+else
+echo "node share down $KOVETX" >&2
+fi
+SECONDS=0
 while read line2; do
 systemctl stop idena-$line@$line2
 rm -rf /home/$line/$line2/idenachain.db/*
@@ -34,6 +63,7 @@ done
 KOVET=$(netstat -netulp |grep 127.0.0.1:$line2 | awk -F "[ :]+" '/:/{print $5}')
 if [[ $KOVET == $line2 ]]
 then
+curl -s "http://127.0.0.1:$line2/" -H 'Content-Type: application/json' --data "{\"method\":\"dna_becomeOnline\",\"params\":[{}],\"id\":1,\"key\":\"$line\"}"
 echo "node $line2 sync $SYNCA , time to full sync $SECONDS" >&2
 else
 echo "node $line2 down $KOVET" >&2
