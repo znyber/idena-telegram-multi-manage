@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ -f /root/restore.txt ] && [ -f /root/chatidX.txt ]; then
+if [ -f /root/restore.txt ]; then
 echo "file OK gass"
 else
 echo "file not found"
@@ -40,6 +40,5 @@ else
 echo "node $RPCD down $KOVET" >&2
 fi
 SECONDS=0
-done <<<$(cat /root/restore.txt)
 cat /root/chatidX.txt >> /home/chatidX.txt
 echo "all restore clear"
