@@ -87,12 +87,12 @@ wget https://raw.githubusercontent.com/znyber/idena-telegram-multi-manage/master
 wget https://raw.githubusercontent.com/znyber/idena-telegram-multi-manage/master/package.json -q -O /home/package.json
 wget https://raw.githubusercontent.com/znyber/idena-telegram-multi-manage/master/tulung.txt -q -O /home/tulung.txt
 cd /home && npm i -g pm2 && npm install 
-pwgen -1cn 4 100 > /home/api.txt
+
 cat <<EOF > /home/generate.js
 const fs = require('fs');
 const readline = require('readline');
 async function processLineByLine() {
-const fileStream = fs.createReadStream('/home/api.txt');
+const fileStream = fs.createReadStream('/home/idena-node-proxy/api.txt');
 const r1 = readline.createInterface({
 input: fileStream,
 crlfDelay: Infinity
@@ -213,6 +213,7 @@ else if command -v yum ||  command -v dnf &> /dev/null
 	fi
 fi
 cd /home && git clone https://github.com/znyber/idena-node-proxy.git
+pwgen -1cn 4 100 > /home/idena-node-proxy/api.txt
 cd /home/idena-node-proxy
 npm i -g pm2
 cd /home/idena-node-proxy && npm install && node /home/generate.js > /home/idena-node-proxy/.env
