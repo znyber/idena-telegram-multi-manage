@@ -900,7 +900,7 @@ bot.command('resource'+ bot_name, (ctx) =>{
 bot.command('speedtest', (ctx) =>{
                 console.log(ctx.from.username);
 				console.log(ctx.message.text);
-                exec('speedtest --progress=no', (error, stdout, stderr) => {
+                exec('speedtest --progress=no speedtest --server-id=1372', (error, stdout, stderr) => {
                 if (error) {
                         ctx.reply(`error: ${error.message}`);
                 }
@@ -915,7 +915,7 @@ bot.command('speedtest', (ctx) =>{
 bot.command('speedtest'+ bot_name, (ctx) =>{
                 console.log(ctx.from.username);
 				console.log(ctx.message.text);
-                exec('speedtest --progress=no', (error, stdout, stderr) => {
+                exec('speedtest --progress=no speedtest --server-id=1372', (error, stdout, stderr) => {
                 if (error) {
                         ctx.reply(`error: ${error.message}`);
                 }
