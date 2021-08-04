@@ -87,7 +87,7 @@ bot.command('newapi', (ctx) =>{
         console.log(ctx.from.username);
 		console.log(ctx.message.text);
         if (ctx.chat.type == 'private') {
-            exec('sed -n "1{p;q}" /home/api-config/api.txt >> /home/api-config/' + ctx.from.username + '-api.txt && tail -1 /home/api-config/' + ctx.from.username +'-api.txt && sed -i "1d" /home/api-config/api.txt', (error, stdout, stderr) => {
+            exec('sed -n "1{p;q}" /home/apiconfig/api.txt >> /home/apiconfig/' + ctx.from.username + '-api.txt && tail -1 /home/apiconfig/' + ctx.from.username +'-api.txt && sed -i "1d" /home/apiconfig/api.txt', (error, stdout, stderr) => {
                 if (error) {
                         ctx.reply(`error: ${error.message}`);
                 }
@@ -117,10 +117,10 @@ bot.command('listapi', (ctx) =>{
         console.log(ctx.from.username);
 		console.log(ctx.message.text);
         if (ctx.chat.type == 'private') {
-            if (fs.existsSync('/home/api-config/'+ ctx.from.username +'-api.txt')) {
+            if (fs.existsSync('/home/apiconfig/'+ ctx.from.username +'-api.txt')) {
 				console.log("The file exists.");
                 async function processLineByLine() {
-                    const fileStream = fs.createReadStream('/home/api-config/'+ ctx.from.username +'-api.txt');
+                    const fileStream = fs.createReadStream('/home/apiconfig/'+ ctx.from.username +'-api.txt');
                 const rl = readline.createInterface({
                         input: fileStream,
                         crlfDelay: Infinity
