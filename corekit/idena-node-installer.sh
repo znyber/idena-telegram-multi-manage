@@ -92,7 +92,7 @@ cat <<EOF > /home/generate.js
 const fs = require('fs');
 const readline = require('readline');
 async function processLineByLine() {
-const fileStream = fs.createReadStream('/home/idena-node-proxy/api.txt');
+const fileStream = fs.createReadStream('/home/api-config/api.txt');
 const r1 = readline.createInterface({
 input: fileStream,
 crlfDelay: Infinity
@@ -213,11 +213,12 @@ else if command -v yum ||  command -v dnf &> /dev/null
 	fi
 fi
 cd /home && git clone https://github.com/znyber/idena-node-proxy.git
-pwgen -1cn 4 100 > /home/idena-node-proxy/api.txt
+mkdir -p /home/api-config
+pwgen -1cn 4 100 > /home/api-config/api.txt
 cd /home/idena-node-proxy
 npm i -g pm2
-cd /home/idena-node-proxy && npm install && node /home/generate.js > /home/idena-node-proxy/.env
-cat <<EOF >> /home/idena-node-proxy/.env
+cd /home/idena-node-proxy && npm install && node /home/generate.js > /home/api-config/.env
+cat <<EOF >> /home/api-config/.env
 IDENA_URL="http://localhost:9009"
 IDENA_KEY="$apishare"
 PORT=80

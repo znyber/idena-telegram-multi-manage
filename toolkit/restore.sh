@@ -40,5 +40,5 @@ else
 echo "node $RPCD down $KOVET" >&2
 fi
 SECONDS=0
-cat /root/chatidX.txt >> /home/chatidX.txt
+done <<<$(cat /root/restore.txt)
 echo "all restore clear"
