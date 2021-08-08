@@ -92,6 +92,10 @@ After=network.target
 StartLimitIntervalSec=0
 
 [Service]
+CPUWeight=20
+CPUQuota=15%
+IOWeight=20
+MemorySwapMax=0
 Type=simple
 Restart=always
 RestartSec=1
