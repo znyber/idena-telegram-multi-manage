@@ -1,4 +1,5 @@
 #!/bin/bash
+rm -f /root/restore.txt
 touch /root/restore.txt
 while read line; do
 echo $line
