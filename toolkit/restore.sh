@@ -41,4 +41,12 @@ echo "node $RPCD down $KOVET" >&2
 fi
 SECONDS=0
 done <<<$(cat /root/restore.txt)
+while read notifz; do
+TOKEN=1422705649:AAFJWFkgiHRRE5K72XtV_1gU4lKHROa9nZI
+CHAT_ID=$notifz
+MESSAGE="<b>data node imported at</b>%0A<tg-spoiler>$(date)</tg-spoiler>  %0Asuccess"
+URL="https://api.telegram.org/bot$TOKEN/sendMessage"
+
+curl -s -X POST $URL -d chat_id=$CHAT_ID -d parse_mode=HTML -d text="$MESSAGE"
+done <<<$(cat /root/chatidX.txt)
 echo "all restore clear"
