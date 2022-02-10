@@ -93,7 +93,7 @@ StartLimitIntervalSec=0
 
 [Service]
 CPUWeight=20
-CPUQuota=15%
+CPUQuota=35%
 IOWeight=20
 MemorySwapMax=0
 Type=simple
