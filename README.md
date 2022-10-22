@@ -32,7 +32,7 @@ centos 8.2 kernel 4.18 -Alpha test
 
 <br />
 
-~~update to kernel 5.4 for ubuntu 18 ~~
+~~update to kernel 5.4 for ubuntu 18~~
 <br />
 ~~apt update~~
 ~~apt-get install --install-recommends linux-generic-hwe-18.04~~
