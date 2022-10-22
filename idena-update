@@ -1,5 +1,5 @@
 #!/bin/bash
-idenaURL=$(curl -s 'https://github.com/idena-network/idena-go/releases/' |grep idena-node-linux | cut -d '"' -f 2 | cut -d '-' -f 6 | head -n 1)
+idenaURL=$(curl -s https://api.github.com/repos/idena-network/idena-go/releases |grep idena-node-linux |grep browser_download_url | cut -d '"' -f 4 | cut -d '-' -f 6 | head -n 1)
 idenaTXT=$(idena -v | awk '{print $3}')
 if [[ ! $idenaURL == $idenaTXT ]];then
 service idena stop

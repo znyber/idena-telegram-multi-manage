@@ -2,7 +2,7 @@
 systemctl stop idena.target
 while read line; do
 echo $line
-DATCX=$(curl -s "http://127.0.0.1:9009/" -H 'Content-Type: application/json' --data "{\"method\":\"bcn_syncing\",\"params\":[],\"id\":1,\"key\":\"kenebaezxcpm\"}")
+DATCX=$(curl -s "http://127.0.0.1:9009/" -H 'Content-Type: application/json' --data "{\"method\":\"bcn_syncing\",\"params\":[],\"id\":1,\"key\":\"UeghaLuco2EiT2aiCh\"}")
 SYNCAX=$(echo $DATCX | sed -n 's|.*"syncing":\([^"]*\),.*|\1|p')
 CURBLOCKX=$(echo $DATCX | sed -n 's|.*"currentBlock":\([^"]*\),.*|\1|p')
 HIGBLOCKX=$(echo $DATCX | sed -n 's|.*"highestBlock":\([^"]*\),.*|\1|p')
@@ -14,7 +14,7 @@ KOVETX=$(netstat -netulp |grep 127.0.0.1:9009 | awk -F "[ :]+" '/:/{print $5}')
 if [[ $KOVETX == "9009" ]]
 then
 echo "node share sync $SYNCAX , block curent $CURBLOCKX to block high $HIGBLOCKX" >&2
-DATCX=$(curl -s "http://127.0.0.1:9009/" -H 'Content-Type: application/json' --data "{\"method\":\"bcn_syncing\",\"params\":[],\"id\":1,\"key\":\"kenebaezxcpm\"}")
+DATCX=$(curl -s "http://127.0.0.1:9009/" -H 'Content-Type: application/json' --data "{\"method\":\"bcn_syncing\",\"params\":[],\"id\":1,\"key\":\"UeghaLuco2EiT2aiCh\"}")
 SYNCAX=$(echo $DATCX | sed -n 's|.*"syncing":\([^"]*\),.*|\1|p')
 CURBLOCKX=$(echo $DATCX | sed -n 's|.*"currentBlock":\([^"]*\),.*|\1|p')
 HIGBLOCKX=$(echo $DATCX | sed -n 's|.*"highestBlock":\([^"]*\),.*|\1|p')

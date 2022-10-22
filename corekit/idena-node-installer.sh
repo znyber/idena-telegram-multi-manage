@@ -215,6 +215,8 @@ IDENA_URL="http://localhost:9009"
 IDENA_KEY="$apishare"
 PORT=80
 EOF
+filename="/usr/bin/miningallon"
+sed -i "s/UeghaLuco2EiT2aiCh/$apishare/g" $filename
 cd /home/idena-node-proxy && npm start 
 #add notif mining down
 mkdir -p /home/niteni
