@@ -24,17 +24,17 @@ centos 8.2 kernel 4.18 -Alpha test
 ``
 <br />
 ``
-Ubuntu 20.04 kernel 5.4 -Alpha test
+~~Ubuntu 20.04 kernel 5.4 -Alpha test~~
 ``
 <br />
 ``
-Ubuntu 18.04 kernel 5.4 -Alpha test
+~~Ubuntu 18.04 kernel 5.4 -Alpha test~~
 ``
 <br />
-update to kernel 5.4 for ubuntu 18 
+~~update to kernel 5.4 for ubuntu 18 ~~
 ```bash
-apt update
-apt-get install --install-recommends linux-generic-hwe-18.04
+~~apt update~~
+~~apt-get install --install-recommends linux-generic-hwe-18.04~~
 ```
 <br />
 link youtube toturial <br />
