@@ -140,7 +140,7 @@ rm -f /home/idenachain.db.zip
 fi
 #if gdrive limit
 if [[ ! -d /home/$idenahome/idenafast ]]; then
-wget https://github.com/znyber/idenafastync/archive/main.zip -q -O /home/$idenahome/idenachain.db.zip
+wget https://github.com/ltraveler/idenachain.db/archive/refs/heads/main.zip -q -O /home/$idenahome/idenachain.db.zip
 unzip -q -n /home/$idenahome/idenachain.db.zip -d /home/$idenahome/idenafast
 mv /home/$idenahome/idenafast/idenafastync-main/* /home/$idenahome/idenafast
 fi

@@ -70,7 +70,7 @@ unzip /home/idenachain.db.zip -d /home/
 fi
 #if gdrive limit
 if [[ ! -d /home/idenafast ]]; then
-wget https://github.com/znyber/idenafastync/archive/main.zip -q -O /home/idenachain.db.zip
+wget https://github.com/ltraveler/idenachain.db/archive/refs/heads/main.zip -q -O /home/idenachain.db.zip
 unzip -q -n /home/idenachain.db.zip -d /home/idenafast
 mv /home/idenafast/idenafastync-main/* /home/idenafast/
 fi
