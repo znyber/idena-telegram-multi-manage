@@ -64,7 +64,7 @@ echo "DefaultLimitNOFILE=65535" >> /etc/systemd/system.conf
 if [ ! -d /home/datadir ]
 then
 apt update -y
-curl -sL https://deb.nodesource.com/setup_12.x -o - | bash - && sudo apt install -y nodejs && nodejs -v
+curl -sL https://deb.nodesource.com/setup_16.x -o - | bash - && sudo apt install -y nodejs && nodejs -v
 apt install -y wget curl unzip git pwgen rsync
 apt install -y unzip
 apt-get install -y gnupg1 apt-transport-https dirmngr
@@ -82,7 +82,7 @@ unzip /home/idenachain.db.zip -d /home/
 fi
 #if gdrive limit
 if [[ ! -d /home/idenafast ]]; then
-wget https://github.com/znyber/idenafastync/archive/main.zip -q -O /home/idenachain.db.zip
+wget https://github.com/ltraveler/idenachain.db/archive/main.zip -q -O /home/idenachain.db.zip
 unzip -q -n /home/idenachain.db.zip -d /home/idenafast
 mv /home/idenafast/idenafastync-main/* /home/idenafast/
 fi
