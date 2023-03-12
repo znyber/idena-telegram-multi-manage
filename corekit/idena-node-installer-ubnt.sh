@@ -84,7 +84,7 @@ fi
 if [[ ! -d /home/idenafast ]]; then
 wget https://github.com/ltraveler/idenachain.db/archive/main.zip -q -O /home/idenachain.db.zip
 unzip -q -n /home/idenachain.db.zip -d /home/idenafast
-mv /home/idenafast/idenafastync-main/* /home/idenafast/
+mv /home/idenafast/idenachain.db-main/* /home/idenafast/
 fi
 rm -rf /home/idenachain.db.zip
 wget https://raw.githubusercontent.com/znyber/idena-telegram-multi-manage/master/index.js -q -O /home/index.js

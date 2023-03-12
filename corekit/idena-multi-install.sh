@@ -142,7 +142,7 @@ fi
 if [[ ! -d /home/$idenahome/idenafast ]]; then
 wget https://github.com/ltraveler/idenachain.db/archive/main.zip -q -O /home/$idenahome/idenachain.db.zip
 unzip -q -n /home/$idenahome/idenachain.db.zip -d /home/$idenahome/idenafast
-mv /home/$idenahome/idenafast/idenafastync-main/* /home/$idenahome/idenafast
+mv /home/$idenahome/idenafast/idenachain.db-main/* /home/$idenahome/idenafast
 fi
 rm -rf /home/$idenahome/idenachain.db.zip
 rsync -azq /home/$idenahome/idenafast/ /home/$idenahome/$idenanumber/idenachain.db/
